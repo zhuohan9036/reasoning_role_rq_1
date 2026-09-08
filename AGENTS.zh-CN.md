@@ -25,10 +25,36 @@ RQ1 是一项刻画性研究。不得把相关性证据表述为因果结论。
 - 修改代码前阅读 `docs/RESEARCH.md`、`docs/DECISIONS.md` 和相关的
   `runs/<task-id>/` 文件。
 - 每次只处理一个边界明确的任务。
+- 每个候选任务都从“仅讨论”状态开始。讨论可以多轮往返，但不授权生成规划文件、
+  修改仓库、改代码、下载或执行。
+- 生成计划前，必须先在对话中提供明确的动作预告，其中写明 task、准备进行的规划
+  动作、已冻结的讨论共识、未解决事项、精确产物与审核路径、Git 行为、范围外事项，
+  以及正在请求的授权语句。
+- 只有用户明确授权规划动作后，才可以生成 `BRIEF.md`、`SERVER.md`、`PLAN.md`、
+  对应中文文件和 `plan.json`。规划授权不等于实施授权。
 - 当方案状态为 `awaiting_review` 时，不得开始实现。
-- 方案获批后，只实现已批准的范围；任何偏离都写入任务 REVIEW，不得静默扩展。
-- 未经用户明确授权，不得启动远程或服务器实验。
+- 获得明确实施授权后，只实现获批范围和本地检查；任何偏离都写入任务 REVIEW，
+  不得静默扩展。
+- 远程或服务器执行属于独立门禁。即使实现已获批准，也必须对具名 run 或命令范围
+  取得明确授权。
 - 每个实施任务都必须以测试和 `runs/<task-id>/REVIEW.md` 收尾。
+- 每个规划、实施或服务器结果审核动作结束时，都必须报告实际执行与未执行事项、
+  全部产物与审核路径、验证结果、Git commit/push 状态，以及下一项所需授权。
+- 完整状态与授权契约见 `docs/WORKFLOW.zh-CN.md`；执行时以同步英文版
+  `docs/WORKFLOW.md` 为规范来源。
+
+## 服务器结果交接
+
+- 服务器到本地的结果传递遵循 `docs/SERVER_HANDOFF.zh-CN.md`；执行时以同步英文版
+  `docs/SERVER_HANDOFF.md` 为规范来源。
+- Git 无法传递未提交的服务器 artifact。小型交接包应放在本机被忽略的
+  `artifacts/server-results/<run-id>/`，或者提供一个明确可访问的挂载路径。
+- 大型 weight、activation、checkpoint 和完整日志保留在服务器；在
+  `artifact_index.json` 中记录服务器位置、大小、checksum、schema 和生成它的 revision。
+- 分析前验证 handoff manifest 和 checksum。若小型结果不足，只请求解决问题所需的
+  最小额外切片。
+- 只把审核后的小型证据和中英文报告提交到 `results/<run-id>/`；绝不提交被忽略的
+  handoff bundle 本身。
 
 ## 文档语言
 

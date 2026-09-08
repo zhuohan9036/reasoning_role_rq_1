@@ -30,10 +30,15 @@ harness. It contains no activation analysis or completed real-model experiment.
 - `docs/RESEARCH.md`: research question, hypotheses, evidence plan, and scope.
 - `docs/DECISIONS.md`: accepted decisions, working hypotheses, and open choices.
 - `docs/PROGRESS.md`: milestone and evidence log.
+- `docs/WORKFLOW.md`: discussion, planning, implementation, and authorization gates.
+- `docs/SERVER_HANDOFF.md`: compact server-result transfer and review contract.
 - `runs/<task-id>/BRIEF.md`: the requested outcome for one bounded task.
 - `runs/<task-id>/SERVER.md`: execution-environment assumptions and unknowns.
 - `runs/<task-id>/PLAN.md`: human-readable implementation plan.
 - `runs/<task-id>/plan.json`: structured implementation contract.
+- `artifacts/server-results/<run-id>/`: ignored local handoff bundles copied from
+  a server.
+- `results/<run-id>/`: reviewed compact evidence and bilingual result reports.
 
 Human-facing Markdown documents have synchronized Chinese counterparts with the
 `.zh-CN.md` suffix. Machine-readable files such as `plan.json` remain a single

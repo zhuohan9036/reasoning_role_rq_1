@@ -31,12 +31,42 @@ reported separately from naturally occurring organization.
 - Read `docs/RESEARCH.md`, `docs/DECISIONS.md`, and the relevant `runs/<task-id>/`
   files before changing code.
 - Work on one bounded task at a time.
+- Start every prospective task in a discussion-only state. Discussion may be
+  iterative and does not authorize planning-file generation, repository edits,
+  code changes, downloads, or execution.
+- Before generating a plan, present an explicit action preview in the
+  conversation. It must name the task, the proposed planning action, frozen
+  discussion consensus, unresolved items, exact outputs and review paths, Git
+  behavior, exclusions, and the authorization phrase being requested.
+- Generate `BRIEF.md`, `SERVER.md`, `PLAN.md`, their Chinese counterparts, and
+  `plan.json` only after the user explicitly authorizes the planning action.
+  Planning authorization does not authorize implementation.
 - Do not implement a task while its plan status is `awaiting_review`.
-- After approval, implement only the approved in-scope items. Record deviations
-  in the task review rather than silently expanding scope.
-- Do not start remote/server experiments unless the user explicitly authorizes
-  them.
+- After explicit implementation approval, implement only the approved in-scope
+  items and local checks. Record deviations in the task review rather than
+  silently expanding scope.
+- Treat remote/server execution as a separate gate. Require explicit
+  authorization for the named run or command scope even when implementation was
+  already approved.
 - End each implementation task with tests and `runs/<task-id>/REVIEW.md`.
+- At the end of every planning, implementation, or server-review action, report
+  what ran, what did not run, all outputs and review paths, validation results,
+  the Git commit/push state, and the exact next approval required.
+- Follow the full state and authorization contract in `docs/WORKFLOW.md`.
+
+## Server-result handoff
+
+- Follow `docs/SERVER_HANDOFF.md` for server-to-local result transfer.
+- Git does not carry uncommitted server artifacts. Place a compact handoff bundle
+  under the ignored local path `artifacts/server-results/<run-id>/` or provide an
+  explicitly accessible mounted path.
+- Keep large weights, activations, checkpoints, and full logs on the server.
+  Record their server location, size, checksum, schema, and producing revision
+  in `artifact_index.json`.
+- Verify the handoff manifest and checksums before analysis. Request only the
+  smallest additional slice needed when compact results are insufficient.
+- Commit only reviewed compact evidence and bilingual reports under
+  `results/<run-id>/`; never commit the ignored handoff bundle itself.
 
 ## Documentation languages
 

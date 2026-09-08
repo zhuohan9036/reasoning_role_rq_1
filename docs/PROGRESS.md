@@ -38,10 +38,14 @@ a Transformer.
 
 ## Documentation synchronization
 
-On 2026-09-08, all 15 human-facing Markdown documents were paired with
+On 2026-09-08, all 17 human-facing Markdown documents were paired with
 synchronized Chinese versions using the `.zh-CN.md` suffix and reciprocal
 language links. Machine-readable contracts and generated artifacts remain
 single-source.
+
+The same update established separate discussion, plan-generation,
+implementation, and server-run approvals plus an ignored local handoff path for
+large server results. No research plan, model run, or server action was started.
 
 ## Completed task: task-modeling-v1
 

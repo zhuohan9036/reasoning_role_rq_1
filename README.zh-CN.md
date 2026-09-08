@@ -24,13 +24,17 @@
 
 ## 仓库结构
 
-- `docs/RESEARCH.md`：研究问题、假设、证据方案和范围。
-- `docs/DECISIONS.md`：已接受的决策、工作假设和待定选择。
-- `docs/PROGRESS.md`：里程碑和证据日志。
-- `runs/<task-id>/BRIEF.md`：一个有边界任务的实际目标。
-- `runs/<task-id>/SERVER.md`：执行环境假设与未知项。
-- `runs/<task-id>/PLAN.md`：人类可读的实施方案。
+- `docs/RESEARCH.zh-CN.md`：研究问题、假设、证据方案和范围。
+- `docs/DECISIONS.zh-CN.md`：已接受的决策、工作假设和待定选择。
+- `docs/PROGRESS.zh-CN.md`：里程碑和证据日志。
+- `docs/WORKFLOW.zh-CN.md`：讨论、规划、实施和授权门禁。
+- `docs/SERVER_HANDOFF.zh-CN.md`：小型服务器结果传递与审核契约。
+- `runs/<task-id>/BRIEF.zh-CN.md`：一个有边界任务的实际目标。
+- `runs/<task-id>/SERVER.zh-CN.md`：执行环境假设与未知项。
+- `runs/<task-id>/PLAN.zh-CN.md`：人类可读的实施方案。
 - `runs/<task-id>/plan.json`：结构化实施契约。
+- `artifacts/server-results/<run-id>/`：从服务器复制回本机、被 Git 忽略的交接包。
+- `results/<run-id>/`：经过审核的小型证据和中英文结果报告。
 
 所有面向人的 Markdown 文档都具有以 `.zh-CN.md` 结尾的同步中文版本。
 `plan.json` 等机器可读文件继续保持单一权威版本。

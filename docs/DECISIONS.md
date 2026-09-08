@@ -101,6 +101,25 @@ synchronized Chinese counterpart using the `.zh-CN.md` suffix. Code,
 configuration, generated artifacts, and machine-readable contracts such as
 `plan.json` remain single-source unless a later approved plan says otherwise.
 
+### D-014 — Discussion, planning, and implementation require separate approval
+
+**Status:** accepted
+**Decision:** Every prospective task begins with iterative discussion. Before
+creating planning files, the assistant must present a concrete action preview
+that identifies the action, outputs, review paths, Git behavior, and exclusions.
+The user must explicitly authorize plan generation. That authorization creates
+reviewable planning artifacts only; implementation requires a second explicit
+approval, and server execution requires a third run-specific approval.
+
+### D-015 — Server results use an ignored local handoff bundle
+
+**Status:** accepted
+**Decision:** Large server artifacts remain outside Git. Each server run produces
+a compact manifest, summary, diagnostics, and artifact index that can be copied
+to `artifacts/server-results/<run-id>/` for local review. Only reviewed compact
+evidence and bilingual reports may be promoted to `results/<run-id>/` and
+committed.
+
 ## Working hypotheses
 
 These guide experimental design but are not assumed true.
