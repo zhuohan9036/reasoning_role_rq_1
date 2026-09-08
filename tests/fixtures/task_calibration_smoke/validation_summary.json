@@ -1,0 +1,61 @@
+{
+  "graphs_validated": 80,
+  "overlap_audit": {
+    "pairs": {
+      "iid_test__length_test": {
+        "canonical_problem_hash": 0,
+        "prompt_hash": 0,
+        "semantic_id": 0
+      },
+      "iid_test__surface_test": {
+        "canonical_problem_hash": 0,
+        "prompt_hash": 0,
+        "semantic_id": 0
+      },
+      "iid_test__template_test": {
+        "canonical_problem_hash": 0,
+        "prompt_hash": 0,
+        "semantic_id": 0
+      },
+      "iid_test__train": {
+        "canonical_problem_hash": 0,
+        "prompt_hash": 0,
+        "semantic_id": 0
+      },
+      "length_test__surface_test": {
+        "canonical_problem_hash": 0,
+        "prompt_hash": 0,
+        "semantic_id": 0
+      },
+      "length_test__template_test": {
+        "canonical_problem_hash": 0,
+        "prompt_hash": 0,
+        "semantic_id": 0
+      },
+      "length_test__train": {
+        "canonical_problem_hash": 0,
+        "prompt_hash": 0,
+        "semantic_id": 0
+      },
+      "surface_test__template_test": {
+        "canonical_problem_hash": 0,
+        "prompt_hash": 0,
+        "semantic_id": 0
+      },
+      "surface_test__train": {
+        "canonical_problem_hash": 0,
+        "prompt_hash": 0,
+        "semantic_id": 0
+      },
+      "template_test__train": {
+        "canonical_problem_hash": 0,
+        "prompt_hash": 0,
+        "semantic_id": 0
+      }
+    },
+    "passed": true
+  },
+  "records": 80,
+  "status": "passed",
+  "targets_verified": 80
+}

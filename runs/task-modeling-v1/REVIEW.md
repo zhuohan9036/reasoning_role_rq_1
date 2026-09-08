@@ -2,7 +2,7 @@
 
 **Status:** passed local acceptance checks
 **Reviewed:** 2026-09-08
-**Implementation commit:** `d574c3e`
+**Implementation commits:** `d574c3e`, reviewed fixture source `2d139b1`
 
 ## Outcome
 

@@ -30,7 +30,7 @@ provide evidence for or against functional differentiation in a Transformer.
 
 - Date: 2026-09-08.
 - Research goal: G0; infrastructure enabling later G2–G4 tests.
-- Implementation revision: `d574c3e`.
+- Implementation revisions: `d574c3e` and reviewed fixture source `2d139b1`.
 - Artifact: `tests/fixtures/task_calibration_smoke/manifest.json`.
 - Result: 80 records generated and independently rechecked; deterministic replay,
   graph validation, balance checks, and cross-split overlap audits passed.

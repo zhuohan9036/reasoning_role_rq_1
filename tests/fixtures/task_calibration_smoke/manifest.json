@@ -1,0 +1,727 @@
+{
+  "artifact_schema_version": "1.0",
+  "code_revision": {
+    "commit": "2d139b1964e1190ec45e8b7547895cbc81563a27",
+    "dirty": false
+  },
+  "config_sha256": "3eb4c7b009549c7b46782b5a4ef5977d02da4627a8cdb92879c2c696c6435c90",
+  "counts": {
+    "iid_test": {
+      "by_family": {
+        "function_composition": 8,
+        "relational_path": 8
+      },
+      "factor_distributions": {
+        "function_composition": {
+          "answer_encoding": {
+            "\"symbol\"": 8
+          },
+          "chain_length": {
+            "2": 4,
+            "3": 4
+          },
+          "distractor_count": {
+            "0": 4,
+            "1": 4
+          },
+          "domain_size": {
+            "6": 8
+          },
+          "presentation_order": {
+            "\"canonical\"": 4,
+            "\"shuffled\"": 4
+          },
+          "template_id": {
+            "\"compact\"": 8
+          },
+          "vocabulary_id": {
+            "\"latin\"": 8
+          }
+        },
+        "relational_path": {
+          "answer_encoding": {
+            "\"vector\"": 8
+          },
+          "chain_length": {
+            "2": 4,
+            "3": 4
+          },
+          "distractor_count": {
+            "0": 4,
+            "1": 4
+          },
+          "presentation_order": {
+            "\"canonical\"": 4,
+            "\"shuffled\"": 4
+          },
+          "template_id": {
+            "\"compact\"": 8
+          },
+          "vocabulary_id": {
+            "\"names_a\"": 8
+          }
+        }
+      },
+      "joint_factor_cells": {
+        "function_composition": {
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":2,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":2,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":2,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":2,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":3,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":3,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":3,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":3,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1
+        },
+        "relational_path": {
+          "{\"answer_encoding\":\"vector\",\"chain_length\":2,\"distractor_count\":0,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":2,\"distractor_count\":0,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":2,\"distractor_count\":1,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":2,\"distractor_count\":1,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":3,\"distractor_count\":0,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":3,\"distractor_count\":0,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":3,\"distractor_count\":1,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":3,\"distractor_count\":1,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1
+        }
+      },
+      "total": 16
+    },
+    "length_test": {
+      "by_family": {
+        "function_composition": 8,
+        "relational_path": 8
+      },
+      "factor_distributions": {
+        "function_composition": {
+          "answer_encoding": {
+            "\"symbol\"": 8
+          },
+          "chain_length": {
+            "4": 4,
+            "5": 4
+          },
+          "distractor_count": {
+            "0": 4,
+            "1": 4
+          },
+          "domain_size": {
+            "6": 8
+          },
+          "presentation_order": {
+            "\"canonical\"": 4,
+            "\"shuffled\"": 4
+          },
+          "template_id": {
+            "\"compact\"": 8
+          },
+          "vocabulary_id": {
+            "\"latin\"": 8
+          }
+        },
+        "relational_path": {
+          "answer_encoding": {
+            "\"vector\"": 8
+          },
+          "chain_length": {
+            "4": 4,
+            "5": 4
+          },
+          "distractor_count": {
+            "0": 4,
+            "1": 4
+          },
+          "presentation_order": {
+            "\"canonical\"": 4,
+            "\"shuffled\"": 4
+          },
+          "template_id": {
+            "\"compact\"": 8
+          },
+          "vocabulary_id": {
+            "\"names_a\"": 8
+          }
+        }
+      },
+      "joint_factor_cells": {
+        "function_composition": {
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":4,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":4,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":4,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":4,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":5,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":5,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":5,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":5,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1
+        },
+        "relational_path": {
+          "{\"answer_encoding\":\"vector\",\"chain_length\":4,\"distractor_count\":0,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":4,\"distractor_count\":0,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":4,\"distractor_count\":1,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":4,\"distractor_count\":1,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":5,\"distractor_count\":0,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":5,\"distractor_count\":0,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":5,\"distractor_count\":1,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":5,\"distractor_count\":1,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1
+        }
+      },
+      "total": 16
+    },
+    "surface_test": {
+      "by_family": {
+        "function_composition": 8,
+        "relational_path": 8
+      },
+      "factor_distributions": {
+        "function_composition": {
+          "answer_encoding": {
+            "\"symbol\"": 8
+          },
+          "chain_length": {
+            "2": 4,
+            "3": 4
+          },
+          "distractor_count": {
+            "0": 4,
+            "1": 4
+          },
+          "domain_size": {
+            "6": 8
+          },
+          "presentation_order": {
+            "\"canonical\"": 4,
+            "\"shuffled\"": 4
+          },
+          "template_id": {
+            "\"compact\"": 8
+          },
+          "vocabulary_id": {
+            "\"greek_names\"": 8
+          }
+        },
+        "relational_path": {
+          "answer_encoding": {
+            "\"vector\"": 8
+          },
+          "chain_length": {
+            "2": 4,
+            "3": 4
+          },
+          "distractor_count": {
+            "0": 4,
+            "1": 4
+          },
+          "presentation_order": {
+            "\"canonical\"": 4,
+            "\"shuffled\"": 4
+          },
+          "template_id": {
+            "\"compact\"": 8
+          },
+          "vocabulary_id": {
+            "\"names_b\"": 8
+          }
+        }
+      },
+      "joint_factor_cells": {
+        "function_composition": {
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":2,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"greek_names\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":2,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"greek_names\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":2,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"greek_names\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":2,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"greek_names\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":3,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"greek_names\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":3,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"greek_names\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":3,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"greek_names\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":3,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"greek_names\"}": 1
+        },
+        "relational_path": {
+          "{\"answer_encoding\":\"vector\",\"chain_length\":2,\"distractor_count\":0,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_b\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":2,\"distractor_count\":0,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_b\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":2,\"distractor_count\":1,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_b\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":2,\"distractor_count\":1,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_b\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":3,\"distractor_count\":0,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_b\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":3,\"distractor_count\":0,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_b\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":3,\"distractor_count\":1,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_b\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":3,\"distractor_count\":1,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_b\"}": 1
+        }
+      },
+      "total": 16
+    },
+    "template_test": {
+      "by_family": {
+        "function_composition": 8,
+        "relational_path": 8
+      },
+      "factor_distributions": {
+        "function_composition": {
+          "answer_encoding": {
+            "\"symbol\"": 8
+          },
+          "chain_length": {
+            "2": 4,
+            "3": 4
+          },
+          "distractor_count": {
+            "0": 4,
+            "1": 4
+          },
+          "domain_size": {
+            "6": 8
+          },
+          "presentation_order": {
+            "\"canonical\"": 4,
+            "\"shuffled\"": 4
+          },
+          "template_id": {
+            "\"prose\"": 8
+          },
+          "vocabulary_id": {
+            "\"latin\"": 8
+          }
+        },
+        "relational_path": {
+          "answer_encoding": {
+            "\"vector\"": 8
+          },
+          "chain_length": {
+            "2": 4,
+            "3": 4
+          },
+          "distractor_count": {
+            "0": 4,
+            "1": 4
+          },
+          "presentation_order": {
+            "\"canonical\"": 4,
+            "\"shuffled\"": 4
+          },
+          "template_id": {
+            "\"prose\"": 8
+          },
+          "vocabulary_id": {
+            "\"names_a\"": 8
+          }
+        }
+      },
+      "joint_factor_cells": {
+        "function_composition": {
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":2,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"prose\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":2,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"prose\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":2,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"prose\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":2,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"prose\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":3,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"prose\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":3,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"prose\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":3,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"prose\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":3,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"prose\",\"vocabulary_id\":\"latin\"}": 1
+        },
+        "relational_path": {
+          "{\"answer_encoding\":\"vector\",\"chain_length\":2,\"distractor_count\":0,\"presentation_order\":\"canonical\",\"template_id\":\"prose\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":2,\"distractor_count\":0,\"presentation_order\":\"shuffled\",\"template_id\":\"prose\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":2,\"distractor_count\":1,\"presentation_order\":\"canonical\",\"template_id\":\"prose\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":2,\"distractor_count\":1,\"presentation_order\":\"shuffled\",\"template_id\":\"prose\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":3,\"distractor_count\":0,\"presentation_order\":\"canonical\",\"template_id\":\"prose\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":3,\"distractor_count\":0,\"presentation_order\":\"shuffled\",\"template_id\":\"prose\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":3,\"distractor_count\":1,\"presentation_order\":\"canonical\",\"template_id\":\"prose\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":3,\"distractor_count\":1,\"presentation_order\":\"shuffled\",\"template_id\":\"prose\",\"vocabulary_id\":\"names_a\"}": 1
+        }
+      },
+      "total": 16
+    },
+    "train": {
+      "by_family": {
+        "function_composition": 8,
+        "relational_path": 8
+      },
+      "factor_distributions": {
+        "function_composition": {
+          "answer_encoding": {
+            "\"symbol\"": 8
+          },
+          "chain_length": {
+            "2": 4,
+            "3": 4
+          },
+          "distractor_count": {
+            "0": 4,
+            "1": 4
+          },
+          "domain_size": {
+            "6": 8
+          },
+          "presentation_order": {
+            "\"canonical\"": 4,
+            "\"shuffled\"": 4
+          },
+          "template_id": {
+            "\"compact\"": 8
+          },
+          "vocabulary_id": {
+            "\"latin\"": 8
+          }
+        },
+        "relational_path": {
+          "answer_encoding": {
+            "\"vector\"": 8
+          },
+          "chain_length": {
+            "2": 4,
+            "3": 4
+          },
+          "distractor_count": {
+            "0": 4,
+            "1": 4
+          },
+          "presentation_order": {
+            "\"canonical\"": 4,
+            "\"shuffled\"": 4
+          },
+          "template_id": {
+            "\"compact\"": 8
+          },
+          "vocabulary_id": {
+            "\"names_a\"": 8
+          }
+        }
+      },
+      "joint_factor_cells": {
+        "function_composition": {
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":2,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":2,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":2,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":2,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":3,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":3,\"distractor_count\":0,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":3,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1,
+          "{\"answer_encoding\":\"symbol\",\"chain_length\":3,\"distractor_count\":1,\"domain_size\":6,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"latin\"}": 1
+        },
+        "relational_path": {
+          "{\"answer_encoding\":\"vector\",\"chain_length\":2,\"distractor_count\":0,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":2,\"distractor_count\":0,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":2,\"distractor_count\":1,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":2,\"distractor_count\":1,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":3,\"distractor_count\":0,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":3,\"distractor_count\":0,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":3,\"distractor_count\":1,\"presentation_order\":\"canonical\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1,
+          "{\"answer_encoding\":\"vector\",\"chain_length\":3,\"distractor_count\":1,\"presentation_order\":\"shuffled\",\"template_id\":\"compact\",\"vocabulary_id\":\"names_a\"}": 1
+        }
+      },
+      "total": 16
+    }
+  },
+  "environment": {
+    "python": "3.11.16",
+    "pyyaml": "6.0.3"
+  },
+  "files": {
+    "iid_test.jsonl": {
+      "records": 16,
+      "sha256": "134a21db0a3ab825726c9867af10b17679fd76c234108f5a408b4dd42e626166"
+    },
+    "length_test.jsonl": {
+      "records": 16,
+      "sha256": "4289850f3a1d6ffa5c77c7e08bb42c9306cdee23c9e57972136117d388ad452c"
+    },
+    "surface_test.jsonl": {
+      "records": 16,
+      "sha256": "9a1ecd91c82d7eaa7c5e17cbe9ccb3077faa756192871a45ba0aa153994b8e3e"
+    },
+    "template_test.jsonl": {
+      "records": 16,
+      "sha256": "a8e219f87292958248af9ca7333453378e2ef2319dce03028948a75e23b4bc8e"
+    },
+    "train.jsonl": {
+      "records": 16,
+      "sha256": "56507d98195e3056dcea0b1d880b0a5c692d81c071bed2affbffb131fcb58b9a"
+    },
+    "validation_summary.json": {
+      "sha256": "fbce5d88999c520355513e6639e33ec69423c3df491c22e9b05a87206777f701"
+    }
+  },
+  "generator_version": "1.0",
+  "package_version": "0.1.0",
+  "resolved_config": {
+    "families": {
+      "function_composition": {
+        "domain_size": 6
+      },
+      "relational_path": {}
+    },
+    "generator_version": "1.0",
+    "max_generation_attempts": 1000,
+    "schema_version": "1.0",
+    "seed": 1729,
+    "splits": {
+      "iid_test": {
+        "count_per_family": 8,
+        "factors": {
+          "chain_lengths": [
+            2,
+            3
+          ],
+          "distractor_counts": [
+            0,
+            1
+          ],
+          "presentation_orders": [
+            "canonical",
+            "shuffled"
+          ]
+        },
+        "kind": "iid",
+        "render": {
+          "function_composition": {
+            "answer_encodings": [
+              "symbol"
+            ],
+            "templates": [
+              "compact"
+            ],
+            "vocabularies": [
+              "latin"
+            ]
+          },
+          "relational_path": {
+            "answer_encodings": [
+              "vector"
+            ],
+            "templates": [
+              "compact"
+            ],
+            "vocabularies": [
+              "names_a"
+            ]
+          }
+        }
+      },
+      "length_test": {
+        "count_per_family": 8,
+        "factors": {
+          "chain_lengths": [
+            4,
+            5
+          ],
+          "distractor_counts": [
+            0,
+            1
+          ],
+          "presentation_orders": [
+            "canonical",
+            "shuffled"
+          ]
+        },
+        "kind": "heldout_length",
+        "render": {
+          "function_composition": {
+            "answer_encodings": [
+              "symbol"
+            ],
+            "templates": [
+              "compact"
+            ],
+            "vocabularies": [
+              "latin"
+            ]
+          },
+          "relational_path": {
+            "answer_encodings": [
+              "vector"
+            ],
+            "templates": [
+              "compact"
+            ],
+            "vocabularies": [
+              "names_a"
+            ]
+          }
+        }
+      },
+      "surface_test": {
+        "count_per_family": 8,
+        "factors": {
+          "chain_lengths": [
+            2,
+            3
+          ],
+          "distractor_counts": [
+            0,
+            1
+          ],
+          "presentation_orders": [
+            "canonical",
+            "shuffled"
+          ]
+        },
+        "kind": "heldout_surface",
+        "render": {
+          "function_composition": {
+            "answer_encodings": [
+              "symbol"
+            ],
+            "templates": [
+              "compact"
+            ],
+            "vocabularies": [
+              "greek_names"
+            ]
+          },
+          "relational_path": {
+            "answer_encodings": [
+              "vector"
+            ],
+            "templates": [
+              "compact"
+            ],
+            "vocabularies": [
+              "names_b"
+            ]
+          }
+        }
+      },
+      "template_test": {
+        "count_per_family": 8,
+        "factors": {
+          "chain_lengths": [
+            2,
+            3
+          ],
+          "distractor_counts": [
+            0,
+            1
+          ],
+          "presentation_orders": [
+            "canonical",
+            "shuffled"
+          ]
+        },
+        "kind": "heldout_template",
+        "render": {
+          "function_composition": {
+            "answer_encodings": [
+              "symbol"
+            ],
+            "templates": [
+              "prose"
+            ],
+            "vocabularies": [
+              "latin"
+            ]
+          },
+          "relational_path": {
+            "answer_encodings": [
+              "vector"
+            ],
+            "templates": [
+              "prose"
+            ],
+            "vocabularies": [
+              "names_a"
+            ]
+          }
+        }
+      },
+      "train": {
+        "count_per_family": 8,
+        "factors": {
+          "chain_lengths": [
+            2,
+            3
+          ],
+          "distractor_counts": [
+            0,
+            1
+          ],
+          "presentation_orders": [
+            "canonical",
+            "shuffled"
+          ]
+        },
+        "kind": "train",
+        "render": {
+          "function_composition": {
+            "answer_encodings": [
+              "symbol"
+            ],
+            "templates": [
+              "compact"
+            ],
+            "vocabularies": [
+              "latin"
+            ]
+          },
+          "relational_path": {
+            "answer_encodings": [
+              "vector"
+            ],
+            "templates": [
+              "compact"
+            ],
+            "vocabularies": [
+              "names_a"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "seed": 1729,
+  "validation": {
+    "graphs_validated": 80,
+    "overlap_audit": {
+      "pairs": {
+        "iid_test__length_test": {
+          "canonical_problem_hash": 0,
+          "prompt_hash": 0,
+          "semantic_id": 0
+        },
+        "iid_test__surface_test": {
+          "canonical_problem_hash": 0,
+          "prompt_hash": 0,
+          "semantic_id": 0
+        },
+        "iid_test__template_test": {
+          "canonical_problem_hash": 0,
+          "prompt_hash": 0,
+          "semantic_id": 0
+        },
+        "iid_test__train": {
+          "canonical_problem_hash": 0,
+          "prompt_hash": 0,
+          "semantic_id": 0
+        },
+        "length_test__surface_test": {
+          "canonical_problem_hash": 0,
+          "prompt_hash": 0,
+          "semantic_id": 0
+        },
+        "length_test__template_test": {
+          "canonical_problem_hash": 0,
+          "prompt_hash": 0,
+          "semantic_id": 0
+        },
+        "length_test__train": {
+          "canonical_problem_hash": 0,
+          "prompt_hash": 0,
+          "semantic_id": 0
+        },
+        "surface_test__template_test": {
+          "canonical_problem_hash": 0,
+          "prompt_hash": 0,
+          "semantic_id": 0
+        },
+        "surface_test__train": {
+          "canonical_problem_hash": 0,
+          "prompt_hash": 0,
+          "semantic_id": 0
+        },
+        "template_test__train": {
+          "canonical_problem_hash": 0,
+          "prompt_hash": 0,
+          "semantic_id": 0
+        }
+      },
+      "passed": true
+    },
+    "records": 80,
+    "status": "passed",
+    "targets_verified": 80
+  }
+}
