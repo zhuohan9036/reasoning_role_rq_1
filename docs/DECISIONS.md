@@ -72,10 +72,24 @@ model-side functional differentiation.
 
 ### D-010 — Behavioral calibration is the proposed next task
 
-**Status:** proposed for human approval
+**Status:** accepted
 **Decision:** The next bounded task will build a model-output-only behavioral
 evaluation harness with a fake local backend and a generic frozen Hugging Face
 adapter. Activation capture and real-model execution remain separate gates.
+
+### D-011 — Behavioral pilot uses final-answer-only prompts
+
+**Status:** accepted
+**Decision:** Behavioral calibration v1 uses the existing final-answer-only
+prompts, greedy decoding, and no visible scratchpad. Any scratchpad comparison
+must be planned as a separate experimental condition.
+
+### D-012 — Behavioral pilot thresholds are provisional engineering gates
+
+**Status:** accepted
+**Decision:** The provisional gate is 80% overall trimmed exact match, 60% for
+every evaluated chain-length cell, and at most 5% invalid-format or inference
+failures. Passing does not support a paper claim or authorize mechanistic use.
 
 ## Working hypotheses
 
@@ -112,8 +126,6 @@ shifts across components, inputs, or architectures.
 | O-008 | Accuracy threshold and example inclusion policy | Activation collection |
 | O-009 | Server GPU, CUDA, storage, scheduler, and environment | Any server run |
 | O-010 | Dataset size and storage location for primary runs | Dataset freeze |
-| O-011 | Final-answer-only behavioral pilot condition | Behavioral harness implementation |
-| O-012 | Provisional behavioral eligibility thresholds | Behavioral harness implementation |
 | O-013 | Exact pilot model and tokenizer revisions | Real-model pilot run |
 
 ## Decision-change policy

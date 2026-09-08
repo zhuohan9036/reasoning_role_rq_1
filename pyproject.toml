@@ -12,9 +12,15 @@ dependencies = ["PyYAML>=6.0"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8.0"]
+model = [
+  "accelerate>=0.30",
+  "torch>=2.2",
+  "transformers>=4.41",
+]
 
 [project.scripts]
 reasoning-role-generate = "reasoning_role.data.generate:main"
+reasoning-role-evaluate = "reasoning_role.behavioral.runner:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

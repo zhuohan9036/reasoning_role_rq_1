@@ -1,6 +1,6 @@
 # Brief: behavioral-calibration-v1
 
-**Status:** awaiting review
+**Status:** approved
 **Research phase:** Phase B behavioral calibration
 **Research goals:** G0 calibration; prerequisite for G1–G4
 
@@ -87,12 +87,14 @@ After model, environment, data size, and execution are approved:
 - Expanding generator semantic support.
 - Treating behavioral success as evidence for reasoning roles.
 
-## Review questions
+## Resolved review questions
 
-1. Approve final-answer-only, no-visible-scratchpad evaluation?
-2. Approve a generic Hugging Face adapter before exact model/server selection?
-3. Accept the 80% overall / 60% per-length / 5% failure rule as a provisional
-   engineering gate?
+Approved on 2026-09-08:
+
+1. Final-answer-only, no-visible-scratchpad evaluation.
+2. Generic Hugging Face adapter before exact model/server selection.
+3. The 80% overall / 60% per-length / 5% failure rule as a provisional
+   engineering gate.
 
 Exact model and server details are required before a real-model run, but not
 before local harness implementation.

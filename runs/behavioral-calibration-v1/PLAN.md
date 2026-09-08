@@ -1,8 +1,8 @@
 # Implementation plan: behavioral-calibration-v1
 
-**Status:** awaiting_review
+**Status:** approved
 **Plan version:** 1
-**Code changes authorized:** no
+**Code changes authorized:** yes, local harness only
 **Server execution authorized:** no
 
 ## 1. Objective and scientific contract
@@ -120,6 +120,6 @@ the current relational family's small short-chain semantic support.
 
 ## 11. Approval gate
 
-Implementation requires approval of all three `BRIEF.md` questions. Approval
-authorizes local harness code and fake tests only—not downloads, real models,
-activations, or server execution.
+All three `BRIEF.md` questions were approved on 2026-09-08. Local harness code
+and fake tests are authorized. Downloads, real models, activations, and server
+execution remain unauthorized.

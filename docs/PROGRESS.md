@@ -6,7 +6,7 @@
 |---|---|---|---|
 | P0: repository and planning scaffold | Complete and pushed | Research plan and repository history | None |
 | P1: task-side calibration dataset | Complete and pushed | `runs/task-modeling-v1/REVIEW.md`; smoke fixture | Research review |
-| P2a: behavioral calibration harness | Planning | `runs/behavioral-calibration-v1/` | Human review of three choices |
+| P2a: behavioral calibration harness | In progress | `runs/behavioral-calibration-v1/` | Implement and pass local checks |
 | P2b: real-model behavioral pilot | Blocked | No model run | Resolve O-001/O-002/O-009/O-013 and authorize server |
 | P2c: instrumentation baseline | Not started | None | Behavioral gate plus O-004/O-008 |
 | P3: model-side pattern discovery | Not started | None | Freeze discovery/evaluation protocol |
@@ -21,8 +21,10 @@ pilot families, hidden intermediate task-side annotations, and Python 3.11. The
 larger configuration and every server/model experiment remain unexecuted and
 unauthorized.
 
-The proposed next task is `behavioral-calibration-v1`. Its plan is awaiting
-review and does not authorize code changes or a real-model run.
+`behavioral-calibration-v1` was approved on 2026-09-08 with final-answer-only
+prompts, a generic Hugging Face adapter, and the proposed provisional thresholds.
+Local implementation is in progress. Downloads and real-model/server runs remain
+unauthorized.
 
 ## Empirical conclusions
 

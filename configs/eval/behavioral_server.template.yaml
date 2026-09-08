@@ -1,0 +1,43 @@
+# Template only. Copy to an ignored *.local.yaml file and replace every
+# REPLACE_* value after SERVER.md is resolved. Do not run this file directly.
+evaluation_schema_version: "1.0"
+seed: 314159
+
+dataset:
+  manifest: REPLACE_WITH_SERVER_DATASET_MANIFEST
+
+backend:
+  kind: huggingface
+  model_id: REPLACE_WITH_MODEL_ID
+  model_revision: REPLACE_WITH_IMMUTABLE_MODEL_REVISION
+  tokenizer_id: REPLACE_WITH_TOKENIZER_ID
+  tokenizer_revision: REPLACE_WITH_IMMUTABLE_TOKENIZER_REVISION
+  prompt_mode: REPLACE_WITH_plain_OR_chat_template
+  local_files_only: true
+  trust_remote_code: false
+  dtype: REPLACE_WITH_bfloat16_OR_float16_OR_float32
+  device_map: REPLACE_WITH_DEVICE_MAP
+  padding_side: left
+
+generation:
+  batch_size: 1
+  max_new_tokens: 32
+  do_sample: false
+
+summary:
+  strata:
+    - family
+    - split
+    - chain_length
+    - distractor_count
+    - presentation_order
+    - template_id
+    - vocabulary_id
+    - answer_encoding
+    - model_id
+    - prompt_mode
+
+eligibility:
+  overall_trimmed_exact_min: 0.80
+  each_chain_length_trimmed_exact_min: 0.60
+  invalid_or_inference_failure_max: 0.05

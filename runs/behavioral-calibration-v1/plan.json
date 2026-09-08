@@ -3,19 +3,21 @@
   "plan_version": 1,
   "task_id": "behavioral-calibration-v1",
   "title": "Frozen-model behavioral calibration harness",
-  "status": "awaiting_review",
+  "status": "approved",
   "research_goal_refs": ["G0-calibration", "G1-prerequisite", "G2-prerequisite", "G3-prerequisite", "G4-prerequisite"],
   "objective": "Build a reproducible model-output-only harness that tests whether candidate frozen causal language models solve the pilot tasks well enough for later mechanistic study.",
   "approval": {
-    "code_changes_authorized": false,
+    "code_changes_authorized": true,
     "model_download_authorized": false,
     "real_model_execution_authorized": false,
     "server_execution_authorized": false,
-    "required_before_build": [
-      "Approve final-answer-only evaluation without visible scratchpad",
-      "Approve a generic Hugging Face adapter before exact model selection",
-      "Approve or revise the provisional pilot eligibility rule"
-    ],
+    "approved_on": "2026-09-08",
+    "resolved_choices": {
+      "response_mode": "final_answer_only_without_visible_scratchpad",
+      "adapter": "generic_huggingface_before_exact_model_selection",
+      "pilot_gate": "80_percent_overall_60_percent_each_length_5_percent_failure"
+    },
+    "required_before_build": [],
     "required_before_real_model_run": [
       "Exact model and tokenizer IDs with immutable revisions",
       "Base or instruction-tuned checkpoint decision",
