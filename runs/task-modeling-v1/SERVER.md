@@ -1,5 +1,7 @@
 # Server environment: task-modeling-v1
 
+> 中文版：[SERVER.zh-CN.md](SERVER.zh-CN.md)
+
 **Status:** incomplete; no server execution authorized
 
 ## Known constraints

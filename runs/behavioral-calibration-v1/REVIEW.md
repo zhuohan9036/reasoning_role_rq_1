@@ -1,5 +1,7 @@
 # Review: behavioral-calibration-v1
 
+> 中文版：[REVIEW.zh-CN.md](REVIEW.zh-CN.md)
+
 **Status:** passed local acceptance checks
 **Reviewed:** 2026-09-08
 **Implementation commits:** `4797581`, `17fda49`

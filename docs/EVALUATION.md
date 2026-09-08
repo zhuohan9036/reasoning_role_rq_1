@@ -1,5 +1,7 @@
 # Behavioral calibration protocol
 
+> 中文版：[EVALUATION.zh-CN.md](EVALUATION.zh-CN.md)
+
 ## Interpretation boundary
 
 Behavioral calibration asks whether a frozen model answers the pilot tasks

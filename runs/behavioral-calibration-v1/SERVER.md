@@ -1,5 +1,7 @@
 # Server environment: behavioral-calibration-v1
 
+> 中文版：[SERVER.zh-CN.md](SERVER.zh-CN.md)
+
 **Status:** unresolved; no server execution authorized
 
 ## Required before a real-model run

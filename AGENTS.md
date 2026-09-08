@@ -1,5 +1,7 @@
 # Repository instructions
 
+> 中文版：[AGENTS.zh-CN.md](AGENTS.zh-CN.md)
+
 ## Scientific scope
 
 The paper asks whether frozen pretrained Transformers display stable functional
@@ -35,6 +37,15 @@ reported separately from naturally occurring organization.
 - Do not start remote/server experiments unless the user explicitly authorizes
   them.
 - End each implementation task with tests and `runs/<task-id>/REVIEW.md`.
+
+## Documentation languages
+
+- Every human-facing Markdown document must have an English version and a
+  Chinese counterpart named with the `.zh-CN.md` suffix. Keep both versions
+  semantically synchronized in the same change.
+- Each language version must link to its counterpart near the top of the file.
+- Code, configuration, generated artifacts, and machine-readable contracts such
+  as `plan.json` remain single-source unless an approved plan requires otherwise.
 
 ## Reproducibility
 

@@ -1,0 +1,220 @@
+# 研究方案：多步推理中的稳定功能分化
+
+> English: [RESEARCH.md](RESEARCH.md)
+
+**状态：** 初始研究规格，等待审核
+**研究问题：** RQ1
+**最后更新：** 2026-09-08
+
+## 1. 核心问题
+
+当一个冻结的预训练 Transformer 执行多步推理时，其内部计算是否表现出稳定的
+功能分化：是否存在能够被重复识别的计算模式，系统性地对应“正在进行什么计算”，
+而不仅仅对应计算发生在“哪里”或“何时”？
+
+本研究不得预设这种分化一定存在。研究应判断现有证据最适合由功能组织、通用网络
+结构、任务特有规律，还是缺乏稳健分化来解释。
+
+## 2. 研究范围与非目标
+
+### 范围内
+
+- 刻画成功执行多步推理时可重复出现的模型侧计算模式。
+- 在控制 layer depth、token position、reasoning step、prompt format、任务难度和
+  固定 component identity 后，检验分化是否仍然存在。
+- 衡量模式在不同 instance、受控输入变化、task family，以及至少一个额外的冻结
+  预训练模型或不同 architecture 上的稳定性。
+- 比较独立规定的任务侧计算结构与独立测量的模型侧结构。
+
+### 仅凭 RQ1 不能确立
+
+- 所发现的模式是推理必需的因果机制。
+- 任务侧 operation 就是模型实际使用的 primitive 或 atomic primitive。
+- 某个 cluster、probe direction、attention head、MLP、layer 或 token position 本身
+  就是 reasoning role。
+- task-specific training 揭示了预训练模型中自然存在的组织结构。
+
+因果 intervention 可以作为有针对性的诊断，但除非有专门的 intervention 设计支持，
+强因果结论属于后续研究问题。
+
+## 3. 概念层级
+
+分析必须区分任务侧的三个层级：
+
+1. **任务族（task family）：** 例如 symbolic function composition 或 relational
+   path composition 的分布。
+2. **实例级依赖结构：** 求解一个生成实例所需的 computation graph 或 algorithmic
+   dependency。
+3. **候选局部操作：** 对任务侧图中某一步骤的临时性描述。
+
+这些任务侧对象都是外部规格。构造模型侧测量时，不能把这些标签直接指定为内部
+真值。只有经过验证的 correspondence 才能支持更强的功能性解释。
+
+## 4. 相互竞争的经验解释
+
+项目把以下解释视为真正的竞争者，而不是预先设定层级中的不同阶段。
+
+### E0：只有结构性或时间性组织
+
+观察到的模式可由 layer、token position、reasoning-step progression、sequence
+length 或其他通用处理结构解释。对这些变量进行匹配或控制后，几乎不剩与 function
+相关的信号。
+
+### E1：任务特有的功能分化
+
+控制结构性混淆后仍存在与 function 相关的模式，但这些模式不能在 task family 之间
+有意义地泛化。
+
+### E2：可跨任务复用的功能组织
+
+某些模型侧模式对应在多个 task family 中重复出现的 computation；与匹配的结构性
+baseline 相比，它们能更好地泛化到未见过的 surface form、instance 和 task。
+
+### E3：功能稳定但实现可移动
+
+功能模式可以复现，但承载这些模式的具体 head、MLP、layer 或其他物理 component
+会随 example、model instance 或 architecture 改变。
+
+允许混合结果和负结果。例如，可能只有一部分 operation 或 task 显示出分化。
+
+## 5. 研究目标与判断标准
+
+### G0——建立明确的任务侧计算模型
+
+为受控多步推理任务表示 instance dependency graph、deterministic solution、candidate
+local operation 和 nuisance variable。
+
+成功意味着任务实例可复现、可审计；候选标签明确标为临时标签；任务结构可以独立于
+surface form 和关键结构性混淆因素进行操纵。
+
+### G1——确定是否存在可重复的模型侧模式
+
+使用不完全由固定 component identity 定义的分析单位测量内部计算，并使用 held-out
+instance 比较不同 condition 内部与之间的可复现性。
+
+支持 G1 的证据必须表现出超越 shuffled-label 和 structure-only null model 的样本外
+稳定性。仅有探索性 clustering 不足以支持 G1。
+
+### G2——区分计算功能与结构性混淆
+
+使用 matched contrast、statistical variance partitioning 或等价设计，把功能性解释
+与 layer、position、reasoning step、prompt form 和 difficulty 进行比较。
+
+最强的初始检验是 cross-classification：在一组 position/step/layer 上训练或对齐，在
+held-out position/step/layer 上评估功能相关结构，同时也检验反向预测。
+
+### G3——量化稳定性
+
+评估模式在不同 example、paraphrase 或 symbolic renaming、problem length、random
+seed、适用时的 sampling condition，以及 model instance 上的稳定性。报告置信区间
+以及对分析选择的敏感性。
+
+### G4——区分任务特有计算与可复用计算
+
+检验独立发现的模型侧模式能否在 task family 间迁移：这些任务族具有假设共享的
+computation，但 token、semantics 和 presentation 不同。同时加入结构同样匹配、但
+不共享假设功能的 negative-control pair。
+
+### G5——复现核心发现
+
+在另一个冻结预训练模型或不同 architecture 上复现 G1–G4 中最小但具有决定性的
+测试集合。优先复现：分化是否存在、function 与 step 的区分，以及最强的泛化结果。
+
+## 6. 计划中的证据结构
+
+### 阶段 A——任务校准
+
+- 定义版本化 canonical instance schema 和 deterministic reference solver。
+- 从两个受控 task family 开始；它们的 dependency structure 能独立于措辞操纵：
+  symbolic function composition 和 relational path composition。
+- 对 chain length、graph/rule position、distractor count、presentation order、symbol
+  vocabulary、answer encoding 和 prompt template 做因子化设计。
+- 把精确 generator trace 保存为任务侧 provenance，不把它当作模型 chain of thought。
+- 使用 semantic instance identity 创建 IID、held-out-surface、held-out-template 和
+  held-out-length split。
+
+最初的两个任务族是校准工具，并不表示它们定义了通用 reasoning primitive。如果
+pilot behavior 或 identifiability 不足，可以替换它们。
+
+### 阶段 B——行为与 instrumentation baseline
+
+- 选择冻结、可进行机制访问的主模型和复现模型。
+- 按 task、length、template 和 nuisance factor 确立 accuracy。
+- 在查看功能性结果之前，定义哪些正确样例可以进入 mechanistic analysis。
+- 实现可复现的 trace capture，明确 token alignment，并记录 model、tokenizer、prompt
+  和 software version。
+
+### 阶段 C——模型侧模式发现
+
+- 在主要 confirmatory run 之前预注册分析单位和候选 measurement。
+- 尽可能不使用 task-operation label，在训练分区上发现模式；否则必须明确区分
+  supervised correspondence test 与 discovery。
+- 评估样本外 cluster/pattern stability，并与 shuffled、layer-only、position-only 和
+  step-only baseline 比较。
+
+在 instrumentation pilot 确认哪些量可以被可靠测量之前，representation、
+fingerprint、dimensionality reduction 和 clustering method 保持开放。
+
+### 阶段 D——功能对应与混淆检验
+
+- 只有在模型侧结构定义完成后，才检验其与 candidate task operation 的关联。
+- 使用平衡 matched cell 和 held-out-axis cross-classification。
+- 在报告不确定性并控制 multiple comparison 的前提下，比较 candidate function 相对
+  structural covariate 的增量解释力。
+- 在可行时加入 prompt permutation、label permutation 和 non-reasoning control。
+
+### 阶段 E——稳定性、迁移与复现
+
+- 衡量跨 task instance 和受控 surface change 的稳定性。
+- 分开评估 within-task 和 cross-task generalization。
+- 检验 physical component identity 改变后 functional similarity 是否仍然存在。
+- 在第二个模型上只复现核心结构性结果、混淆控制结果和迁移结果。
+
+## 7. Baseline 与 null model
+
+主要分析至少应比较以下 baseline：
+
+- 仅使用 layer/depth 的预测；
+- 仅使用 token position 的预测；
+- 仅使用 reasoning step/chain depth 的预测；
+- task family 和 prompt template 预测；
+- difficulty 和 correctness control；
+- 在合适 matched strata 内随机置换 candidate-operation label；
+- 与所选 metric 相适配的 randomly initialized、resampled 或 dimension-matched
+  representation；
+- 在一个 partition 上学习、在严格 held-out partition 上评分的模型侧模式。
+
+具体统计模型与 metric 仍为待定决策。选择必须由科学对照关系驱动，不能因为某种方法
+产生的 cluster 最清晰就选择它。
+
+## 8. 报告规范
+
+每一项报告结果都必须说明：
+
+- 属于 exploratory 还是 confirmatory；
+- task distribution 和 split；
+- model 和 tokenizer revision；
+- inclusion/exclusion rule 和 behavioral accuracy；
+- measurement unit 和 alignment procedure；
+- 控制或匹配了哪些 confound；
+- seed、不确定性和 sensitivity analysis；
+- 结果属于 within-task、cross-task 还是 cross-model；
+- 证据能够支持的最弱解释。
+
+在证据足以支持更强术语之前，应使用“computation pattern”或“candidate role”。Null
+finding 和 task-specific finding 都是一等结果。
+
+## 9. 模型实验前的主要待定决策
+
+1. 主模型与复现模型的 family、size 和 exact revision。
+2. 模型直接回答、产生可见中间 token，还是在两种 regime 下都评估。
+3. 模型侧分析单位：residual-stream event、component output、activation change、
+   causal-response fingerprint 或其他构造。
+4. 在不使用 privileged model-side label 的前提下完成 token-to-task event alignment。
+5. discovery method 和预先指定的 stability metric。
+6. function 增量信号与 observation dependence 的统计设计。
+7. mechanistic analysis 的最低 behavioral accuracy 和 sampling policy。
+8. pilot 校准后，哪些 task family 能构成可信的 shared-function 与 negative-control
+   comparison。
+
+这些决定在约束代码或主要实验前，必须在 `DECISIONS.md` 中解决。

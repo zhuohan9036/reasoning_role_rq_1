@@ -1,5 +1,7 @@
 # Decision log
 
+> 中文版：[DECISIONS.zh-CN.md](DECISIONS.zh-CN.md)
+
 This file separates established research commitments from provisional working
 hypotheses and unresolved choices. A convenience of implementation is not a
 scientific commitment.
@@ -90,6 +92,14 @@ must be planned as a separate experimental condition.
 **Decision:** The provisional gate is 80% overall trimmed exact match, 60% for
 every evaluated chain-length cell, and at most 5% invalid-format or inference
 failures. Passing does not support a paper claim or authorize mechanistic use.
+
+### D-013 — Human-facing documentation is bilingual
+
+**Status:** accepted
+**Decision:** Every human-facing Markdown document has an English version and a
+synchronized Chinese counterpart using the `.zh-CN.md` suffix. Code,
+configuration, generated artifacts, and machine-readable contracts such as
+`plan.json` remain single-source unless a later approved plan says otherwise.
 
 ## Working hypotheses
 

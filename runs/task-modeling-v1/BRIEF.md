@@ -1,5 +1,7 @@
 # Brief: task-modeling-v1
 
+> 中文版：[BRIEF.zh-CN.md](BRIEF.zh-CN.md)
+
 **Status:** implemented and locally verified
 **Research goal:** G0, with enabling support for G2–G4
 

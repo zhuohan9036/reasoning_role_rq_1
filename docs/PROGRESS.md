@@ -1,12 +1,14 @@
 # Progress and evidence log
 
+> 中文版：[PROGRESS.zh-CN.md](PROGRESS.zh-CN.md)
+
 ## Milestones
 
 | Milestone | Status | Evidence/artifact | Next gate |
 |---|---|---|---|
 | P0: repository and planning scaffold | Complete and pushed | Research plan and repository history | None |
 | P1: task-side calibration dataset | Complete and pushed | `runs/task-modeling-v1/REVIEW.md`; smoke fixture | Research review |
-| P2a: behavioral calibration harness | Complete locally | `runs/behavioral-calibration-v1/REVIEW.md`; fake smoke fixture | Research review and working-norm update |
+| P2a: behavioral calibration harness | Complete and pushed | `runs/behavioral-calibration-v1/REVIEW.md`; fake smoke fixture | Research review and working-norm update |
 | P2b: real-model behavioral pilot | Blocked | No model run | Resolve O-001/O-002/O-009/O-013 and authorize server |
 | P2c: instrumentation baseline | Not started | None | Behavioral gate plus O-004/O-008 |
 | P3: model-side pattern discovery | Not started | None | Freeze discovery/evaluation protocol |
@@ -33,6 +35,13 @@ None. The current documents are plans, not evidence.
 The successful data and behavioral fake smoke tests are engineering validation
 only. They do not provide evidence for or against functional differentiation in
 a Transformer.
+
+## Documentation synchronization
+
+On 2026-09-08, all 15 human-facing Markdown documents were paired with
+synchronized Chinese versions using the `.zh-CN.md` suffix and reciprocal
+language links. Machine-readable contracts and generated artifacts remain
+single-source.
 
 ## Completed task: task-modeling-v1
 

@@ -1,5 +1,7 @@
 # Task-calibration data contract
 
+> 中文版：[DATA.zh-CN.md](DATA.zh-CN.md)
+
 ## Interpretation boundary
 
 The dataset describes externally specified task computation. Its dependency

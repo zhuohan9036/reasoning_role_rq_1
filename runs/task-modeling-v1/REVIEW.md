@@ -1,5 +1,7 @@
 # Review: task-modeling-v1
 
+> 中文版：[REVIEW.zh-CN.md](REVIEW.zh-CN.md)
+
 **Status:** passed local acceptance checks
 **Reviewed:** 2026-09-08
 **Implementation commits:** `d574c3e`, reviewed fixture source `2d139b1`

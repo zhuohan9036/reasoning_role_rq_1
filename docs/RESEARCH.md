@@ -1,5 +1,7 @@
 # Research plan: stable functional differentiation in multi-step reasoning
 
+> 中文版：[RESEARCH.zh-CN.md](RESEARCH.zh-CN.md)
+
 **Status:** initial research specification, awaiting review  
 **RQ:** RQ1  
 **Last updated:** 2026-09-08

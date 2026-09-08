@@ -1,5 +1,7 @@
 # Reasoning Role RQ1
 
+> 中文版：[README.zh-CN.md](README.zh-CN.md)
+
 This repository supports a characterization study of whether frozen pretrained
 Transformers exhibit stable functional differentiation during multi-step
 reasoning.
@@ -32,6 +34,10 @@ harness. It contains no activation analysis or completed real-model experiment.
 - `runs/<task-id>/SERVER.md`: execution-environment assumptions and unknowns.
 - `runs/<task-id>/PLAN.md`: human-readable implementation plan.
 - `runs/<task-id>/plan.json`: structured implementation contract.
+
+Human-facing Markdown documents have synchronized Chinese counterparts with the
+`.zh-CN.md` suffix. Machine-readable files such as `plan.json` remain a single
+canonical version.
 
 Large datasets, model weights, activation dumps, and full experiment logs must
 not be committed. Commit small manifests, summaries, figures, and the exact

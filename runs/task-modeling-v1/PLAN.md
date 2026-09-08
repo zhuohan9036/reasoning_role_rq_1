@@ -1,5 +1,7 @@
 # Implementation plan: task-modeling-v1
 
+> 中文版：[PLAN.zh-CN.md](PLAN.zh-CN.md)
+
 **Status:** implemented and locally verified
 **Plan version:** 1  
 **Code changes authorized:** yes, local implementation only
