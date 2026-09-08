@@ -3,7 +3,7 @@
   "plan_version": 1,
   "task_id": "behavioral-calibration-v1",
   "title": "Frozen-model behavioral calibration harness",
-  "status": "approved",
+  "status": "implemented_and_locally_verified",
   "research_goal_refs": ["G0-calibration", "G1-prerequisite", "G2-prerequisite", "G3-prerequisite", "G4-prerequisite"],
   "objective": "Build a reproducible model-output-only harness that tests whether candidate frozen causal language models solve the pilot tasks well enough for later mechanistic study.",
   "approval": {

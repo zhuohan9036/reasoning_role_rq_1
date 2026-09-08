@@ -1,6 +1,6 @@
 # Brief: behavioral-calibration-v1
 
-**Status:** approved
+**Status:** implemented and locally verified
 **Research phase:** Phase B behavioral calibration
 **Research goals:** G0 calibration; prerequisite for G1–G4
 

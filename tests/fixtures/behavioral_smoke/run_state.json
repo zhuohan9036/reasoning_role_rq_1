@@ -1,0 +1,43 @@
+{
+  "full_identity_sha256": "36e6fdbd85b2023e6e6f87127d28115eb5abc91774237b361608e27bf1f51b3d",
+  "identity": {
+    "backend": {
+      "backend": "fake",
+      "gradients_enabled": false,
+      "model_id": "fake-causal-lm",
+      "model_revision": "1",
+      "parameters_frozen": true,
+      "prompt_mode": "plain",
+      "tokenizer_id": "fake-tokenizer",
+      "tokenizer_revision": "1"
+    },
+    "code": {
+      "commit": "17fda4935eb2ceb3f026bac5999ee46635fe10d0",
+      "dirty": false,
+      "source_tree_sha256": "df41b9b7c60d0ce66ba8e781835256e1dbdc652b1c9452fa7e5995c4f039e68b"
+    },
+    "config_sha256": "ccd1d8f4d224735b1f5fb417ab536c6722d7ead5995f587dcf238239950c660d",
+    "dataset": {
+      "family_filter": null,
+      "manifest_sha256": "1d9b49483b13662bd2c23b353092b8275054dc431efaaaeb8ed4ece3c4aad58a",
+      "record_count": 80,
+      "selected_files": {
+        "iid_test.jsonl": "134a21db0a3ab825726c9867af10b17679fd76c234108f5a408b4dd42e626166",
+        "length_test.jsonl": "4289850f3a1d6ffa5c77c7e08bb42c9306cdee23c9e57972136117d388ad452c",
+        "surface_test.jsonl": "9a1ecd91c82d7eaa7c5e17cbe9ccb3077faa756192871a45ba0aa153994b8e3e",
+        "template_test.jsonl": "a8e219f87292958248af9ca7333453378e2ef2319dce03028948a75e23b4bc8e",
+        "train.jsonl": "56507d98195e3056dcea0b1d880b0a5c692d81c071bed2affbffb131fcb58b9a"
+      },
+      "selection_sha256": "33123b31cfe4df74a8f79dda1e2cc775ee79a20c15207002f9803829787f88fa",
+      "source_code_revision": {
+        "commit": "2d139b1964e1190ec45e8b7547895cbc81563a27",
+        "dirty": false
+      },
+      "source_config_sha256": "3eb4c7b009549c7b46782b5a4ef5977d02da4627a8cdb92879c2c696c6435c90",
+      "split_filter": null
+    },
+    "evaluation_schema_version": "1.0"
+  },
+  "preflight_sha256": "30027d09da7f6a9bcd100b0220b3ed9ac85696fb583666ee102cdd541d4e32d5",
+  "run_id": "behavioral:fc90a6cc59c3fb575717494677a06fa4"
+}

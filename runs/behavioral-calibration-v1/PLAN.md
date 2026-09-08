@@ -1,6 +1,6 @@
 # Implementation plan: behavioral-calibration-v1
 
-**Status:** approved
+**Status:** implemented and locally verified
 **Plan version:** 1
 **Code changes authorized:** yes, local harness only
 **Server execution authorized:** no

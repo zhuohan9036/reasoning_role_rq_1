@@ -13,6 +13,7 @@ from reasoning_role.data.io import sha256_file
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 CONFIG_PATH = REPOSITORY_ROOT / "configs/eval/behavioral_smoke_fake.yaml"
+FIXTURE_PATH = REPOSITORY_ROOT / "tests/fixtures/behavioral_smoke"
 FIXED_REVISION = {"commit": "test-revision", "dirty": False}
 
 
@@ -53,6 +54,35 @@ class DuplicateBackend(FakeBackend):
 
 
 class RunnerTest(unittest.TestCase):
+    def test_committed_fixture_integrity_and_replay(self) -> None:
+        manifest = json.loads(
+            (FIXTURE_PATH / "run_manifest.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(manifest["attempted"], 80)
+        self.assertEqual(manifest["completed"], 80)
+        self.assertFalse(manifest["identity"]["code"]["dirty"])
+        for filename, entry in manifest["files"].items():
+            self.assertEqual(sha256_file(FIXTURE_PATH / filename), entry["sha256"])
+
+        config = load_evaluation_config(CONFIG_PATH)
+        with tempfile.TemporaryDirectory() as temp_dir:
+            replay = Path(temp_dir) / "replay"
+            run_evaluation(
+                config,
+                replay,
+                code_revision=manifest["identity"]["code"],
+            )
+            for filename in (
+                "records.jsonl",
+                "run_state.json",
+                "summary.csv",
+                "summary.json",
+            ):
+                self.assertEqual(
+                    (replay / filename).read_bytes(),
+                    (FIXTURE_PATH / filename).read_bytes(),
+                )
+
     def test_complete_run_reconciles_and_hides_task_trace(self) -> None:
         config = load_evaluation_config(CONFIG_PATH)
         with tempfile.TemporaryDirectory() as temp_dir:

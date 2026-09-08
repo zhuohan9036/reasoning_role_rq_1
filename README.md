@@ -10,16 +10,18 @@ The project deliberately distinguishes:
 - model-side patterns measured from internal computation; and
 - stronger interpretations such as a reusable "reasoning role."
 
-The current repository contains an initial research plan and the local
-implementation of the approved first task-calibration milestone. It contains no
-Transformer inference or model-side experiment code.
+The current repository contains the initial research plan, the approved
+task-calibration milestone, and a locally verified behavioral-evaluation
+harness. It contains no activation analysis or completed real-model experiment.
 
 ## Current workflow state
 
 1. Research plan drafted.
 2. `task-modeling-v1` implemented and verified locally on Python 3.11.
-3. `behavioral-calibration-v1` is planned and awaiting review.
-4. Server execution remains unauthorized and has not started.
+3. `behavioral-calibration-v1` implemented and verified locally with an offline
+   fake backend; this is engineering evidence only.
+4. Real-model downloads and server execution remain unauthorized and have not
+   started.
 
 ## Repository layout
 
