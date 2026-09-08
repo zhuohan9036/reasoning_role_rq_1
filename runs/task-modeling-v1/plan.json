@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "plan_version": 1,
+  "task_id": "task-modeling-v1",
+  "title": "Task-side computational modeling and calibration data foundation",
+  "status": "awaiting_review",
+  "research_goal_refs": ["G0", "G2-enabler", "G3-enabler", "G4-enabler"],
+  "objective": "Create deterministic, auditable task-side datasets for two pilot multi-step reasoning families without making claims about model-internal computation.",
+  "approval": {
+    "code_changes_authorized": false,
+    "server_execution_authorized": false,
+    "required_before_build": [
+      "Human approval of PLAN.md",
+      "Decision on the two pilot task families",
+      "Decision on whether intermediate task states remain hidden annotations",
+      "Confirmation or revision of the Python 3.11 baseline"
+    ]
+  },
+  "in_scope": [
+    "Versioned canonical task record schema",
+    "Symbolic function-composition generator, solver, and renderer",
+    "Relational path-composition generator, solver, and renderer",
+    "Task-side dependency graphs and generator traces",
+    "Factorized nuisance metadata",
+    "Semantic-identity-aware deterministic splits",
+    "JSONL artifacts and provenance manifests",
+    "Small fixtures, documentation, and automated tests"
+  ],
+  "out_of_scope": [
+    "Transformer inference",
+    "Chain-of-thought collection",
+    "Activation or component tracing",
+    "Clustering or probing",
+    "Interventions or causal claims",
+    "Large-scale or server execution",
+    "Final commitment to paper task families"
+  ],
+  "scientific_constraints": [
+    "Task-side traces must not be represented as model reasoning traces",
+    "Candidate operation labels must remain provisional and family-local by default",
+    "Cross-family operation correspondences must be optional hypothesis metadata",
+    "Structural nuisance factors must be independently configurable where feasible",
+    "Negative or infeasible balance checks must fail visibly rather than be hidden"
+  ],
+  "interfaces": [
+    {
+      "name": "TaskFamily",
+      "responsibilities": [
+        "generate from an explicit RNG",
+        "solve or verify from the canonical problem",
+        "render named prompt templates",
+        "emit dependency graph and task-side trace",
+        "emit semantic grouping keys"
+      ]
+    },
+    {
+      "name": "CanonicalInstance",
+      "required_concepts": [
+        "schema_version",
+        "instance_id",
+        "family",
+        "generator_version",
+        "canonical_problem",
+        "prompt",
+        "target",
+        "dependency_graph",
+        "task_side_trace",
+        "candidate_operations",
+        "nuisance_factors",
+        "split",
+        "group_keys"
+      ]
+    },
+    {
+      "name": "generate_dataset",
+      "input": "YAML configuration and output directory",
+      "outputs": ["split JSONL files", "manifest.json", "validation summary"]
+    }
+  ],
+  "files": [
+    {"path": "pyproject.toml", "action": "create", "purpose": "package and quality configuration"},
+    {"path": "src/reasoning_role/tasks/schema.py", "action": "create", "purpose": "canonical schemas and validation"},
+    {"path": "src/reasoning_role/tasks/base.py", "action": "create", "purpose": "task-family protocol"},
+    {"path": "src/reasoning_role/tasks/registry.py", "action": "create", "purpose": "explicit family registry"},
+    {"path": "src/reasoning_role/tasks/function_composition.py", "action": "create", "purpose": "first pilot family"},
+    {"path": "src/reasoning_role/tasks/relational_path.py", "action": "create", "purpose": "second pilot family"},
+    {"path": "src/reasoning_role/data/split.py", "action": "create", "purpose": "group-aware split assignment and audits"},
+    {"path": "src/reasoning_role/data/generate.py", "action": "create", "purpose": "strict balanced generation"},
+    {"path": "src/reasoning_role/data/io.py", "action": "create", "purpose": "stable serialization, hashes, and manifests"},
+    {"path": "scripts/generate_dataset.py", "action": "create", "purpose": "command-line entry point"},
+    {"path": "configs/data/task_calibration_smoke.yaml", "action": "create", "purpose": "local and CI smoke run"},
+    {"path": "configs/data/task_calibration_v1.yaml", "action": "create", "purpose": "larger deferred calibration run"},
+    {"path": "tests/", "action": "create", "purpose": "unit, property-style, integration, determinism, and CLI tests"},
+    {"path": "tests/fixtures/task_calibration_smoke/", "action": "create", "purpose": "small reviewed fixture"},
+    {"path": "docs/DATA.md", "action": "create", "purpose": "data contract and interpretation boundaries"},
+    {"path": "runs/task-modeling-v1/REVIEW.md", "action": "create_after_build", "purpose": "acceptance evidence and deviations"}
+  ],
+  "outputs": [
+    {"name": "canonical_splits", "format": "JSONL", "retention": "small fixture committed; larger data external"},
+    {"name": "manifest", "format": "JSON", "retention": "committed for accepted runs"},
+    {"name": "validation_summary", "format": "JSON or text", "retention": "committed when compact"},
+    {"name": "review", "format": "Markdown", "retention": "committed"}
+  ],
+  "acceptance_checks": [
+    "Same configuration and seed produce byte-identical records and equal content hashes",
+    "Every target is recomputed and verified from its canonical problem",
+    "Dependency graphs are acyclic and trace-consistent",
+    "Semantic instance identities do not overlap across exclusive splits",
+    "Requested factor cells are satisfied or generation fails loudly",
+    "Both families and all split types appear in the smoke fixture",
+    "Full local test suite passes on Python 3.11",
+    "CLI smoke run requires neither model weights nor network access",
+    "Manifest contains resolved configuration, seed, versions, counts, distributions, and hashes",
+    "No large artifact or machine-specific absolute path is committed"
+  ],
+  "server_validation": {
+    "status": "deferred",
+    "requires_gpu": false,
+    "steps": [
+      "Recreate the committed environment",
+      "Run the full test suite",
+      "Generate the larger configuration twice into scratch storage",
+      "Compare hashes and validate all records",
+      "Record runtime, peak RAM, storage, environment, and Git revision"
+    ]
+  },
+  "completion_artifact": "runs/task-modeling-v1/REVIEW.md"
+}

@@ -1,0 +1,32 @@
+.DS_Store
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Local and large experiment artifacts
+data/
+artifacts/
+checkpoints/
+wandb/
+logs/
+results/raw/
+results/activations/
+results/checkpoints/
+
+# Local machine configuration and secrets
+pipeline.local.json
+*.local.yaml
+*.local.yml
+*.local.json
+*.pem
+*.key
