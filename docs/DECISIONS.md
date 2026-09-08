@@ -63,6 +63,20 @@ them. They are generator provenance, not model chain of thought.
 Python version may supplement but does not replace the required Python 3.11
 compatibility check.
 
+### D-009 — Task-side calibration v1 is locally accepted
+
+**Status:** accepted
+**Decision:** `task-modeling-v1` passed its local acceptance checks. Its smoke
+run is engineering validation only and provides no evidence for or against
+model-side functional differentiation.
+
+### D-010 — Behavioral calibration is the proposed next task
+
+**Status:** proposed for human approval
+**Decision:** The next bounded task will build a model-output-only behavioral
+evaluation harness with a fake local backend and a generic frozen Hugging Face
+adapter. Activation capture and real-model execution remain separate gates.
+
 ## Working hypotheses
 
 These guide experimental design but are not assumed true.
@@ -98,6 +112,9 @@ shifts across components, inputs, or architectures.
 | O-008 | Accuracy threshold and example inclusion policy | Activation collection |
 | O-009 | Server GPU, CUDA, storage, scheduler, and environment | Any server run |
 | O-010 | Dataset size and storage location for primary runs | Dataset freeze |
+| O-011 | Final-answer-only behavioral pilot condition | Behavioral harness implementation |
+| O-012 | Provisional behavioral eligibility thresholds | Behavioral harness implementation |
+| O-013 | Exact pilot model and tokenizer revisions | Real-model pilot run |
 
 ## Decision-change policy
 

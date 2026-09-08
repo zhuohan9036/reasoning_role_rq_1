@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "plan_version": 1,
+  "task_id": "behavioral-calibration-v1",
+  "title": "Frozen-model behavioral calibration harness",
+  "status": "awaiting_review",
+  "research_goal_refs": ["G0-calibration", "G1-prerequisite", "G2-prerequisite", "G3-prerequisite", "G4-prerequisite"],
+  "objective": "Build a reproducible model-output-only harness that tests whether candidate frozen causal language models solve the pilot tasks well enough for later mechanistic study.",
+  "approval": {
+    "code_changes_authorized": false,
+    "model_download_authorized": false,
+    "real_model_execution_authorized": false,
+    "server_execution_authorized": false,
+    "required_before_build": [
+      "Approve final-answer-only evaluation without visible scratchpad",
+      "Approve a generic Hugging Face adapter before exact model selection",
+      "Approve or revise the provisional pilot eligibility rule"
+    ],
+    "required_before_real_model_run": [
+      "Exact model and tokenizer IDs with immutable revisions",
+      "Base or instruction-tuned checkpoint decision",
+      "Plain or pinned chat-template decision",
+      "Completed server specification",
+      "Explicit download and server authorization"
+    ]
+  },
+  "primary_condition": {
+    "response_mode": "final_answer_only",
+    "visible_scratchpad": false,
+    "task_side_trace_exposed": false,
+    "decoding": "greedy",
+    "primary_metric": "trimmed_exact"
+  },
+  "pilot_eligibility_rule": {
+    "status": "provisional_engineering_gate",
+    "overall_trimmed_exact_min": 0.8,
+    "each_chain_length_trimmed_exact_min": 0.6,
+    "invalid_or_inference_failure_max": 0.05,
+    "paper_claim_supported": false
+  },
+  "in_scope": [
+    "Versioned behavioral records",
+    "Backend-neutral interface and deterministic fake backend",
+    "Frozen Hugging Face causal-LM adapter",
+    "Whole-output parsing",
+    "Per-example outputs, stratified summaries, and Wilson intervals",
+    "Safe resume and provenance rejection",
+    "Manifests and content hashes",
+    "Python 3.11 tests without model weights"
+  ],
+  "out_of_scope": [
+    "Final model selection without hardware information",
+    "Model download or real-model/server execution",
+    "Visible chain of thought",
+    "Activation capture or mechanistic analysis",
+    "Task-generator expansion",
+    "Functional differentiation claims"
+  ],
+  "metrics": [
+    {"name": "raw_exact", "definition": "raw completion equals expected answer"},
+    {"name": "trimmed_exact", "definition": "outer-whitespace-trimmed equality", "primary": true},
+    {"name": "format_valid", "definition": "the entire trimmed output matches its encoding"},
+    {"name": "parsed_exact", "definition": "encoding-aware equality for a fully valid completion"},
+    {"name": "failure_rate", "definition": "all inference failures divided by attempted examples"},
+    {"name": "extra_text_rate", "definition": "content outside the expected encoding"}
+  ],
+  "files": [
+    {"path": "pyproject.toml", "action": "modify", "purpose": "optional model dependencies and CLI"},
+    {"path": "src/reasoning_role/behavioral/", "action": "create", "purpose": "schemas, parsing, backends, runner, summaries, provenance"},
+    {"path": "scripts/evaluate_behavior.py", "action": "create", "purpose": "checkout-local CLI"},
+    {"path": "configs/eval/behavioral_smoke_fake.yaml", "action": "create", "purpose": "local evaluation"},
+    {"path": "configs/eval/behavioral_server.template.yaml", "action": "create", "purpose": "unresolved server fields"},
+    {"path": "tests/behavioral/", "action": "create", "purpose": "behavioral harness tests"},
+    {"path": "tests/fixtures/behavioral_smoke/", "action": "create", "purpose": "deterministic artifact"},
+    {"path": "docs/EVALUATION.md", "action": "create", "purpose": "protocol and interpretation limits"},
+    {"path": "runs/behavioral-calibration-v1/REVIEW.md", "action": "create_after_build", "purpose": "acceptance and handoff"}
+  ],
+  "local_acceptance_checks": [
+    "Full 80-record fake evaluation succeeds offline",
+    "Stable scientific outputs replay identically",
+    "Strict parsers reject explanations and embedded answers",
+    "Resume rejects provenance mismatches and duplicates",
+    "All summary denominators reconcile",
+    "Manifest contains complete data/model/prompt/software provenance",
+    "Stubbed adapter verifies eval mode, frozen parameters, and no gradients",
+    "Full suite passes on Python 3.11 without model downloads"
+  ],
+  "server_validation": {
+    "status": "blocked_pending_specification_and_authorization",
+    "requires_gpu": true,
+    "activation_capture_permitted": false
+  },
+  "completion_artifact": "runs/behavioral-calibration-v1/REVIEW.md"
+}

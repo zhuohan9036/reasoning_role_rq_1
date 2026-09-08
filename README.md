@@ -18,7 +18,8 @@ Transformer inference or model-side experiment code.
 
 1. Research plan drafted.
 2. `task-modeling-v1` implemented and verified locally on Python 3.11.
-3. Server execution remains unauthorized and has not started.
+3. `behavioral-calibration-v1` is planned and awaiting review.
+4. Server execution remains unauthorized and has not started.
 
 ## Repository layout
 
