@@ -3,18 +3,19 @@
   "plan_version": 1,
   "task_id": "task-modeling-v1",
   "title": "Task-side computational modeling and calibration data foundation",
-  "status": "awaiting_review",
+  "status": "approved",
   "research_goal_refs": ["G0", "G2-enabler", "G3-enabler", "G4-enabler"],
   "objective": "Create deterministic, auditable task-side datasets for two pilot multi-step reasoning families without making claims about model-internal computation.",
   "approval": {
-    "code_changes_authorized": false,
+    "code_changes_authorized": true,
     "server_execution_authorized": false,
-    "required_before_build": [
-      "Human approval of PLAN.md",
-      "Decision on the two pilot task families",
-      "Decision on whether intermediate task states remain hidden annotations",
-      "Confirmation or revision of the Python 3.11 baseline"
-    ]
+    "approved_on": "2026-09-08",
+    "resolved_choices": {
+      "pilot_task_families": ["function_composition", "relational_path"],
+      "intermediate_task_states": "retained_as_hidden_task_side_annotations",
+      "python_baseline": "3.11"
+    },
+    "required_before_build": []
   },
   "in_scope": [
     "Versioned canonical task record schema",

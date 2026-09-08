@@ -1,6 +1,6 @@
 # Brief: task-modeling-v1
 
-**Status:** awaiting review  
+**Status:** approved
 **Research goal:** G0, with enabling support for G2–G4
 
 ## Desired outcome
@@ -61,12 +61,11 @@ candidate hypothesis.
 - Large-scale server generation or model experiments.
 - Final selection of primary paper tasks.
 
-## Review questions
+## Resolved review questions
 
-Before approval, confirm:
+Approved on 2026-09-08:
 
-1. Are these two pilot task families an acceptable calibration starting point?
-2. Should visible intermediate-answer fields be excluded entirely from v1, or
-   retained as task-side annotations that are never shown to the model by
-   default?
-3. Is Python 3.11 the desired local/server baseline?
+1. Both pilot task families are accepted as calibration starting points.
+2. Intermediate states are retained as task-side annotations and never shown to
+   the model by default.
+3. Python 3.11 is the project baseline.

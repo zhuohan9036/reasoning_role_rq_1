@@ -10,14 +10,16 @@ The project deliberately distinguishes:
 - model-side patterns measured from internal computation; and
 - stronger interpretations such as a reusable "reasoning role."
 
-The current repository contains an initial research plan and a proposed first
-implementation task. No experimental code has been approved or implemented.
+The current repository contains an initial research plan and the local
+implementation of the approved first task-calibration milestone. It contains no
+Transformer inference or model-side experiment code.
 
 ## Current workflow state
 
 1. Research plan drafted.
-2. First implementation plan drafted under `runs/task-modeling-v1/`.
-3. Human review required before implementation begins.
+2. `task-modeling-v1` approved and implemented locally.
+3. Local verification and review artifact in progress; server execution remains
+   unauthorized.
 
 ## Repository layout
 

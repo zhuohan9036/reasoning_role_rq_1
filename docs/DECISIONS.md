@@ -8,7 +8,7 @@ scientific commitment.
 
 ### D-001 — RQ1 is a characterization question
 
-**Status:** accepted  
+**Status:** accepted
 **Decision:** The paper asks whether functional differentiation exists, what it
 tracks, how stable it is, and how far it generalizes. Correlation, probing,
 clustering, or representation similarity alone will not be described as causal
@@ -16,38 +16,52 @@ evidence.
 
 ### D-002 — Task-side and model-side structure remain distinct
 
-**Status:** accepted  
+**Status:** accepted
 **Decision:** Generator traces, dependency graphs, and candidate operation labels
 are external task descriptions. Model-side patterns will be measured
 independently before correspondence is interpreted.
 
 ### D-003 — Competing explanations remain live
 
-**Status:** accepted  
+**Status:** accepted
 **Decision:** Structural-only, task-specific, cross-task reusable, and
 implementation-mobile explanations will all be tested. Negative and mixed
 results are valid outcomes.
 
 ### D-004 — Frozen pretrained models provide primary evidence
 
-**Status:** accepted  
+**Status:** accepted
 **Decision:** The main claims will rely on frozen pretrained Transformers with
 mechanistic access. Training or adaptation may be used only as a separately
 identified diagnostic.
 
 ### D-005 — Physical component identity does not define functional identity
 
-**Status:** accepted  
+**Status:** accepted
 **Decision:** Fixed head, MLP, or layer indices may be measured but cannot by
 themselves define a reasoning role.
 
 ### D-006 — First implementation task is task calibration
 
-**Status:** proposed for human approval  
+**Status:** accepted
 **Decision:** The first bounded code task will implement a canonical task-record
 schema, deterministic generators and reference solvers for two pilot task
 families, leakage-resistant splits, manifests, and validation tests. It will not
 load a Transformer or implement model-side analysis.
+
+### D-007 — Intermediate task states remain hidden annotations
+
+**Status:** accepted
+**Decision:** Canonical records may retain intermediate task-side states for
+validation and later alignment research, but default prompts must never expose
+them. They are generator provenance, not model chain of thought.
+
+### D-008 — Python 3.11 is the project baseline
+
+**Status:** accepted
+**Decision:** Code targets Python 3.11. Local verification on a newer compatible
+Python version may supplement but does not replace the required Python 3.11
+compatibility check.
 
 ## Working hypotheses
 

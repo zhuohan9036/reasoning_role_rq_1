@@ -1,8 +1,9 @@
 # Implementation plan: task-modeling-v1
 
-**Status:** awaiting_review  
+**Status:** approved
 **Plan version:** 1  
-**Code changes authorized:** no
+**Code changes authorized:** yes, local implementation only
+**Server execution authorized:** no
 
 ## 1. Objective
 
@@ -28,8 +29,8 @@ Use a versioned JSON-serializable record with these top-level concepts:
 - split name and semantic grouping keys.
 
 Intermediate task states may exist in the canonical record for validation, but
-the default renderer must not expose them in the prompt. This is a provisional
-implementation choice pending the second review question in `BRIEF.md`.
+the default renderer must not expose them in the prompt. This choice was approved
+on 2026-09-08.
 
 ### Task-family adapter
 
@@ -181,6 +182,6 @@ No GPU test is required for this task.
 
 ## 11. Approval gate
 
-Implementation may begin only after the user approves this plan and resolves or
-accepts the three review questions in `BRIEF.md`. Approval does not authorize
+The user approved this plan and all three recommended choices on 2026-09-08.
+Local implementation and testing are authorized. Approval does not authorize
 server execution or any model experiment.

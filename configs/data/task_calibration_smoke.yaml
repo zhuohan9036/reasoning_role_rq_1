@@ -1,0 +1,95 @@
+schema_version: "1.0"
+generator_version: "1.0"
+seed: 1729
+max_generation_attempts: 1000
+
+families:
+  function_composition:
+    domain_size: 6
+  relational_path: {}
+
+splits:
+  train:
+    kind: train
+    count_per_family: 8
+    factors:
+      chain_lengths: [2, 3]
+      distractor_counts: [0, 1]
+      presentation_orders: [canonical, shuffled]
+    render:
+      function_composition:
+        templates: [compact]
+        vocabularies: [latin]
+        answer_encodings: [symbol]
+      relational_path:
+        templates: [compact]
+        vocabularies: [names_a]
+        answer_encodings: [vector]
+
+  iid_test:
+    kind: iid
+    count_per_family: 8
+    factors:
+      chain_lengths: [2, 3]
+      distractor_counts: [0, 1]
+      presentation_orders: [canonical, shuffled]
+    render:
+      function_composition:
+        templates: [compact]
+        vocabularies: [latin]
+        answer_encodings: [symbol]
+      relational_path:
+        templates: [compact]
+        vocabularies: [names_a]
+        answer_encodings: [vector]
+
+  surface_test:
+    kind: heldout_surface
+    count_per_family: 8
+    factors:
+      chain_lengths: [2, 3]
+      distractor_counts: [0, 1]
+      presentation_orders: [canonical, shuffled]
+    render:
+      function_composition:
+        templates: [compact]
+        vocabularies: [greek_names]
+        answer_encodings: [symbol]
+      relational_path:
+        templates: [compact]
+        vocabularies: [names_b]
+        answer_encodings: [vector]
+
+  template_test:
+    kind: heldout_template
+    count_per_family: 8
+    factors:
+      chain_lengths: [2, 3]
+      distractor_counts: [0, 1]
+      presentation_orders: [canonical, shuffled]
+    render:
+      function_composition:
+        templates: [prose]
+        vocabularies: [latin]
+        answer_encodings: [symbol]
+      relational_path:
+        templates: [prose]
+        vocabularies: [names_a]
+        answer_encodings: [vector]
+
+  length_test:
+    kind: heldout_length
+    count_per_family: 8
+    factors:
+      chain_lengths: [4, 5]
+      distractor_counts: [0, 1]
+      presentation_orders: [canonical, shuffled]
+    render:
+      function_composition:
+        templates: [compact]
+        vocabularies: [latin]
+        answer_encodings: [symbol]
+      relational_path:
+        templates: [compact]
+        vocabularies: [names_a]
+        answer_encodings: [vector]
