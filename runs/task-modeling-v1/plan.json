@@ -3,7 +3,7 @@
   "plan_version": 1,
   "task_id": "task-modeling-v1",
   "title": "Task-side computational modeling and calibration data foundation",
-  "status": "approved",
+  "status": "implemented_and_locally_verified",
   "research_goal_refs": ["G0", "G2-enabler", "G3-enabler", "G4-enabler"],
   "objective": "Create deterministic, auditable task-side datasets for two pilot multi-step reasoning families without making claims about model-internal computation.",
   "approval": {

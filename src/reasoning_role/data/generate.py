@@ -154,6 +154,7 @@ def generate_dataset(
 
     validate_config(config)
     resolved_config = deepcopy(dict(config))
+    revision = dict(code_revision) if code_revision is not None else detect_code_revision()
     destination = Path(output_dir)
     destination.mkdir(parents=True, exist_ok=False)
     max_attempts = int(config.get("max_generation_attempts", 1_000))
@@ -297,7 +298,6 @@ def generate_dataset(
         "sha256": sha256_file(validation_path)
     }
 
-    revision = dict(code_revision) if code_revision is not None else detect_code_revision()
     manifest = {
         "artifact_schema_version": "1.0",
         "package_version": __version__,

@@ -13,6 +13,7 @@ from reasoning_role.tasks.schema import CanonicalInstance
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[2]
 SMOKE_CONFIG = REPOSITORY_ROOT / "configs/data/task_calibration_smoke.yaml"
+FIXTURE_DIR = REPOSITORY_ROOT / "tests/fixtures/task_calibration_smoke"
 
 
 def output_files(path: Path) -> dict[str, bytes]:
@@ -24,6 +25,26 @@ def output_files(path: Path) -> dict[str, bytes]:
 
 
 class DatasetGenerationTest(unittest.TestCase):
+    def test_committed_fixture_integrity_and_record_replay(self) -> None:
+        manifest = json.loads((FIXTURE_DIR / "manifest.json").read_text())
+        self.assertEqual(manifest["validation"]["status"], "passed")
+        self.assertEqual(manifest["validation"]["records"], 80)
+        for filename, entry in manifest["files"].items():
+            self.assertEqual(sha256_file(FIXTURE_DIR / filename), entry["sha256"])
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            replay = Path(temp_dir) / "replay"
+            generate_dataset(
+                load_config(SMOKE_CONFIG),
+                replay,
+                code_revision=manifest["code_revision"],
+            )
+            for fixture_path in sorted(FIXTURE_DIR.glob("*.jsonl")):
+                self.assertEqual(
+                    fixture_path.read_bytes(),
+                    (replay / fixture_path.name).read_bytes(),
+                )
+
     def test_deterministic_generation_and_manifest(self) -> None:
         config = load_config(SMOKE_CONFIG)
         revision = {"commit": "test-revision", "dirty": False}

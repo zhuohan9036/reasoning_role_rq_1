@@ -1,6 +1,6 @@
 # Brief: task-modeling-v1
 
-**Status:** approved
+**Status:** implemented and locally verified
 **Research goal:** G0, with enabling support for G2–G4
 
 ## Desired outcome

@@ -17,9 +17,8 @@ Transformer inference or model-side experiment code.
 ## Current workflow state
 
 1. Research plan drafted.
-2. `task-modeling-v1` approved and implemented locally.
-3. Local verification and review artifact in progress; server execution remains
-   unauthorized.
+2. `task-modeling-v1` implemented and verified locally on Python 3.11.
+3. Server execution remains unauthorized and has not started.
 
 ## Repository layout
 
