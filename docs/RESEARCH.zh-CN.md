@@ -171,22 +171,29 @@ computation，但 token、semantics 和 presentation 不同。同时加入结构
 
 ## 6. 计划中的证据结构
 
-### 阶段 A——任务校准
+### 阶段 A——模式发现与测量验证
 
-- 在任何模型 pilot 前创建薄的 task-family specification。
-- 定义版本化 canonical instance schema 和 deterministic reference solver。
-- 从两个受控 task family 开始；它们的 dependency structure 能独立于措辞操纵：
-  symbolic function composition 和 relational path composition。
-- 对 chain length、graph/rule position、distractor count、presentation order、symbol
-  vocabulary、answer encoding 和 prompt template 做因子化设计。
-- 把精确 generator trace 保存为任务侧 provenance，不把它当作模型 chain of thought。
-- 使用 semantic instance identity 创建 IID、held-out-surface、held-out-template 和
-  held-out-length split。
-- 对 pilot 启发的 task decomposition 修订进行版本化，并保留未参与定义的证据用于确认。
+已接受的 Pilot A 协议见 [PILOT_A.zh-CN.md](PILOT_A.zh-CN.md)。它使用新的临时 typed
+task language，不把现有 `function_composition` 和 `relational_path` generator 当作科学
+gold standard。
 
-最初的两个任务族是校准工具，并不表示它们定义了通用 reasoning primitive。如果
-pilot behavior 或 identifiability 不足，可以替换它们。`task-modeling-v1` 实现的是这两个
-family 的校准接口，不会冻结论文最终采用的 task ontology。
+- 交叉 serial/fork-join dependency topology 与 externally supplied/intermediate-state-
+  computed control。
+- Transform、merge、predicate 和 select 只是临时 task-language category；加入
+  direct-read negative control。
+- 平衡 operation placement、answer value、active length、vocabulary、rendering 和其他
+  已声明 nuisance factor。
+- 分离 canonical program 与 paired rendering，并在 rendering 前按 semantic identity
+  切分。
+- 使用相互独立的 discovery 与 untouched confirmation instance。
+- Activation analysis 前先建立 behavioral feasibility。
+- 首先在显式 aligned-trace regime 中开发 alignment 与 measurement；final-answer-only
+  measurement 是单独条件。
+- 每个 pilot 启发的 pattern 或 decomposition 都必须在 confirmation 前冻结。
+
+`task-modeling-v1` 继续作为工程校准 artifact。它的两个 task family 可以提供可复用
+基础设施或后续 comparison condition，但其存在不约束 Pilot A 的任务设计或论文最终
+task ontology。
 
 ### 阶段 B——行为与 instrumentation baseline
 
@@ -258,15 +265,16 @@ finding 和 task-specific finding 都是一等结果。
 
 ## 9. 模型实验前的主要待定决策
 
-1. 主模型与复现模型的 family、size 和 exact revision。
-2. 模型直接回答、产生可见中间 token，还是在两种 regime 下都评估。
-3. 模型侧分析单位：residual-stream event、component output、activation change、
-   causal-response fingerprint 或其他构造。
-4. 在不使用 privileged model-side label 的前提下完成 token-to-task event alignment。
-5. discovery method 和预先指定的 stability metric。
-6. function 增量信号与 observation dependence 的统计设计。
-7. mechanistic analysis 的最低 behavioral accuracy 和 sampling policy。
-8. pilot 校准后，哪些 task family 能构成可信的 shared-function 与 negative-control
-   comparison。
+Pilot A 已解决初始任务设计、response-regime 顺序、第一项 residual-stream measurement、
+临时 behavioral gate 和数据量。剩余决定为：
+
+1. Mistral model/tokenizer 的 immutable exact revision；Qwen 已排除。
+2. 相近规模的 Llama checkpoint 用作 alternative pilot 还是后续 replication model。
+3. 与 tokenizer 兼容的 single-token `Symbol8` rendering symbol。
+4. 准确 readout regularization、score、uncertainty estimator、clustering method、
+   stability metric 和 multiplicity policy。
+5. R2 final-answer-only 的 measurement unit 与 alignment rule。
+6. 服务器 GPU、software、storage、scheduler 和 artifact path。
+7. 哪一个 post-pilot semantic domain 用作第一次真正 replication。
 
 这些决定在约束代码或主要实验前，必须在 `DECISIONS.md` 中解决。

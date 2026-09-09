@@ -149,6 +149,49 @@ approval precede Codex changes. `plan.json` is the machine-readable contract;
 bilingual plans and reviews are the human interface. Commit, push, model, and
 server permissions remain separately declared.
 
+### D-019 — Pilot A is a pattern-discovery and measurement-validation pilot
+
+**Status:** accepted
+**Decision:** Pilot A develops a controlled measurement environment and may only
+support claims scoped to the named model, task distribution, and response
+regime. It does not establish universal primitives, general reasoning roles,
+cross-domain generality, or causal necessity.
+
+### D-020 — Pilot A uses a matched task-language design
+
+**Status:** accepted
+**Decision:** A provisional typed task language crosses serial versus fork-join
+topology with externally supplied versus intermediate-state-computed control.
+Transform, merge, predicate, and select are task-language categories only. A
+direct-read control, paired rerenderings, and untouched semantic instances are
+required. The detailed protocol is `docs/PILOT_A.md`.
+
+### D-021 — Existing generators do not define Pilot A
+
+**Status:** accepted
+**Decision:** The implemented `function_composition` and `relational_path`
+families are non-authoritative engineering calibration artifacts. Pilot A design
+is derived from the scientific contrasts and may reuse, replace, or bypass their
+infrastructure without granting their task assumptions privileged status.
+
+### D-022 — Pilot A excludes Qwen and defaults to a Mistral-class model
+
+**Status:** accepted
+**Decision:** Qwen models are excluded from Pilot A. The working default is a
+frozen instruction-tuned Mistral model in the 7B class, currently
+`mistralai/Mistral-7B-Instruct-v0.3`; a comparable Llama instruct checkpoint is
+the preferred alternative. Exact immutable model and tokenizer revisions remain
+required before execution.
+
+### D-023 — Pilot A stages behavior, aligned measurement, and confirmation
+
+**Status:** accepted
+**Decision:** Behavior is evaluated before activations. The first measurement is
+the residual stream at aligned events in an explicit trace regime. Pattern
+definitions are frozen before untouched confirmation. Final-answer-only
+measurement, head/MLP capture, interventions, and semantic-domain replication
+require later bounded plans.
+
 ## Working hypotheses
 
 These guide experimental design but are not assumed true.
@@ -174,17 +217,13 @@ shifts across components, inputs, or architectures.
 
 | ID | Decision needed | Required before |
 |---|---|---|
-| O-001 | Exact primary and replication models/revisions | Instrumentation implementation |
-| O-002 | Direct-answer versus visible-scratchpad conditions | Prompt and trace design |
-| O-003 | Final pilot task families after calibration | Primary dataset freeze |
-| O-004 | Model-side measurement unit | Trace-capture implementation |
-| O-005 | Discovery and stability method | Confirmatory model-side analysis |
-| O-006 | Token/event alignment protocol | Functional correspondence tests |
-| O-007 | Main statistical model and multiplicity policy | Confirmatory analysis |
-| O-008 | Accuracy threshold and example inclusion policy | Activation collection |
+| O-001 | Exact Mistral model/tokenizer revisions and later replication model | Any real-model run |
+| O-003 | Post-Pilot-A task population and semantic-domain replication | Broader-than-pilot claims |
+| O-005 | Exact readout, discovery, and stability methods | Model-side analysis implementation |
+| O-006 | R2 final-answer-only measurement unit and alignment | R2 activation capture |
+| O-007 | Uncertainty estimator and multiplicity policy | Confirmation analysis |
 | O-009 | Server GPU, CUDA, storage, scheduler, and environment | Any server run |
-| O-010 | Dataset size and storage location for primary runs | Dataset freeze |
-| O-013 | Exact pilot model and tokenizer revisions | Real-model pilot run |
+| O-013 | Tokenizer-compatible single-token `Symbol8` rendering bank | Real-model pilot run |
 
 ## Decision-change policy
 

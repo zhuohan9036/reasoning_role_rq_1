@@ -129,6 +129,43 @@ correspondence 是假设；model-side empirical correspondence 才是结果。
 机器可读合同，中英文 plan 与 review 是面向人类的接口。Commit、push、模型和服务器权限
 继续分别声明。
 
+### D-019——Pilot A 是模式发现与测量验证 pilot
+
+**状态：** 已接受
+**决策：** Pilot A 用于开发受控测量环境，只能支持限定于具名 model、task distribution
+和 response regime 的结论。它不能确立 universal primitive、一般 reasoning role、跨领域
+普遍性或因果必要性。
+
+### D-020——Pilot A 采用 matched task-language design
+
+**状态：** 已接受
+**决策：** 一个临时 typed task language 交叉 serial/fork-join topology 与 externally
+supplied/intermediate-state-computed control。Transform、merge、predicate 和 select 只
+是 task-language category。必须加入 direct-read control、paired rerendering 和 untouched
+semantic instance。详细协议为 `docs/PILOT_A.zh-CN.md`。
+
+### D-021——现有 generator 不定义 Pilot A
+
+**状态：** 已接受
+**决策：** 已实现的 `function_composition` 和 `relational_path` family 是非权威工程校准
+artifact。Pilot A 由科学 contrast 推导；可以复用、替换或绕过其基础设施，但不能让旧任务
+假设获得优先地位。
+
+### D-022——Pilot A 排除 Qwen，默认采用 Mistral 级模型
+
+**状态：** 已接受
+**决策：** Pilot A 排除 Qwen model。工作默认是冻结的 7B 级 instruction-tuned Mistral，
+当前为 `mistralai/Mistral-7B-Instruct-v0.3`；相近规模的 Llama instruct checkpoint 是首选
+替代。执行前仍必须固定 model/tokenizer 的 immutable exact revision。
+
+### D-023——Pilot A 分阶段进行行为、对齐测量与确认
+
+**状态：** 已接受
+**决策：** 先评估 behavior，再检查 activation。第一测量是显式 trace regime 中 aligned
+event 的 residual stream。Pattern definition 必须在 untouched confirmation 前冻结。
+Final-answer-only measurement、head/MLP capture、intervention 和 semantic-domain
+replication 需要后续有边界的独立方案。
+
 ## 工作假设
 
 这些假设用于指导实验设计，但尚未被当作事实。
@@ -152,17 +189,13 @@ cross-task correspondence。迁移也可能只存在一部分，或者完全不�
 
 | ID | 需要决定的事项 | 最晚必须解决的阶段 |
 |---|---|---|
-| O-001 | 主模型与复现模型及其 exact revision | instrumentation 实现前 |
-| O-002 | direct-answer 与 visible-scratchpad 条件 | prompt 与 trace 设计前 |
-| O-003 | 校准后的最终 pilot task family | 主数据集冻结前 |
-| O-004 | 模型侧 measurement unit | trace capture 实现前 |
-| O-005 | discovery 和 stability method | confirmatory 模型侧分析前 |
-| O-006 | token/event alignment protocol | functional correspondence test 前 |
-| O-007 | 主统计模型与 multiplicity policy | confirmatory analysis 前 |
-| O-008 | accuracy threshold 与 example inclusion policy | activation collection 前 |
+| O-001 | Mistral model/tokenizer exact revision 与后续 replication model | 任何真实模型 run 前 |
+| O-003 | Pilot A 后的 task population 与 semantic-domain replication | 超出 pilot 的结论前 |
+| O-005 | 准确 readout、discovery 与 stability method | 模型侧分析实施前 |
+| O-006 | R2 final-answer-only measurement unit 与 alignment | R2 activation capture 前 |
+| O-007 | uncertainty estimator 与 multiplicity policy | confirmation analysis 前 |
 | O-009 | 服务器 GPU、CUDA、存储、scheduler 和环境 | 任何服务器运行前 |
-| O-010 | 主实验数据集大小与存储位置 | 数据集冻结前 |
-| O-013 | pilot 模型与 tokenizer 的 exact revision | 真实模型 pilot 前 |
+| O-013 | tokenizer-compatible single-token `Symbol8` rendering bank | 真实模型 pilot 前 |
 
 ## 决策变更规则
 

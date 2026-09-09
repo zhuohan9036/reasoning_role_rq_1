@@ -202,27 +202,30 @@ the function-versus-step distinction, and the strongest generalization result.
 
 ## 6. Planned evidence structure
 
-### Phase A — Task calibration
+### Phase A — Pattern discovery and measurement validation
 
-- Create a thin task-family specification before any model pilot.
-- Define a versioned canonical instance schema and deterministic reference
-  solvers.
-- Begin with two controlled task families whose dependency structures can be
-  manipulated independently of wording: symbolic function composition and
-  relational path composition.
-- Factorize chain length, graph or rule position, distractor count, presentation
-  order, symbol vocabulary, answer encoding, and prompt template.
-- Store the exact generator trace as task-side provenance. Do not treat it as a
-  model chain of thought.
-- Create IID, held-out-surface, held-out-template, and held-out-length splits
-  using semantic instance identities.
-- Version any pilot-informed refinement of task decomposition and reserve
-  untouched evidence for confirmation.
+The accepted Pilot A protocol is specified in [PILOT_A.md](PILOT_A.md). It uses
+a new provisional typed task language rather than treating the existing
+`function_composition` and `relational_path` generators as the scientific gold
+standard.
 
-The two initial families are calibration instruments, not a final claim that
-they define universal reasoning primitives. They may be replaced if pilot
-behavior or identifiability is inadequate. `task-modeling-v1` implements the
-calibration interface for these families; it does not freeze the paper's final
+- Cross serial versus fork-join dependency topology with externally supplied
+  versus intermediate-state-computed control.
+- Treat transform, merge, predicate, and select as provisional task-language
+  categories only; include a direct-read negative control.
+- Balance operation placement, answer values, active length, vocabulary,
+  rendering, and other declared nuisance factors.
+- Separate canonical programs from paired renderings and split by semantic
+  identity before rendering.
+- Use disjoint discovery and untouched confirmation instances.
+- Establish behavioral feasibility before activation analysis.
+- Develop alignment and measurement first in an explicit aligned-trace regime;
+  treat final-answer-only measurement as a separate condition.
+- Freeze every pilot-informed pattern or decomposition before confirmation.
+
+`task-modeling-v1` remains an engineering calibration artifact. Its two task
+families may provide reusable infrastructure or later comparison conditions, but
+their existence does not constrain Pilot A task design or the paper's eventual
 task ontology.
 
 ### Phase B — Behavioral and instrumentation baseline
@@ -305,18 +308,19 @@ stronger term. Null and task-specific findings are first-class outcomes.
 
 ## 9. Major open decisions before model experiments
 
-1. Primary and replication model families, sizes, and exact revisions.
-2. Whether models answer directly, produce visible intermediate tokens, or are
-   evaluated under both regimes.
-3. Model-side unit of analysis: residual-stream events, component outputs,
-   activation changes, causal-response fingerprints, or another construct.
-4. Token-to-task event alignment without using privileged model-side labels.
-5. Discovery method and pre-specified stability metric.
-6. Statistical design for incremental function signal and dependence between
-   observations.
-7. Minimum behavioral accuracy and sampling policy for mechanistic analysis.
-8. Which task families provide credible shared-function and negative-control
-   comparisons after pilot calibration.
+Pilot A resolves the initial task design, response-regime ordering, first
+residual-stream measurement, provisional behavioral gate, and dataset size. The
+remaining decisions are:
+
+1. Exact immutable Mistral model and tokenizer revisions; Qwen is excluded.
+2. Whether a comparable Llama checkpoint is an alternative pilot or later
+   replication model.
+3. Tokenizer-compatible single-token `Symbol8` rendering symbols.
+4. Exact readout regularization, score, uncertainty estimator, clustering
+   method, stability metric, and multiplicity policy.
+5. R2 final-answer-only measurement unit and alignment rule.
+6. Server GPU, software, storage, scheduler, and artifact paths.
+7. Which post-pilot semantic domain provides the first true replication.
 
 These decisions must be resolved in `DECISIONS.md` before they constrain code or
 primary experiments.

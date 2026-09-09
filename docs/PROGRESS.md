@@ -7,10 +7,11 @@
 | Milestone | Status | Evidence/artifact | Next gate |
 |---|---|---|---|
 | P0: repository and planning scaffold | Complete and pushed | Research plan and repository history | None |
-| P0b: task formalism and Codex handoff specification | Implemented locally; awaiting review | `runs/research-specification-v1/REVIEW.md` | Human documentation review |
+| P0b: task formalism and Codex handoff specification | Complete and pushed | `runs/research-specification-v1/REVIEW.md`; revision `901507d` | None |
+| P0c: Pilot A scientific protocol and implementation plan | Documented; implementation awaiting review | `docs/PILOT_A.md`; `runs/pilot-a-design-v1/PLAN.md` | Human implementation review |
 | P1: task-side calibration dataset | Complete and pushed | `runs/task-modeling-v1/REVIEW.md`; smoke fixture | Research review |
 | P2a: behavioral calibration harness | Complete and pushed | `runs/behavioral-calibration-v1/REVIEW.md`; fake smoke fixture | Research review and working-norm update |
-| P2b: real-model behavioral pilot | Blocked | No model run | Resolve O-001/O-002/O-009/O-013 and authorize server |
+| P2b: real-model behavioral pilot | Blocked | No model run | Resolve O-001/O-009/O-013 and authorize a named server run |
 | P2c: instrumentation baseline | Not started | None | Behavioral gate plus O-004/O-008 |
 | P3: model-side pattern discovery | Not started | None | Freeze discovery/evaluation protocol |
 | P4: function-versus-structure tests | Not started | None | Pass leakage and confound audit |
@@ -19,17 +20,25 @@
 
 ## Current task
 
-`research-specification-v1` was approved for local documentation implementation
-on 2026-09-09. It formalizes task-side objects, separates pilot-informed
-construct definition from independent confirmation, and defines the
-planning-conversation to Codex document handoff. It changes no executable code
-and creates no empirical evidence. The changes remain uncommitted and unpushed
-for human review.
+`pilot-a-design-v1` records the accepted pattern-discovery and measurement-
+validation design. It defines a provisional typed task language, four matched
+topology/control cells, negative controls, discovery/confirmation separation,
+behavior and alignment gates, and a staged analysis. Qwen is excluded; a frozen
+Mistral 7B instruct model is the working default, with exact revisions unresolved.
+Existing generators are explicitly non-authoritative. Implementation, model
+downloads, execution, activations, commit, and push remain unauthorized.
 
-`task-modeling-v1` was approved and completed locally on 2026-09-08 with both
-pilot families, hidden intermediate task-side annotations, and Python 3.11. The
-larger configuration and every server/model experiment remain unexecuted and
-unauthorized.
+`research-specification-v1` was implemented, reviewed, committed, and pushed on
+2026-09-09 as revision `901507d`. It formalizes task-side objects, separates
+pilot-informed construct definition from independent confirmation, and defines
+the planning-conversation to Codex document handoff. It changed no executable
+code and created no empirical evidence.
+
+`task-modeling-v1` was approved and completed locally on 2026-09-08 with two
+calibration families, hidden intermediate task-side annotations, and Python
+3.11. Those families are engineering artifacts rather than accepted Pilot A
+scientific tasks. The larger configuration and every server/model experiment
+remain unexecuted and unauthorized.
 
 `behavioral-calibration-v1` was approved and completed locally on 2026-09-08 with
 final-answer-only prompts, a generic Hugging Face adapter, and the provisional

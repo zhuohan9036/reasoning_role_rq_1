@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "plan_version": 1,
+  "action_id": "A-RQ1-PILOT-A-DESIGN-001",
+  "task_id": "pilot-a-design-v1",
+  "title": "Pilot A controlled task design and local implementation contract",
+  "status": "awaiting_implementation_review",
+  "research_goal_refs": ["G0", "G1", "G2"],
+  "objective": "Implement a provisional controlled task language and matched Pilot A datasets for pattern discovery and measurement validation without treating existing task generators as authoritative.",
+  "approval": {
+    "scientific_design_accepted": true,
+    "planning_artifacts_authorized": true,
+    "documentation_changes_authorized": true,
+    "code_changes_authorized": false,
+    "model_download_authorized": false,
+    "model_execution_authorized": false,
+    "activation_capture_authorized": false,
+    "server_execution_authorized": false,
+    "approved_on": "2026-09-09"
+  },
+  "claim_ceiling": "Named frozen model, response regime, and controlled task distribution only; no universal primitive, general reasoning-role, cross-domain, or causal claim.",
+  "task_language": {
+    "version": "0.1",
+    "status": "provisional_diagnostic_instrument",
+    "types": ["Symbol8", "Boolean"],
+    "candidate_operations": ["transform", "merge", "predicate", "select"],
+    "negative_control": "direct_read",
+    "completeness_claim": false
+  },
+  "core_design": {
+    "dimensions": {
+      "dependency_topology": ["serial", "fork_join"],
+      "control_source": ["externally_supplied", "computed_from_intermediate"]
+    },
+    "cells": ["C1", "C2", "C3", "C4"],
+    "active_node_levels": [4, 6],
+    "answer_values": 8,
+    "instances_per_cell_length_answer": 16,
+    "discovery_canonical_instances": 1024,
+    "confirmation_canonical_instances": 1024,
+    "minimum_direct_read_controls": 512,
+    "paired_renderings_per_core_instance": 2
+  },
+  "model_policy": {
+    "excluded_families": ["Qwen"],
+    "working_default": "mistralai/Mistral-7B-Instruct-v0.3",
+    "preferred_alternative_family": "Llama instruct approximately 8B",
+    "exact_model_revision": "unresolved_full_commit_sha_required_before_execution",
+    "exact_tokenizer_revision": "unresolved_full_commit_sha_required_before_execution"
+  },
+  "response_regimes": {
+    "R1": "aligned_trace",
+    "R2": "final_answer_only",
+    "primary_measurement_regime": "R1"
+  },
+  "behavior_gate": {
+    "minimum_trimmed_exact_per_task_cell_length": 0.8,
+    "maximum_invalid_format_rate": 0.02,
+    "all_attempts_in_denominator": true,
+    "failed_cells_may_be_silently_excluded": false,
+    "interpretation": "engineering_progression_rule"
+  },
+  "first_measurement": {
+    "unit": "residual_stream_vector_at_each_aligned_R1_state_output_event_and_layer",
+    "minimum_alignment_rate": 0.99,
+    "head_or_mlp_capture_in_scope": false,
+    "intervention_in_scope": false
+  },
+  "implementation_steps": [
+    "freeze_machine_readable_task_specification",
+    "implement_typed_canonical_programs_and_reference_interpreter",
+    "implement_four_matched_cells_and_direct_read_controls",
+    "implement_paired_renderings_without_operation_name_leakage",
+    "generate_semantic_disjoint_discovery_confirmation_and_control_pools",
+    "implement_balance_overlap_and_shortcut_audits",
+    "preserve_existing_calibration_tasks_as_non_authoritative_regression_artifacts",
+    "run_no_network_local_validation"
+  ],
+  "proposed_implementation_files": [
+    "src/reasoning_role/tasks/pilot_a_program.py",
+    "src/reasoning_role/tasks/pilot_a_controls.py",
+    "src/reasoning_role/tasks/schema.py",
+    "src/reasoning_role/tasks/registry.py",
+    "src/reasoning_role/data/generate.py",
+    "src/reasoning_role/data/pilot_a.py",
+    "configs/data/pilot_a_v1.yaml",
+    "scripts/generate_pilot_a.py",
+    "tests/tasks/test_pilot_a_program.py",
+    "tests/data/test_pilot_a_generation.py",
+    "tests/fixtures/pilot_a_smoke/",
+    "docs/DATA.md",
+    "docs/DATA.zh-CN.md",
+    "docs/EVALUATION.md",
+    "docs/EVALUATION.zh-CN.md",
+    "runs/pilot-a-design-v1/REVIEW.md",
+    "runs/pilot-a-design-v1/REVIEW.zh-CN.md"
+  ],
+  "local_validation": [
+    "reference interpreter and trace agreement",
+    "type graph and degeneracy validation",
+    "deterministic replay",
+    "exact count and balance invariants",
+    "semantic split disjointness and overlap audits",
+    "paired rendering equivalence",
+    "operator display name independence",
+    "shortcut baseline audits",
+    "malformed configuration rejection",
+    "existing regression suite",
+    "JSON YAML bilingual-link and git diff checks"
+  ],
+  "out_of_scope_until_separately_authorized": [
+    "source code test configuration or fixture changes",
+    "model or tokenizer download",
+    "model execution",
+    "activation capture",
+    "server execution",
+    "model-side analysis implementation",
+    "semantic-domain replication",
+    "git commit or push"
+  ],
+  "git_behavior": "leave_documentation_changes_uncommitted_for_review"
+}
+

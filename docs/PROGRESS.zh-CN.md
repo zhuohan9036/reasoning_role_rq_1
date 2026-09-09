@@ -7,10 +7,11 @@
 | 里程碑 | 状态 | 证据/产物 | 下一门禁 |
 |---|---|---|---|
 | P0：仓库与规划框架 | 已完成并推送 | 研究方案与仓库历史 | 无 |
-| P0b：任务 formalism 与 Codex 交接规格 | 已在本地实施；等待审核 | `runs/research-specification-v1/REVIEW.md` | 人类文档审核 |
+| P0b：任务 formalism 与 Codex 交接规格 | 已完成并推送 | `runs/research-specification-v1/REVIEW.md`；revision `901507d` | 无 |
+| P0c：Pilot A 科学协议与实施方案 | 已写入文档；实施等待审核 | `docs/PILOT_A.zh-CN.md`；`runs/pilot-a-design-v1/PLAN.zh-CN.md` | 人类实施审核 |
 | P1：任务侧校准数据集 | 已完成并推送 | `runs/task-modeling-v1/REVIEW.md`；smoke fixture | 研究审核 |
 | P2a：行为校准框架 | 已完成并推送 | `runs/behavioral-calibration-v1/REVIEW.md`；fake smoke fixture | 研究审核与工作规范更新 |
-| P2b：真实模型行为 pilot | 阻塞 | 尚无模型运行 | 解决 O-001/O-002/O-009/O-013 并授权服务器 |
+| P2b：真实模型行为 pilot | 阻塞 | 尚无模型运行 | 解决 O-001/O-009/O-013，并授权具名服务器 run |
 | P2c：instrumentation baseline | 未开始 | 无 | 行为门禁以及 O-004/O-008 |
 | P3：模型侧模式发现 | 未开始 | 无 | 冻结 discovery/evaluation protocol |
 | P4：function-versus-structure 检验 | 未开始 | 无 | 通过 leakage 与 confound audit |
@@ -19,13 +20,19 @@
 
 ## 当前任务
 
-`research-specification-v1` 于 2026-09-09 获批在本地实施文档修订。它形式化任务侧对象，
-区分 pilot 启发的 construct 定义与独立确认，并定义规划对话到 Codex 的文档交接。它不
-修改 executable code，也不产生经验性证据。修改保持未提交、未 push，等待人类审核。
+`pilot-a-design-v1` 记录已接受的 pattern-discovery and measurement-validation design。
+它定义临时 typed task language、四个 matched topology/control cell、negative control、
+discovery/confirmation 分离、behavior/alignment gate 和分阶段分析。Qwen 已排除；冻结的
+Mistral 7B instruct model 是工作默认，exact revision 尚未解决。现有 generator 被明确
+标记为非权威。实施、模型下载、执行、activation、commit 和 push 均未授权。
 
-`task-modeling-v1` 于 2026-09-08 获批并在本地完成，包含两个 pilot family、隐藏的任务侧
-中间 annotation 和 Python 3.11 支持。较大的配置以及所有服务器/模型实验均未执行，也
-未获得授权。
+`research-specification-v1` 于 2026-09-09 完成实施、审核、commit 与 push，revision 为
+`901507d`。它形式化任务侧对象，区分 pilot 启发的 construct 定义与独立确认，并定义规划
+对话到 Codex 的文档交接。它没有修改 executable code，也没有产生经验性证据。
+
+`task-modeling-v1` 于 2026-09-08 获批并在本地完成，包含两个 calibration family、隐藏
+的任务侧中间 annotation 和 Python 3.11 支持。这两个 family 是工程 artifact，而不是
+已接受的 Pilot A 科学任务。较大的配置以及所有服务器/模型实验均未执行，也未获得授权。
 
 `behavioral-calibration-v1` 于 2026-09-08 获批并在本地完成，采用 final-answer-only
 prompt、通用 Hugging Face adapter 和临时阈值。80-record 离线假后端运行只验证框架。
