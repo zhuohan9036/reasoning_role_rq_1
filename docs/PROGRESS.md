@@ -7,6 +7,7 @@
 | Milestone | Status | Evidence/artifact | Next gate |
 |---|---|---|---|
 | P0: repository and planning scaffold | Complete and pushed | Research plan and repository history | None |
+| P0b: task formalism and Codex handoff specification | Implemented locally; awaiting review | `runs/research-specification-v1/REVIEW.md` | Human documentation review |
 | P1: task-side calibration dataset | Complete and pushed | `runs/task-modeling-v1/REVIEW.md`; smoke fixture | Research review |
 | P2a: behavioral calibration harness | Complete and pushed | `runs/behavioral-calibration-v1/REVIEW.md`; fake smoke fixture | Research review and working-norm update |
 | P2b: real-model behavioral pilot | Blocked | No model run | Resolve O-001/O-002/O-009/O-013 and authorize server |
@@ -17,6 +18,13 @@
 | P6: second-model replication | Not started | None | Select smallest decisive replication set |
 
 ## Current task
+
+`research-specification-v1` was approved for local documentation implementation
+on 2026-09-09. It formalizes task-side objects, separates pilot-informed
+construct definition from independent confirmation, and defines the
+planning-conversation to Codex document handoff. It changes no executable code
+and creates no empirical evidence. The changes remain uncommitted and unpushed
+for human review.
 
 `task-modeling-v1` was approved and completed locally on 2026-09-08 with both
 pilot families, hidden intermediate task-side annotations, and Python 3.11. The

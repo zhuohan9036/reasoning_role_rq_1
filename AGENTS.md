@@ -10,23 +10,37 @@ Do not turn correlational evidence into a causal claim.
 
 Maintain these distinctions in code, documentation, and reports:
 
-1. A task-side computation graph describes a generator or an externally
-   specified solution procedure. It is not a claim about the model's internal
-   algorithm.
-2. An observed model-side cluster or pattern is not automatically a reasoning
+1. A workflow task ID names a bounded repository action; it is not a reasoning
+   task family or task instance.
+2. A task-side dependency structure describes one reference solver, a family of
+   valid solution graphs, or declared partial-order constraints. It is not a
+   claim about the model's internal algorithm.
+3. An observed model-side cluster or pattern is not automatically a reasoning
    role.
-3. Component identity, layer, token position, and reasoning step are possible
+4. Component identity, layer, token position, and reasoning step are possible
    confounds, not definitions of functional identity.
-4. Candidate operations are provisional labels. Do not describe them as atomic,
-   universal, or cognitively fundamental without evidence.
-5. Negative, partial, task-specific, distributed, and implementation-varying
+5. Candidate operations and task-side cross-task correspondences are
+   provisional hypotheses. Do not describe them as atomic, universal, or
+   cognitively fundamental without evidence.
+6. Model-side empirical correspondence is a result requiring independent
+   measurement, structural controls, and held-out evaluation.
+7. Negative, partial, task-specific, distributed, and implementation-varying
    outcomes are valid results.
+
+Before an exploratory model pilot, require a thin task specification covering
+instances, answers, provenance, rendering, and major structural covariates.
+Version and freeze any pilot-informed task decomposition or role vocabulary
+before testing it on untouched evidence.
 
 Primary evidence should come from frozen pretrained models with mechanistic
 access. Controlled or adapted models may be diagnostic instruments, but must be
 reported separately from naturally occurring organization.
 
 ## Workflow gates
+
+- Treat the planning conversation and Codex execution as separate roles even if
+  they occur in the same client. The conversation freezes bounded requirements;
+  Codex acts only from an explicitly authorized document state.
 
 - Read `docs/RESEARCH.md`, `docs/DECISIONS.md`, and the relevant `runs/<task-id>/`
   files before changing code.
@@ -42,6 +56,9 @@ reported separately from naturally occurring organization.
   `plan.json` only after the user explicitly authorizes the planning action.
   Planning authorization does not authorize implementation.
 - Do not implement a task while its plan status is `awaiting_review`.
+- For cross-client handoff, identify the exact task ID, plan path, approved
+  revision or working-tree state, and Git behavior. Do not infer authorization
+  from the existence of a plan.
 - After explicit implementation approval, implement only the approved in-scope
   items and local checks. Record deviations in the task review rather than
   silently expanding scope.

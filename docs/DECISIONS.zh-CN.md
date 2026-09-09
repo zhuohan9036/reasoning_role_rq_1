@@ -105,6 +105,30 @@ summary、diagnostic 和 artifact index，可复制到
 `artifacts/server-results/<run-id>/` 供本地审核。只有经过审核的小型证据和中英文报告
 才能提升到 `results/<run-id>/` 并提交。
 
+### D-016——任务侧对象采用带版本的结构化 formalism
+
+**状态：** 已接受
+**决策：** 一个 task family 规定 instance distribution、correctness semantics、
+reference-solution interface、rendering family、controlled 与 nuisance variable、semantic
+identity、reference dependency representation、version 和 provenance。Canonical instance
+与 rendered prompt 保持为不同对象。Workflow task ID 不是 reasoning task。
+
+### D-017——Pilot 启发的 construct 需要独立确认
+
+**状态：** 已接受
+**决策：** Exploratory model pilot 前必须存在薄的 task specification。Pilot evidence 可以
+启发修订后的 task decomposition、candidate operation 或 cross-task hypothesis，但修订必须
+获得新版本，并在未参与定义的证据上评估前冻结。Candidate operation 和 task-side
+correspondence 是假设；model-side empirical correspondence 才是结果。
+
+### D-018——规划与 Codex 实施采用明确的文档交接
+
+**状态：** 已接受
+**决策：** 规划对话在不修改仓库的情况下冻结有边界的需求。动作预告获批后，Codex 创建
+可审核的规划产物。人类审核计划并明确批准实施后，Codex 才能修改文件。`plan.json` 是
+机器可读合同，中英文 plan 与 review 是面向人类的接口。Commit、push、模型和服务器权限
+继续分别声明。
+
 ## 工作假设
 
 这些假设用于指导实验设计，但尚未被当作事实。

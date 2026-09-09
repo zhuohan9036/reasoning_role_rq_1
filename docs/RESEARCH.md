@@ -2,7 +2,8 @@
 
 > 中文版：[RESEARCH.zh-CN.md](RESEARCH.zh-CN.md)
 
-**Status:** initial research specification, awaiting review  
+**Status:** reviewed research specification; task-side formalism v1 accepted;
+experiment-level choices remain open
 **RQ:** RQ1  
 **Last updated:** 2026-09-08
 
@@ -44,20 +45,79 @@ Causal interventions may be used as targeted diagnostics, but strong causal
 claims belong to a later research question unless supported by a dedicated
 intervention design.
 
-## 3. Conceptual levels
+## 3. Structured task-side objects
 
-The analysis keeps three task-side levels separate:
+The repository term **workflow task**, such as `task-modeling-v1`, names a
+bounded planning or implementation action. It is not a reasoning task. The
+scientific analysis distinguishes the following versioned external objects.
 
-1. **Task family:** a distribution such as symbolic function composition or
-   relational path composition.
-2. **Instance-level dependency structure:** the computation graph or algorithmic
-   dependencies sufficient to solve one generated instance.
-3. **Candidate local operation:** a provisional description of one step in that
-   task-side graph.
+### Task family specification
 
-These task-side objects are external specifications. Model-side measurements
-must be constructed without assigning these labels as internal truth. Only a
-validated correspondence can motivate a stronger functional interpretation.
+A task family specifies:
+
+- an instance space and generation or sampling distribution;
+- input, query, output, and correctness semantics;
+- a reference-solution interface;
+- a rendering family that maps canonical instances to prompts;
+- controlled factors and nuisance variables;
+- semantic identity and split rules;
+- a declared form of reference dependency structure;
+- a version identifier and provenance.
+
+Examples include symbolic function composition and relational path composition.
+A task family is an external research object, not a claim that the model
+represents the same variables or follows the reference solver.
+
+### Canonical task instance
+
+A canonical instance contains a family and schema version, canonical problem and
+query, target under the task's correctness semantics, controlled and nuisance
+variables, semantic identity, reference dependency structure and provenance,
+and zero or more provisional task-side annotations. One or more prompts may be
+rendered from the instance, but rendering is not part of canonical task identity
+unless the task specification explicitly says otherwise.
+
+### Reference dependency structure
+
+Because a task may admit more than one valid algorithm, a task family may use:
+
+1. a graph for one declared reference solver;
+2. a set or family of valid solution graphs; or
+3. partial-order constraints shared by an explicitly scoped class of valid
+   solutions.
+
+The specification must state what nodes, edges, intermediate states, and
+execution semantics mean. A reference graph records generator or solver
+provenance; it is not the model's computation graph or a uniquely necessary
+algorithm without independent evidence.
+
+### Candidate operations and correspondence
+
+A candidate operation is a provisional task-side equivalence claim over nodes
+or transitions. Its identity criteria, granularity, scope, motivation, and
+version must be stated. It may be motivated by theory, task semantics, or
+exploratory evidence, but it is not a model-side finding.
+
+A task-side cross-task correspondence is a hypothesis that two task-side
+operations share a relevant computational property. A model-side empirical
+correspondence is a separate result requiring independently measured patterns,
+structural controls, held-out evaluation, uncertainty, and an appropriate
+negative-control comparison.
+
+### Staged commitment
+
+Before an exploratory pilot, a task must have a thin specification sufficient
+to determine instances, answers, provenance, rendering, and major structural
+covariates. Fine-grained operation labels and cross-task mappings may remain
+unset.
+
+Exploratory model evidence may motivate a revised task decomposition or role
+vocabulary. Every such revision must record the motivating evidence, receive a
+new version, and be frozen before confirmatory evaluation. Evidence used to
+define or select a construct cannot also serve as its independent confirmation;
+confirmation must use untouched instances, held-out structural conditions, a
+new task pair, an additional frozen model, or another prospectively declared
+partition.
 
 ## 4. Competing empirical explanations
 
@@ -144,6 +204,7 @@ the function-versus-step distinction, and the strongest generalization result.
 
 ### Phase A — Task calibration
 
+- Create a thin task-family specification before any model pilot.
 - Define a versioned canonical instance schema and deterministic reference
   solvers.
 - Begin with two controlled task families whose dependency structures can be
@@ -155,10 +216,14 @@ the function-versus-step distinction, and the strongest generalization result.
   model chain of thought.
 - Create IID, held-out-surface, held-out-template, and held-out-length splits
   using semantic instance identities.
+- Version any pilot-informed refinement of task decomposition and reserve
+  untouched evidence for confirmation.
 
 The two initial families are calibration instruments, not a final claim that
 they define universal reasoning primitives. They may be replaced if pilot
-behavior or identifiability is inadequate.
+behavior or identifiability is inadequate. `task-modeling-v1` implements the
+calibration interface for these families; it does not freeze the paper's final
+task ontology.
 
 ### Phase B — Behavioral and instrumentation baseline
 

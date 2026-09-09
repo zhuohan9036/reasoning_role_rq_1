@@ -2,7 +2,7 @@
 
 > English: [RESEARCH.md](RESEARCH.md)
 
-**状态：** 初始研究规格，等待审核
+**状态：** 已审核研究规格；任务侧 formalism v1 已接受；具体实验选择仍保持开放
 **研究问题：** RQ1
 **最后更新：** 2026-09-08
 
@@ -37,18 +37,67 @@
 因果 intervention 可以作为有针对性的诊断，但除非有专门的 intervention 设计支持，
 强因果结论属于后续研究问题。
 
-## 3. 概念层级
+## 3. 结构化任务侧对象
 
-分析必须区分任务侧的三个层级：
+仓库中的 **workflow task**，例如 `task-modeling-v1`，表示一个有边界的规划或实施动作，
+不是 reasoning task。科学分析区分以下带版本的外部对象。
 
-1. **任务族（task family）：** 例如 symbolic function composition 或 relational
-   path composition 的分布。
-2. **实例级依赖结构：** 求解一个生成实例所需的 computation graph 或 algorithmic
-   dependency。
-3. **候选局部操作：** 对任务侧图中某一步骤的临时性描述。
+### 任务族规格
 
-这些任务侧对象都是外部规格。构造模型侧测量时，不能把这些标签直接指定为内部
-真值。只有经过验证的 correspondence 才能支持更强的功能性解释。
+一个 task family specification 包含：
+
+- instance space 以及生成或采样分布；
+- input、query、output 和 correctness semantics；
+- reference-solution interface；
+- 将 canonical instance 映射为 prompt 的 rendering family；
+- controlled factor 与 nuisance variable；
+- semantic identity 与 split rule；
+- 一种明确声明的 reference dependency structure；
+- version identifier 与 provenance。
+
+Symbolic function composition 和 relational path composition 是其中的例子。Task
+family 是外部研究对象，不表示模型使用相同变量或遵循 reference solver。
+
+### Canonical task instance
+
+一个 canonical instance 包含 family 和 schema version、canonical problem 与 query、
+由任务正确性语义定义的 target、controlled 与 nuisance variable、semantic identity、
+reference dependency structure 及其 provenance，以及零个或多个临时 task-side
+annotation。可以从 instance 生成一个或多个 prompt；除非任务规格另有明确规定，
+rendering 不属于 canonical task identity。
+
+### Reference dependency structure
+
+由于一个任务可能存在多种有效算法，task family 可以使用：
+
+1. 某一个明确 reference solver 的 graph；
+2. 一组或一族有效 solution graph；或
+3. 某个明确限定的有效解法类别共同满足的 partial-order constraint。
+
+规格必须说明 node、edge、intermediate state 和 execution semantics 的含义。Reference
+graph 记录 generator 或 solver provenance；在没有独立证据时，它不是模型的 computation
+graph，也不是唯一必需算法。
+
+### Candidate operation 与 correspondence
+
+Candidate operation 是对 node 或 transition 提出的临时 task-side equivalence claim。
+必须说明其 identity criterion、granularity、scope、motivation 和 version。它可以由理论、
+任务语义或探索性证据启发，但不是模型侧发现。
+
+Task-side cross-task correspondence 是一项假设：两个任务侧 operation 共享某种相关
+计算性质。Model-side empirical correspondence 是另一类结果，需要独立测量的 pattern、
+结构性 control、held-out evaluation、不确定性以及适当的 negative-control comparison。
+
+### 分阶段承诺
+
+在 exploratory pilot 前，一个任务必须具有足以确定 instance、answer、provenance、
+rendering 和主要结构 covariate 的薄规格。细粒度 operation label 和 cross-task mapping
+可以暂不设定。
+
+探索性模型证据可以启发修订后的 task decomposition 或 role vocabulary。每次这类修订
+都必须记录启发它的证据、获得新版本，并在 confirmatory evaluation 前冻结。用于定义
+或选择 construct 的证据，不能同时作为其独立确认；确认必须使用未参与定义的 instance、
+held-out structural condition、新 task pair、额外冻结模型或其他事先声明的 partition。
 
 ## 4. 相互竞争的经验解释
 
@@ -124,6 +173,7 @@ computation，但 token、semantics 和 presentation 不同。同时加入结构
 
 ### 阶段 A——任务校准
 
+- 在任何模型 pilot 前创建薄的 task-family specification。
 - 定义版本化 canonical instance schema 和 deterministic reference solver。
 - 从两个受控 task family 开始；它们的 dependency structure 能独立于措辞操纵：
   symbolic function composition 和 relational path composition。
@@ -132,9 +182,11 @@ computation，但 token、semantics 和 presentation 不同。同时加入结构
 - 把精确 generator trace 保存为任务侧 provenance，不把它当作模型 chain of thought。
 - 使用 semantic instance identity 创建 IID、held-out-surface、held-out-template 和
   held-out-length split。
+- 对 pilot 启发的 task decomposition 修订进行版本化，并保留未参与定义的证据用于确认。
 
 最初的两个任务族是校准工具，并不表示它们定义了通用 reasoning primitive。如果
-pilot behavior 或 identifiability 不足，可以替换它们。
+pilot behavior 或 identifiability 不足，可以替换它们。`task-modeling-v1` 实现的是这两个
+family 的校准接口，不会冻结论文最终采用的 task ontology。
 
 ### 阶段 B——行为与 instrumentation baseline
 

@@ -120,6 +120,35 @@ to `artifacts/server-results/<run-id>/` for local review. Only reviewed compact
 evidence and bilingual reports may be promoted to `results/<run-id>/` and
 committed.
 
+### D-016 — Task-side objects use a versioned structural formalism
+
+**Status:** accepted
+**Decision:** A task family specifies its instance distribution, correctness
+semantics, reference-solution interface, rendering family, controlled and
+nuisance variables, semantic identity, reference dependency representation,
+version, and provenance. Canonical instances and rendered prompts remain
+separate objects. A workflow task ID is not a reasoning task.
+
+### D-017 — Pilot-informed constructs require independent confirmation
+
+**Status:** accepted
+**Decision:** A thin task specification is required before exploratory model
+pilots. Pilot evidence may motivate revised task decompositions, candidate
+operations, or cross-task hypotheses, but the revision must receive a new
+version and be frozen before evaluation on untouched evidence. Candidate
+operations and task-side correspondences are hypotheses; model-side empirical
+correspondence is a result.
+
+### D-018 — Planning and Codex implementation use an explicit document handoff
+
+**Status:** accepted
+**Decision:** The planning conversation freezes bounded requirements without
+editing the repository. After an approved action preview, Codex creates
+reviewable planning artifacts. Human plan review and explicit implementation
+approval precede Codex changes. `plan.json` is the machine-readable contract;
+bilingual plans and reviews are the human interface. Commit, push, model, and
+server permissions remain separately declared.
+
 ## Working hypotheses
 
 These guide experimental design but are not assumed true.

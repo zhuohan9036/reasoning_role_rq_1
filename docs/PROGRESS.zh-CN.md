@@ -7,6 +7,7 @@
 | 里程碑 | 状态 | 证据/产物 | 下一门禁 |
 |---|---|---|---|
 | P0：仓库与规划框架 | 已完成并推送 | 研究方案与仓库历史 | 无 |
+| P0b：任务 formalism 与 Codex 交接规格 | 已在本地实施；等待审核 | `runs/research-specification-v1/REVIEW.md` | 人类文档审核 |
 | P1：任务侧校准数据集 | 已完成并推送 | `runs/task-modeling-v1/REVIEW.md`；smoke fixture | 研究审核 |
 | P2a：行为校准框架 | 已完成并推送 | `runs/behavioral-calibration-v1/REVIEW.md`；fake smoke fixture | 研究审核与工作规范更新 |
 | P2b：真实模型行为 pilot | 阻塞 | 尚无模型运行 | 解决 O-001/O-002/O-009/O-013 并授权服务器 |
@@ -17,6 +18,10 @@
 | P6：第二模型复现 | 未开始 | 无 | 选择最小的决定性复现集合 |
 
 ## 当前任务
+
+`research-specification-v1` 于 2026-09-09 获批在本地实施文档修订。它形式化任务侧对象，
+区分 pilot 启发的 construct 定义与独立确认，并定义规划对话到 Codex 的文档交接。它不
+修改 executable code，也不产生经验性证据。修改保持未提交、未 push，等待人类审核。
 
 `task-modeling-v1` 于 2026-09-08 获批并在本地完成，包含两个 pilot family、隐藏的任务侧
 中间 annotation 和 Python 3.11 支持。较大的配置以及所有服务器/模型实验均未执行，也

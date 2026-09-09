@@ -1,0 +1,131 @@
+{
+  "schema_version": "1.0",
+  "plan_version": 1,
+  "action_id": "A-RQ1-RESEARCH-SPEC-001",
+  "task_id": "research-specification-v1",
+  "title": "Structured task formalism and planning-to-Codex handoff",
+  "status": "implemented_and_locally_validated_awaiting_human_review",
+  "research_goal_refs": ["G0", "G1-methodology", "G2-methodology", "G4-methodology"],
+  "objective": "Plan a documentation-only revision that defines task-side computational objects, staged exploratory refinement, evidential correspondence, and an auditable planning-to-Codex handoff.",
+  "approval": {
+    "planning_artifacts_authorized": true,
+    "documentation_changes_authorized": true,
+    "code_changes_authorized": false,
+    "model_download_authorized": false,
+    "model_execution_authorized": false,
+    "server_execution_authorized": false,
+    "approved_on": "2026-09-09",
+    "implementation_completed_on": "2026-09-09",
+    "required_before_implementation": [
+      "Human approval of PLAN.md, PLAN.zh-CN.md, or plan.json",
+      "Confirmation that the proposed task-side object boundaries are acceptable",
+      "Confirmation that the planning-conversation to Codex handoff is acceptable"
+    ]
+  },
+  "frozen_consensus": [
+    "The current research specification is not yet accepted as a complete frozen specification",
+    "The core question, scope boundaries, competing explanations, and reporting rules are accepted",
+    "Goals and evidence stages remain a working roadmap",
+    "The task-side hierarchy and Stage A require a structured formalism",
+    "A thin task model is required before exploratory pilots",
+    "Pilot-informed refinement is allowed but requires versioning, freezing, and held-out confirmation",
+    "Reference dependency structure is external task-side provenance rather than a model algorithm",
+    "Candidate operations are hypotheses rather than model-side findings",
+    "Task-side cross-task correspondence and model-side empirical correspondence are distinct",
+    "Planning conversation, Codex planning, human review, Codex implementation, review handoff, and server execution are separate gates"
+  ],
+  "task_side_objects": [
+    {
+      "name": "task_family_specification",
+      "required_concepts": [
+        "instance space and distribution",
+        "input-query-output and correctness semantics",
+        "reference solution interface",
+        "rendering family",
+        "controlled and nuisance variables",
+        "semantic identity and split rules",
+        "reference dependency representation",
+        "version and provenance"
+      ]
+    },
+    {
+      "name": "canonical_task_instance",
+      "required_concepts": [
+        "family and schema version",
+        "canonical problem and query",
+        "target",
+        "controlled and nuisance variables",
+        "semantic identity",
+        "reference dependency structure",
+        "provisional annotations",
+        "separately rendered prompts"
+      ]
+    },
+    {
+      "name": "reference_dependency_structure",
+      "allowed_representations": [
+        "one declared reference-solver graph",
+        "a family of valid solution graphs",
+        "shared partial-order constraints"
+      ]
+    },
+    {
+      "name": "candidate_operation",
+      "status": "provisional_task_side_hypothesis",
+      "required_metadata": ["identity criteria", "granularity", "scope", "version", "motivation"]
+    },
+    {
+      "name": "cross_task_correspondence",
+      "task_side_status": "pre_specified_hypothesis",
+      "model_side_status": "empirical_result_requiring_independent_measurement_and_held_out_validation"
+    }
+  ],
+  "handoff_states": [
+    "planning_conversation",
+    "plan_generation_authorized",
+    "plan_awaiting_human_review",
+    "codex_implementation_authorized",
+    "implementation_review",
+    "server_awaiting_separate_authorization"
+  ],
+  "implementation_files": [
+    {"path": "docs/RESEARCH.md", "action": "modify"},
+    {"path": "docs/RESEARCH.zh-CN.md", "action": "modify"},
+    {"path": "docs/WORKFLOW.md", "action": "modify"},
+    {"path": "docs/WORKFLOW.zh-CN.md", "action": "modify"},
+    {"path": "docs/DECISIONS.md", "action": "modify"},
+    {"path": "docs/DECISIONS.zh-CN.md", "action": "modify"},
+    {"path": "docs/PROGRESS.md", "action": "modify"},
+    {"path": "docs/PROGRESS.zh-CN.md", "action": "modify"},
+    {"path": "AGENTS.md", "action": "modify"},
+    {"path": "AGENTS.zh-CN.md", "action": "modify"},
+    {"path": "runs/research-specification-v1/REVIEW.md", "action": "create_after_implementation"},
+    {"path": "runs/research-specification-v1/REVIEW.zh-CN.md", "action": "create_after_implementation"}
+  ],
+  "validation": [
+    "JSON syntax and cross-document agreement",
+    "Bilingual counterpart and reciprocal-link audit",
+    "Terminology and scientific-claim audit",
+    "Reference-structure versus model-mechanism audit",
+    "Exploratory-definition versus confirmatory-evidence audit",
+    "Changed-path allowlist check",
+    "git diff --check and repository status"
+  ],
+  "out_of_scope": [
+    "Source code, test, configuration, fixture, or generated-artifact changes",
+    "Final task-family or shared-operation selection",
+    "Model-side measurement or analysis-method selection",
+    "Model download or execution",
+    "Server execution or activation capture",
+    "Git commit or push without separate authorization"
+  ],
+  "git_behavior": {
+    "planning": "leave_uncommitted_for_review",
+    "implementation": "leave_uncommitted_for_review_unless_separately_authorized"
+  },
+  "server_validation": {
+    "status": "not_applicable",
+    "requires_gpu": false
+  },
+  "completion_artifact": "runs/research-specification-v1/REVIEW.md"
+}

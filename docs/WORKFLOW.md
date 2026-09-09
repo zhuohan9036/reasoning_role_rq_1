@@ -13,6 +13,29 @@ The assistant must never infer later-stage authorization from enthusiasm,
 agreement with an idea, approval of an earlier stage, or the existence of a
 repository and plan.
 
+## Planning-conversation to Codex handoff
+
+The workflow is role- and document-based even when planning and implementation
+occur in different clients:
+
+1. The **planning conversation** discusses the science and engineering, records
+   tentative consensus in the conversation, and does not modify the repository.
+2. After an approved action preview, **Codex plan generation** creates bilingual
+   `BRIEF`, `SERVER`, and `PLAN` documents plus one `plan.json` in
+   `awaiting_review` state.
+3. **Human review** accepts, rejects, or revises that contract. Informal agreement
+   with an idea is not implementation approval.
+4. After separate explicit approval, **Codex implementation** changes only the
+   approved paths and runs only the approved checks.
+5. A bilingual **review handoff** records actual delivery, validation,
+   deviations, omissions, Git state, scientific boundaries, and the next gate.
+
+`plan.json` is the machine-readable implementation contract; the bilingual
+documents are the primary human review paths. If the conversations occur in
+different clients, the destination Codex task must be given the exact task ID,
+plan path, approved revision or working-tree state, and Git behavior. A handoff
+does not carry authorization beyond the state recorded in the plan.
+
 ## State model
 
 | State | Permitted work | Repository effect | Exit condition |
@@ -143,6 +166,14 @@ authorize:
 - remote or server commands;
 - destructive data operations; or
 - a Git action not disclosed in the plan/action preview.
+
+For cross-client handoff, the recommended authorization names the executor,
+task, scope, and Git behavior, for example:
+
+```text
+Authorize Codex to implement <task-id> according to the reviewed plan; keep the
+changes uncommitted and do not push.
+```
 
 Implementation ends with `REVIEW.md` and `REVIEW.zh-CN.md`, including delivered
 files, tests, deviations, limitations, actions not performed, commit/push state,
