@@ -2,15 +2,19 @@
 
 > English: [PLAN.md](PLAN.md)
 
-**状态：** 等待人类实施审核
-**方案版本：** 1
-**科学协议：** `docs/PILOT_A.zh-CN.md`，版本 0.1
+**状态：** 实施前暂停；不具备实施批准资格
+**方案版本：** 2
+**科学协议：** `docs/PILOT_A.zh-CN.md`，版本 0.2
 **代码修改已授权：** 否
 **模型或服务器执行已授权：** 否
 
 ## 1. 目标
 
-独立于现有校准任务选择，实现已接受的 Pilot A task instrument。实施必须生成
+> 本方案作为规划历史保留。Pilot A0 必须在任何元素重新进入科学 Pilot A 方案前建立
+> target-task grounding。不得实施本方案。见
+> `runs/pilot-a0-target-grounding-v1/PLAN.zh-CN.md`。
+
+独立于现有校准任务选择，实现当时拟议的 Pilot A task instrument。实施必须生成
 deterministic typed program、四个 matched structural cell、direct-read control、paired
 rendering、semantic-disjoint discovery/confirmation split、本地 shortcut audit 和紧凑
 fixture。不得加载或运行语言模型。
@@ -20,9 +24,9 @@ fixture。不得加载或运行语言模型。
 创建带版本的 Pilot A 配置，固定：
 
 - canonical 层面的 `Symbol8` 与 `Boolean` encoding；
-- transform、merge、predicate 和 select 的精确 semantics；
+- structural signature、matched functional subtype 及其精确 semantics；
 - 参数集合和退化 program 拒绝规则；
-- C1–C4 graph template 与允许的 active-node length；
+- 准确的六节点 C1–C4 graph template；
 - balancing axis 与目标 count；
 - direct-read control construction；
 - rendering family 与 operation-name randomization；
@@ -51,8 +55,9 @@ Reference interpreter 只执行 canonical semantics。它不得解析自然语�
 - C3：serial dependency，intermediate-state predicate；
 - C4：fork-join dependency，intermediate-state predicate。
 
-在每项有效 contrast 内，匹配 node count、逻辑允许时的 operation multiset、answer
-frequency、parameter frequency、operation placement、prompt budget 和 rendering count。
+在每项有效 contrast 内，匹配 node count、逻辑允许时的 structural-signature multiset、
+functional-subtype frequency、answer frequency、parameter frequency、operation placement、
+prompt budget 和 rendering count。
 所有剩余 mismatch 必须记录为 factor，不能宣称完美匹配。
 
 拒绝 constant-output、unused-active-node、unreachable-output、duplicate-semantic、
@@ -70,20 +75,22 @@ Operation 显示名称独立于 operation semantics 采样。Template 暴露求�
 任务侧 category 名称。Renderer 保持 canonical identity 与 target，并记录准确 template、
 vocabulary、order 和 name-map provenance。
 
-Aligned-trace 与 final-answer prompt 作为不同 render mode。本任务不实现 activation
-alignment。
+Aligned-trace 与 final-answer prompt 作为不同 render mode。R1 必须在固定 delimiter slot
+中准确渲染六个 state value，并提供每个 event 到其 value 之前 delimiter 的机器可读映射。
+本任务不实现 activation capture。
 
 ## 6. 步骤 5：创建抗泄漏数据集
 
 生成：
 
-- 1,024 个 discovery canonical instance；
-- 1,024 个 semantic-disjoint confirmation instance；
+- 1,024 个 discovery canonical instance：每个 `cell x final answer` 32 个；
+- 1,024 个具有相同平衡的 semantic-disjoint confirmation instance；
 - 至少 512 个 direct-read control instance；
 - 每个核心 instance 两个 paired rendering。
 
-按照协议平衡 C1–C4、active length 4/6 和全部八种 final answer。在 rendering 前按
-semantic identity 切分。分别审计 canonical、prompt、parameter 和 graph-template overlap。
+每个核心 program 固定包含六个 answer-relevant node。按照协议平衡 C1–C4 和全部八种
+final answer。Program-length generalization 延后。在 rendering 前按 semantic identity
+切分。分别审计 canonical、prompt、parameter 和 graph-template overlap。
 
 ## 7. 步骤 6：实现 shortcut 与 balance audit
 
@@ -91,6 +98,12 @@ semantic identity 切分。分别审计 canonical、prompt、parameter 和 graph
 rule/value、operator-name cue、prompt length 和 task-cell metadata。这些是 dataset audit，
 不是模型侧分析。Dataset report 必须展示每个声明 stratum 的 count 与 target distribution，
 并列出所有剩余 imbalance。
+
+为每个 functional contrast 加入 identifiability audit。若 label 能够由 structural
+signature、graph degree、event index、prompt region、output token 或 task cell 确定性
+恢复，则拒绝该 comparison。每项 contrast 的两个 subtype 必须具有完全相同的位置分布，
+并同时出现在每个被分析的位置。Unary contrast 必须覆盖至少两个位置。Binary、predicate
+和 conditional contrast 可以只占一个位置，但不能支持 position-generalization claim。
 
 ## 8. 步骤 7：保留旧校准 artifact，但不赋予权威地位
 
@@ -106,6 +119,7 @@ rule/value、operator-name cue、prompt length 和 task-cell metadata。这些�
 - type、graph 和 degeneracy validation；
 - 固定 seed 的 deterministic replay；
 - 精确 count 与 balance invariant；
+- functional-subtype identifiability invariant；
 - semantic-disjoint split 与 overlap audit；
 - paired-rendering equivalence；
 - operator-name independence；
@@ -121,7 +135,7 @@ rule/value、operator-name cue、prompt length 和 task-cell metadata。这些�
 
 | 路径 | 动作 | 用途 |
 |---|---|---|
-| `src/reasoning_role/tasks/pilot_a_program.py` | 新建 | typed program、interpreter、graph template |
+| `src/reasoning_role/tasks/pilot_a_program.py` | 新建 | typed program、matched subtype、interpreter、六节点 graph template |
 | `src/reasoning_role/tasks/pilot_a_controls.py` | 新建 | direct-read 与 audit control |
 | `src/reasoning_role/tasks/schema.py` | 必要时修改 | typed event 与 graph metadata |
 | `src/reasoning_role/tasks/registry.py` | 修改 | 注册新 task instrument |
@@ -130,7 +144,7 @@ rule/value、operator-name cue、prompt length 和 task-cell metadata。这些�
 | `configs/data/pilot_a_v1.yaml` | 新建 | 冻结的本地生成合同 |
 | `scripts/generate_pilot_a.py` | 通用 CLI 不足时新建 | checkout-local entry point |
 | `tests/tasks/test_pilot_a_program.py` | 新建 | semantics、typing、graph、degeneracy test |
-| `tests/data/test_pilot_a_generation.py` | 新建 | determinism、balance、split、rendering、shortcut test |
+| `tests/data/test_pilot_a_generation.py` | 新建 | determinism、balance、identifiability、split、rendering、shortcut test |
 | `tests/fixtures/pilot_a_smoke/` | 新建 | 紧凑 deterministic engineering fixture |
 | `docs/DATA.md` 及中文对应版 | 修改 | schema、split 与解释边界 |
 | `docs/EVALUATION.md` 及中文对应版 | 修改 | behavior gate 与 response regime |
@@ -158,11 +172,10 @@ Executor 只有在说明不会重新引入旧 linear-chain factor schema 后，�
   multiplicity policy。
 - R2 measurement unit 与 alignment rule。
 
-这些事项不阻塞本地 canonical-task implementation。
+本方案暂停期间，这些选择均不活动。Target grounding 现在阻塞本 task ID 下的任何本地
+canonical-task implementation。
 
 ## 13. 审核门禁
 
-人类审核应确认 task semantics、四 cell contrast logic、count、control construction 和
-file scope。只有明确的实施授权才允许修改 source、test、configuration 或 fixture。
-Commit、push、model 和 server action 仍分别未授权。
-
+本审核门禁已由 `pilot-a0-target-grounding-v1` 取代。本方案不具备实施批准资格。未来 Pilot
+A 方案只能复用获得 source-based grounding 并重新明确获批的元素。

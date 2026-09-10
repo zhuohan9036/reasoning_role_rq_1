@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "plan_version": 2,
+  "action_id": "A-RQ1-PILOT-A0-GROUNDING-001",
+  "task_id": "pilot-a0-target-grounding-v1",
+  "title": "No-annotation native-source inventory and model-first discovery bridge",
+  "status": "awaiting_review",
+  "research_goal_refs": ["G0", "G1", "G2", "G4"],
+  "objective": "Inventory accepted native reasoning-task sources without new annotation and prepare separate model-first stages for within-task pattern discovery and frozen cross-task transfer.",
+  "approval": {
+    "planning_artifacts_authorized": true,
+    "documentation_changes_authorized": true,
+    "implementation_authorized": false,
+    "benchmark_download_authorized": false,
+    "source_instance_inspection_authorized": false,
+    "manual_annotation_authorized": false,
+    "model_download_authorized": false,
+    "model_execution_authorized": false,
+    "activation_capture_authorized": false,
+    "server_execution_authorized": false,
+    "git_commit_authorized": false,
+    "git_push_authorized": false,
+    "authorized_on": "2026-09-10"
+  },
+  "accepted_target_population": "English text-only objectively scored self-contained multi-step reasoning tasks.",
+  "accepted_source_strata": [
+    "GSM8K",
+    "DROP",
+    "MuSiQue-Ans_v1.0",
+    "BIG-Bench/logical_deduction",
+    "BIG-Bench/tracking_shuffled_objects"
+  ],
+  "primary_research_sequence": [
+    "native_task",
+    "successful_native_inference",
+    "internal_computation_trajectory",
+    "label_free_within_task_pattern_discovery",
+    "untouched_within_task_confirmation",
+    "frozen_cross_task_transfer",
+    "bounded_functional_interpretation"
+  ],
+  "method_commitments": {
+    "researcher_defined_operation_labels_in_discovery": false,
+    "forced_symbolic_trace_in_native_inference": false,
+    "generated_reasoning_as_latent_ground_truth": false,
+    "new_manual_annotation_default": false,
+    "synthetic_task_default": false,
+    "mutual_information_as_operation_detector": false,
+    "pattern_frozen_before_untouched_evaluation": true,
+    "cross_task_redefinition_allowed": false,
+    "incorrect_inferences_retained_as_separate_diagnostic": true
+  },
+  "manual_annotation_policy": {
+    "status": "deferred_fallback_only",
+    "prerequisite": "documented_named_identification_failure_not_resolved_by_native_metadata_model_side_patterns_controlled_variation_or_existing_source_artifacts",
+    "requires_new_plan_and_explicit_approval": true
+  },
+  "controlled_task_language_v0_2_status": {
+    "scientific_pilot_status": "inactive_calibration_sandbox",
+    "source_code_implementation_allowed": false,
+    "may_return_only_after": "documented_identification_failure_and_separate_review"
+  },
+  "immediate_implementation_scope": [
+    "freeze_official_source_registry",
+    "inventory_native_task_information",
+    "record_grouping_leakage_and_perturbation_affordances",
+    "build_source_suitability_matrix",
+    "reserve_source_roles_without_sampling_instances",
+    "specify_follow_on_task_boundaries"
+  ],
+  "blocking_review_choices": [
+    "official_repository_or_distribution_channel_per_source",
+    "immutable_revision_or_checksum_and_verified_license",
+    "eligible_splits_and_return_test_reservations",
+    "source_access_mode_and_download_authorization",
+    "schema_only_or_small_declared_instance_inspection"
+  ],
+  "proposed_implementation_files": [
+    "docs/PILOT_A0_SOURCE_INVENTORY.md",
+    "docs/PILOT_A0_SOURCE_INVENTORY.zh-CN.md",
+    "configs/data/pilot_a0_sources.yaml",
+    "results/pilot-a0-target-grounding-v1/source_inventory.json",
+    "docs/DECISIONS.md",
+    "docs/DECISIONS.zh-CN.md",
+    "docs/PROGRESS.md",
+    "docs/PROGRESS.zh-CN.md",
+    "runs/pilot-a0-target-grounding-v1/REVIEW.md",
+    "runs/pilot-a0-target-grounding-v1/REVIEW.zh-CN.md"
+  ],
+  "validation": [
+    "YAML and JSON parsing",
+    "immutable provenance license native identity grouping rule and reserved split role present",
+    "source claims traceable to official documentation or schemas",
+    "no benchmark text operation labels manual decomposition model output or activation",
+    "bilingual links and semantic synchronization",
+    "changed path allowlist and git diff checks"
+  ],
+  "literature_watch": {
+    "policy": "surface directly relevant new work whenever encountered and run a periodic novelty and differentiation watch",
+    "automation_name": "RQ1 文献差异性追踪",
+    "automation_id": "rq1",
+    "notification_rule": "notify_only_on_materially_relevant_new_work_or_methodological_change"
+  },
+  "out_of_scope_until_separately_authorized": [
+    "implementation of this plan",
+    "benchmark download or source instance inspection",
+    "new manual annotation or task decomposition",
+    "synthetic task implementation",
+    "source code tests or executable adapters",
+    "model or tokenizer selection download or execution",
+    "activation capture MI probing clustering trajectory analysis or transfer",
+    "server execution",
+    "git commit or push"
+  ],
+  "git_behavior": "leave_planning_changes_uncommitted_for_review"
+}

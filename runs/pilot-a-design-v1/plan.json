@@ -1,10 +1,10 @@
 {
   "schema_version": "1.0",
-  "plan_version": 1,
+  "plan_version": 2,
   "action_id": "A-RQ1-PILOT-A-DESIGN-001",
   "task_id": "pilot-a-design-v1",
   "title": "Pilot A controlled task design and local implementation contract",
-  "status": "awaiting_implementation_review",
+  "status": "paused_before_implementation_pending_target_grounding",
   "research_goal_refs": ["G0", "G1", "G2"],
   "objective": "Implement a provisional controlled task language and matched Pilot A datasets for pattern discovery and measurement validation without treating existing task generators as authoritative.",
   "approval": {
@@ -16,14 +16,27 @@
     "model_execution_authorized": false,
     "activation_capture_authorized": false,
     "server_execution_authorized": false,
-    "approved_on": "2026-09-09"
+    "approved_on": "2026-09-09",
+    "design_revision_approved_on": "2026-09-10"
   },
-  "claim_ceiling": "Named frozen model, response regime, and controlled task distribution only; no universal primitive, general reasoning-role, cross-domain, or causal claim.",
+  "supersession": {
+    "implementation_plan_active": false,
+    "superseded_by_task_id": "pilot-a0-target-grounding-v1",
+    "reason": "The controlled task was designed from abstract experimental dimensions without an audited bridge to the intended mainstream reasoning-task population.",
+    "reuse_rule": "These elements may enter a future Pilot A plan only after a named model-first identification failure is documented and a separate restoration plan is reviewed and explicitly approved."
+  },
+  "claim_ceiling": "Calibration-sandbox evidence only unless Pilot A0 establishes a reviewed bridge to the target-task population; no universal primitive, general reasoning-role, cross-domain, or causal claim.",
   "task_language": {
-    "version": "0.1",
+    "version": "0.2",
     "status": "provisional_diagnostic_instrument",
     "types": ["Symbol8", "Boolean"],
-    "candidate_operations": ["transform", "merge", "predicate", "select"],
+    "structural_families": ["unary", "binary", "predicate", "conditional"],
+    "functional_contrasts": {
+      "Symbol8_to_Symbol8": ["shift", "reflect"],
+      "Symbol8xSymbol8_to_Symbol8": ["add_merge", "subtract_merge"],
+      "Symbol8_to_Boolean": ["parity", "upper_half"],
+      "BooleanxSymbol8xSymbol8_to_Symbol8": ["select_if", "select_unless"]
+    },
     "negative_control": "direct_read",
     "completeness_claim": false
   },
@@ -33,13 +46,29 @@
       "control_source": ["externally_supplied", "computed_from_intermediate"]
     },
     "cells": ["C1", "C2", "C3", "C4"],
-    "active_node_levels": [4, 6],
+    "answer_relevant_nodes_per_core_program": 6,
     "answer_values": 8,
-    "instances_per_cell_length_answer": 16,
+    "instances_per_cell_answer": 32,
     "discovery_canonical_instances": 1024,
     "confirmation_canonical_instances": 1024,
     "minimum_direct_read_controls": 512,
     "paired_renderings_per_core_instance": 2
+  },
+  "identifiability": {
+    "primary_label": "functional_subtype_within_structural_signature",
+    "primary_pooled_structural_family_classifier_allowed": false,
+    "paired_subtype_position_distributions_must_match": true,
+    "unary_contrast_must_span_multiple_event_indices": true,
+    "single_position_binary_predicate_conditional_contrasts_allowed": true,
+    "single_position_result_scope": "position_matched_not_position_generalized",
+    "label_must_not_be_determined_by": [
+      "structural_signature",
+      "graph_degree",
+      "event_index",
+      "prompt_region",
+      "output_token",
+      "task_cell"
+    ]
   },
   "model_policy": {
     "excluded_families": ["Qwen"],
@@ -49,30 +78,35 @@
     "exact_tokenizer_revision": "unresolved_full_commit_sha_required_before_execution"
   },
   "response_regimes": {
-    "R1": "aligned_trace",
+    "R1": "six_value_aligned_trace_with_fixed_tokenizer_audited_delimiters",
     "R2": "final_answer_only",
     "primary_measurement_regime": "R1"
   },
   "behavior_gate": {
-    "minimum_trimmed_exact_per_task_cell_length": 0.8,
+    "minimum_full_trace_exact_per_task_cell": 0.8,
+    "report_final_state_accuracy": true,
+    "report_per_event_accuracy": true,
     "maximum_invalid_format_rate": 0.02,
     "all_attempts_in_denominator": true,
-    "failed_cells_may_be_silently_excluded": false,
+    "failed_cells_or_subtypes_may_be_silently_excluded": false,
+    "primary_activation_inclusion": "fully_correct_R1_traces_only",
+    "incorrect_trace_use": "separately_labeled_secondary_diagnostic_only",
     "interpretation": "engineering_progression_rule"
   },
   "first_measurement": {
-    "unit": "residual_stream_vector_at_each_aligned_R1_state_output_event_and_layer",
+    "unit": "residual_stream_vector_at_the_fixed_delimiter_immediately_before_each_R1_state_symbol_at_each_layer",
+    "post_state_position": "sensitivity_only",
     "minimum_alignment_rate": 0.99,
     "head_or_mlp_capture_in_scope": false,
     "intervention_in_scope": false
   },
   "implementation_steps": [
     "freeze_machine_readable_task_specification",
-    "implement_typed_canonical_programs_and_reference_interpreter",
+    "implement_typed_canonical_programs_matched_functional_subtypes_and_reference_interpreter",
     "implement_four_matched_cells_and_direct_read_controls",
     "implement_paired_renderings_without_operation_name_leakage",
     "generate_semantic_disjoint_discovery_confirmation_and_control_pools",
-    "implement_balance_overlap_and_shortcut_audits",
+    "implement_balance_identifiability_overlap_and_shortcut_audits",
     "preserve_existing_calibration_tasks_as_non_authoritative_regression_artifacts",
     "run_no_network_local_validation"
   ],
@@ -100,6 +134,7 @@
     "type graph and degeneracy validation",
     "deterministic replay",
     "exact count and balance invariants",
+    "functional subtype not determined by structural signature graph degree event index prompt region output token or task cell",
     "semantic split disjointness and overlap audits",
     "paired rendering equivalence",
     "operator display name independence",
@@ -120,4 +155,3 @@
   ],
   "git_behavior": "leave_documentation_changes_uncommitted_for_review"
 }
-

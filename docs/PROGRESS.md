@@ -8,10 +8,11 @@
 |---|---|---|---|
 | P0: repository and planning scaffold | Complete and pushed | Research plan and repository history | None |
 | P0b: task formalism and Codex handoff specification | Complete and pushed | `runs/research-specification-v1/REVIEW.md`; revision `901507d` | None |
-| P0c: Pilot A scientific protocol and implementation plan | Documented; implementation awaiting review | `docs/PILOT_A.md`; `runs/pilot-a-design-v1/PLAN.md` | Human implementation review |
+| P0c: candidate Pilot A calibration sandbox | Protocol v0.2 documented; implementation paused | `docs/PILOT_A.md`; `runs/pilot-a-design-v1/PLAN.md` v2 | Pilot A0 grounding |
+| P0d: Pilot A0 native-source and model-first plan | Protocol v0.2 and plan v2 generated; awaiting review | `docs/PILOT_A0.md`; `runs/pilot-a0-target-grounding-v1/PLAN.md` | Resolve source provenance/access choices |
 | P1: task-side calibration dataset | Complete and pushed | `runs/task-modeling-v1/REVIEW.md`; smoke fixture | Research review |
 | P2a: behavioral calibration harness | Complete and pushed | `runs/behavioral-calibration-v1/REVIEW.md`; fake smoke fixture | Research review and working-norm update |
-| P2b: real-model behavioral pilot | Blocked | No model run | Resolve O-001/O-009/O-013 and authorize a named server run |
+| P2b: real-model behavioral pilot | Blocked | No model run | Complete grounded Pilot A design, then resolve model/server requirements |
 | P2c: instrumentation baseline | Not started | None | Behavioral gate plus O-004/O-008 |
 | P3: model-side pattern discovery | Not started | None | Freeze discovery/evaluation protocol |
 | P4: function-versus-structure tests | Not started | None | Pass leakage and confound audit |
@@ -20,13 +21,28 @@
 
 ## Current task
 
-`pilot-a-design-v1` records the accepted pattern-discovery and measurement-
-validation design. It defines a provisional typed task language, four matched
-topology/control cells, negative controls, discovery/confirmation separation,
-behavior and alignment gates, and a staged analysis. Qwen is excluded; a frozen
-Mistral 7B instruct model is the working default, with exact revisions unresolved.
-Existing generators are explicitly non-authoritative. Implementation, model
-downloads, execution, activations, commit, and push remain unauthorized.
+`pilot-a0-target-grounding-v1` now contains protocol v0.2 and plan v2 for a no-
+annotation source inventory and a model-first route: benchmark-faithful native
+inference, activation/transition trajectories, label-free within-task discovery,
+frozen cross-task transfer, and later bounded interpretation. GSM8K, DROP,
+MuSiQue-Ans v1.0, and two BIG-Bench tasks are the accepted initial source
+strata. Exact source revisions, licenses, split reservations, and access remain
+open. Implementation, benchmark inspection/download, code, models, activations,
+servers, commit, and push are unauthorized.
+
+New manual annotation and synthetic task construction are frozen as fallback
+tools only. A recurring app automation named `RQ1 文献差异性追踪` is active and
+will report only materially relevant new research or methodological changes;
+relevant work encountered during ordinary project work must also be surfaced.
+
+`pilot-a-design-v1` records protocol v0.2 and plan v2. Functional subtypes
+are compared only within matched structural signatures; every core program has
+six answer-relevant nodes; and R1 measurement is fixed at the delimiter before
+each predicted state symbol. It retains the four topology/control cells,
+negative controls, discovery/confirmation separation, and staged gates. Qwen is
+excluded. Existing generators are non-authoritative. The task design is now a
+candidate calibration sandbox because its connection to the target population
+was not established. Its implementation plan is paused before code changes.
 
 `research-specification-v1` was implemented, reviewed, committed, and pushed on
 2026-09-09 as revision `901507d`. It formalizes task-side objects, separates

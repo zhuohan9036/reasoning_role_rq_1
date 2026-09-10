@@ -68,6 +68,13 @@ Examples include symbolic function composition and relational path composition.
 A task family is an external research object, not a claim that the model
 represents the same variables or follows the reference solver.
 
+For tasks sampled from an existing benchmark, the project must additionally
+record the target-population definition, benchmark release and native instance
+identity, task origin, sampling stratum, and an explicit distinction between
+historical task construction and this project's later analytical
+reconstruction. A task dimension is not justified solely because it supports a
+clean synthetic generator.
+
 ### Canonical task instance
 
 A canonical instance contains a family and schema version, canonical problem and
@@ -153,14 +160,16 @@ operations or tasks may show differentiation.
 
 ## 5. Research goals and decision criteria
 
-### G0 — Build explicit task-side computational models
+### G0 — Establish auditable task sources and native semantics
 
-Represent instance dependency graphs, deterministic solutions, candidate local
-operations, and nuisance variables for controlled multi-step tasks.
+Record exact task provenance, native identity, inputs, answers, correctness
+semantics, source-provided structural artifacts, and major observable covariates.
+Do not require a new operation vocabulary or manual solution decomposition
+before exploratory model-side discovery.
 
-Success means that task instances are reproducible and auditable, candidate
-labels are explicitly provisional, and task structure can be manipulated
-independently of surface form and key structural confounds.
+Success means that instances, prompts, outputs, and source metadata are
+reproducible and auditable. Any later task-side decomposition remains
+provisional and separately justified.
 
 ### G1 — Establish whether repeatable model-side patterns exist
 
@@ -189,10 +198,11 @@ instances. Report confidence intervals and sensitivity to analysis choices.
 
 ### G4 — Distinguish task-specific from reusable computation
 
-Test whether independently discovered model-side patterns transfer between task
-families that share a hypothesized computation but differ in tokens, semantics,
-and presentation. Include equally structured negative-control pairs that do not
-share the hypothesized function.
+Freeze independently discovered model-side patterns and test whether they
+transfer between task families without being redefined from the target task's
+outcome. Compare against layer, position, lexical, answer-format, difficulty,
+and task-identity explanations. Functional interpretation follows successful
+transfer rather than being required to define it.
 
 ### G5 — Replicate the central finding
 
@@ -202,72 +212,63 @@ the function-versus-step distinction, and the strongest generalization result.
 
 ## 6. Planned evidence structure
 
-### Phase A — Pattern discovery and measurement validation
+### Phase A0 — Native-source inventory without new annotation
 
-The accepted Pilot A protocol is specified in [PILOT_A.md](PILOT_A.md). It uses
-a new provisional typed task language rather than treating the existing
-`function_composition` and `relational_path` generators as the scientific gold
-standard.
+The revised protocol is specified in [PILOT_A0.md](PILOT_A0.md). Freeze exact
+provenance, native correctness semantics, source-provided metadata and
+structures, grouping risks, perturbation affordances, and reserved split roles
+for GSM8K, DROP, MuSiQue-Ans v1.0, and the selected BIG-Bench tasks. Do not create
+operation labels or manually reconstruct solution graphs.
 
-- Cross serial versus fork-join dependency topology with externally supplied
-  versus intermediate-state-computed control.
-- Treat transform, merge, predicate, and select as provisional task-language
-  categories only; include a direct-read negative control.
-- Balance operation placement, answer values, active length, vocabulary,
-  rendering, and other declared nuisance factors.
-- Separate canonical programs from paired renderings and split by semantic
-  identity before rendering.
-- Use disjoint discovery and untouched confirmation instances.
-- Establish behavioral feasibility before activation analysis.
-- Develop alignment and measurement first in an explicit aligned-trace regime;
-  treat final-answer-only measurement as a separate condition.
-- Freeze every pilot-informed pattern or decomposition before confirmation.
+`Symbol8`, the proposed matched function pairs, C1-C4, and new manual annotation
+are inactive fallback instruments rather than prerequisites.
 
-`task-modeling-v1` remains an engineering calibration artifact. Its two task
-families may provide reusable infrastructure or later comparison conditions, but
-their existence does not constrain Pilot A task design or the paper's eventual
-task ontology.
+### Phase A1 — Native behavioral feasibility
 
-### Phase B — Behavioral and instrumentation baseline
+- Select a frozen mechanistically accessible model and benchmark-faithful free-
+  form response regime.
+- Establish behavior by source task and native covariates before activation
+  analysis.
+- Keep all attempts in behavioral denominators and distinguish correct from
+  incorrect inference trajectories.
+- Do not define the target population by which tasks the selected model solves.
 
-- Select frozen, mechanistically accessible primary and replication models.
-- Establish accuracy by task, length, template, and nuisance factor.
-- Define which correct examples enter mechanistic analyses before inspecting
-  functional results.
-- Implement reproducible trace capture with explicit token alignment and model,
-  tokenizer, prompt, and software versions.
+### Phase B — Activation-trajectory instrumentation
 
-### Phase C — Model-side pattern discovery
+- Capture reproducible token-by-layer residual states and declared residual
+  updates during native inference.
+- Treat generated reasoning as behavior and possible alignment evidence, not as
+  latent-computation ground truth.
+- Freeze measurement units, storage policy, alignment, and quality controls
+  before confirmatory use.
 
-- Pre-register the unit of analysis and candidate measurements before primary
-  confirmatory runs.
-- Discover patterns on a training partition without task-operation labels where
-  possible, or clearly separate supervised correspondence tests from discovery.
-- Evaluate out-of-sample cluster/pattern stability and compare against shuffled,
-  layer-only, position-only, and step-only baselines.
+### Phase C — Label-free within-task pattern discovery
 
-The representation, fingerprint, dimensionality reduction, and clustering
-method remain open until the instrumentation pilot establishes what can be
-measured reliably.
+- Discover activation or transition patterns without task-operation labels.
+- Test held-out within-task recurrence across instances and valid surface
+  variation.
+- Compare against shuffled, layer-only, position-only, lexical, answer,
+  difficulty, output-length, correctness, and task-identity baselines.
+- Use MI only as one estimator-sensitive information diagnostic, triangulated
+  with held-out prediction, trajectory, similarity, and permutation analyses.
 
-### Phase D — Functional correspondence and confound tests
+### Phase D — Frozen cross-task reuse and functional interpretation
 
-- Test association with candidate task operations only after model-side
-  structure has been defined.
-- Use balanced matched cells and held-out-axis cross-classification.
-- Compare incremental explanatory value of candidate function over structural
-  covariates, with uncertainty and multiple-comparison control.
-- Include prompt and label permutations plus non-reasoning controls where
-  feasible.
+- Freeze pattern definitions before applying them to a held-out task.
+- Report A-to-B and B-to-A transfer separately without target-task redefinition.
+- Use native metadata, source-preserving and answer-changing perturbations, and
+  correct/incorrect comparisons to interpret successful transfer.
+- Retain neutral `candidate computation pattern` language when semantic function
+  remains uncertain.
 
-### Phase E — Stability, transfer, and replication
+### Phase E — Replication and causal boundary
 
-- Measure stability across task instances and controlled surface changes.
-- Evaluate within-task and cross-task generalization separately.
-- Test whether functional similarity survives changes in physical component
-  identity.
-- Replicate only the central structural, confound-control, and transfer results
-  on the second model.
+- Replicate the smallest decisive within-task and cross-task findings on a
+  second frozen model.
+- Introduce targeted annotation or synthetic calibration only after a named
+  identification failure and a separate plan.
+- Treat patching, ablation, and stronger causal claims as separately designed
+  evidence beyond observational pattern recurrence.
 
 ## 7. Baselines and null models
 
@@ -278,8 +279,8 @@ At minimum, primary analyses should compare against:
 - reasoning-step/chain-depth-only prediction;
 - task-family and prompt-template prediction;
 - difficulty and correctness controls;
-- randomly permuted candidate-operation labels within appropriate matched
-  strata;
+- randomly permuted discovered-pattern assignments or evaluation variables
+  within appropriate matched strata;
 - randomly initialized, resampled, or dimension-matched representations where
   appropriate to the selected metric;
 - model-side patterns learned on one partition and scored on a strictly held-out
@@ -308,19 +309,28 @@ stronger term. Null and task-specific findings are first-class outcomes.
 
 ## 9. Major open decisions before model experiments
 
-Pilot A resolves the initial task design, response-regime ordering, first
-residual-stream measurement, provisional behavioral gate, and dataset size. The
-remaining decisions are:
+Pilot A0 must first freeze source provenance and access. The remaining decisions
+are:
 
-1. Exact immutable Mistral model and tokenizer revisions; Qwen is excluded.
-2. Whether a comparable Llama checkpoint is an alternative pilot or later
-   replication model.
-3. Tokenizer-compatible single-token `Symbol8` rendering symbols.
-4. Exact readout regularization, score, uncertainty estimator, clustering
-   method, stability metric, and multiplicity policy.
-5. R2 final-answer-only measurement unit and alignment rule.
-6. Server GPU, software, storage, scheduler, and artifact paths.
-7. Which post-pilot semantic domain provides the first true replication.
+1. Exact repositories, immutable revisions or checksums, licenses, eligible
+   splits, and return-test reservations for the accepted source strata.
+2. Whether the source inventory may inspect schemas and aggregate metadata only
+   or a small declared set of instances.
+3. First native task or task pair for behavioral feasibility.
+4. Exact immutable primary model and tokenizer revisions; Qwen is excluded.
+5. Native prompt regime, decoding, behavioral gate, and correctness parsing.
+6. Activation measurement unit, capture scope, alignment, and storage budget.
+7. Pattern-discovery, MI/predictive, trajectory, uncertainty, multiplicity, and
+   transfer methods.
+8. Perturbation families and the boundary of later intervention evidence.
+
+## 10. Literature watch and differentiation policy
+
+Whenever directly relevant new work is encountered, record or report its
+primary source, date, central result, overlap with this project, methodological
+difference, and concrete implication for novelty or design. A periodic watch
+supplements this continuous obligation and should notify only on materially
+relevant developments, not on routine search noise.
 
 These decisions must be resolved in `DECISIONS.md` before they constrain code or
 primary experiments.

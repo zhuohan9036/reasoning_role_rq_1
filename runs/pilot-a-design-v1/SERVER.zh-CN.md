@@ -2,7 +2,9 @@
 
 > English: [SERVER.md](SERVER.md)
 
-**状态：** 未解决；未授权下载、模型、activation 或服务器执行
+**状态：** 非活动；任务方案在实施前暂停
+
+除非未来 grounded Pilot A 方案明确恢复相关要求，否则不应进行服务器准备。
 
 ## 本地任务实施不需要的条件
 
@@ -17,7 +19,7 @@ shortcut check 和本地 fixture 不需要 GPU、模型权重或网络访问。
 - Scheduler 或 launcher、wall-time、RAM 和存储限制。
 - Model cache 与 generated-data path。
 - 网络访问，或经过验证的预置本地权重。
-- 经验证为 single-token 的 `Symbol8` rendering bank。
+- 经验证为 single-token 的 `Symbol8` rendering 与 alignment-delimiter bank。
 - 冻结的 behavior configuration 与 dataset manifest hash。
 
 ## 模型政策
@@ -37,4 +39,3 @@ shortcut check 和本地 fixture 不需要 GPU、模型权重或网络访问。
 
 每个 run 都必须有自己的准确 command、resource estimate、stopping condition、output
 policy 和授权。大型输出保持在 Git 之外。
-

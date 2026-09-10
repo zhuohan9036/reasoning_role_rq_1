@@ -192,6 +192,54 @@ definitions are frozen before untouched confirmation. Final-answer-only
 measurement, head/MLP capture, interventions, and semantic-domain replication
 require later bounded plans.
 
+### D-024 — Functional contrasts must match structural signatures
+
+**Status:** accepted; supersedes the coarse-label detail in D-020
+**Decision:** Transform, merge, predicate, and select are structural task-language
+families, not the primary functional labels. Pilot A compares functional
+subtypes only within identical input/output signatures: `shift/reflect`,
+`add_merge/subtract_merge`, `parity/upper_half`, and
+`select_if/select_unless`. Core programs have six answer-relevant nodes. R1
+measures the residual stream at the fixed delimiter immediately before each
+state symbol. Functional-subtype labels must pass a pre-model identifiability
+audit against graph and position metadata.
+
+### D-025 — Target-task grounding precedes the scientific Pilot A task
+
+**Status:** accepted; supersedes the implementation-ready implication of
+D-019 through D-024, while retaining their calibration and control principles
+**Decision:** The paper's intended destination is current mainstream textual
+multi-step reasoning. Before selecting the scientific Pilot A task, the project
+must freeze a target-task population, reconstruct a provenance-backed source
+sample independently of model activations, derive candidate motifs from that
+audit, and require an abstraction map plus return-to-source test for every
+benchmark-derived microtask. `Symbol8`, its proposed function pairs, and C1-C4
+are relegated to candidate calibration-sandbox status unless Pilot A0 grounds
+them. The `pilot-a-design-v1` implementation plan is paused before code changes.
+
+### D-026 — Discovery starts from native inference and model-side patterns
+
+**Status:** accepted; supersedes the annotation-first and controlled-task-first
+method implied by D-023 through D-025
+**Decision:** The primary route begins with successful, benchmark-faithful native
+inference on the accepted source strata. It captures model-side activation and
+transition trajectories, discovers recurring within-task patterns without
+task-operation labels, freezes those patterns, and tests cross-task transfer
+before assigning a functional interpretation. Generated reasoning is behavior,
+not latent ground truth. Mutual information is an auxiliary association
+diagnostic, not an operation detector or causal test. New manual annotation and
+synthetic task construction are deferred fallback tools that require a named
+identification failure, a new bounded plan, and explicit approval.
+
+### D-027 — Maintain an active literature-differentiation watch
+
+**Status:** accepted
+**Decision:** Whenever directly relevant research is encountered, report its
+primary source, date, core result, overlap with this project, methodological
+difference, and implication for novelty or design. A recurring literature watch
+supplements this continuous rule and notifies only on materially relevant new
+work or methodological change.
+
 ## Working hypotheses
 
 These guide experimental design but are not assumed true.
@@ -218,12 +266,15 @@ shifts across components, inputs, or architectures.
 | ID | Decision needed | Required before |
 |---|---|---|
 | O-001 | Exact Mistral model/tokenizer revisions and later replication model | Any real-model run |
-| O-003 | Post-Pilot-A task population and semantic-domain replication | Broader-than-pilot claims |
+| O-003 | Exact repositories, immutable revisions/checksums, licenses, eligible splits, and return-test reservations for accepted source strata | Any source inventory implementation |
 | O-005 | Exact readout, discovery, and stability methods | Model-side analysis implementation |
 | O-006 | R2 final-answer-only measurement unit and alignment | R2 activation capture |
 | O-007 | Uncertainty estimator and multiplicity policy | Confirmation analysis |
 | O-009 | Server GPU, CUDA, storage, scheduler, and environment | Any server run |
-| O-013 | Tokenizer-compatible single-token `Symbol8` rendering bank | Real-model pilot run |
+| O-013 | Tokenizer-compatible single-token `Symbol8` rendering and delimiter bank, only if retained | Any real-model run using v0.2 elements |
+| O-014 | Source access mode and whether inventory may inspect schemas only or a small declared instance set | Pilot A0 implementation |
+| O-015 | First native task/task pair, benchmark-faithful prompt, decoding, and behavioral gate | Native behavioral pilot plan |
+| O-016 | Activation unit, capture scope, alignment, storage, MI/predictive, trajectory, and transfer methods | Model-side instrumentation and analysis plans |
 
 ## Decision-change policy
 

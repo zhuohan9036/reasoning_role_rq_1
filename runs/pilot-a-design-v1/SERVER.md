@@ -2,7 +2,10 @@
 
 > 中文版：[SERVER.zh-CN.md](SERVER.zh-CN.md)
 
-**Status:** unresolved; no download, model, activation, or server execution authorized
+**Status:** inactive; task plan paused before implementation
+
+No server preparation should proceed unless a future grounded Pilot A plan
+explicitly restores relevant requirements.
 
 ## Not required for local task implementation
 
@@ -18,7 +21,7 @@ network access.
 - Scheduler or launcher, wall-time, RAM, and storage limits.
 - Model cache and generated-data paths.
 - Internet access or verified pre-staged local weights.
-- Verified single-token `Symbol8` rendering bank.
+- Verified single-token `Symbol8` rendering and alignment-delimiter bank.
 - Frozen behavior configuration and dataset manifest hashes.
 
 ## Model policy
@@ -40,4 +43,3 @@ network access.
 
 Every run requires its own exact command, resource estimate, stopping condition,
 output policy, and authorization. Large outputs remain outside Git.
-

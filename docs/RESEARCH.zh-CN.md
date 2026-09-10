@@ -58,6 +58,11 @@
 Symbolic function composition 和 relational path composition 是其中的例子。Task
 family 是外部研究对象，不表示模型使用相同变量或遵循 reference solver。
 
+对于从现有 benchmark 抽样的任务，项目还必须记录 target-population definition、benchmark
+release 与 native instance identity、task origin、sampling stratum，并显式区分任务的历史
+构造方式与本项目之后做出的 analytical reconstruction。不能只因为某个 task dimension 便于
+生成干净的 synthetic design 就认为它已经得到论证。
+
 ### Canonical task instance
 
 一个 canonical instance 包含 family 和 schema version、canonical problem 与 query、
@@ -128,13 +133,14 @@ baseline 相比，它们能更好地泛化到未见过的 surface form、instanc
 
 ## 5. 研究目标与判断标准
 
-### G0——建立明确的任务侧计算模型
+### G0——建立可审计任务来源与原生 semantics
 
-为受控多步推理任务表示 instance dependency graph、deterministic solution、candidate
-local operation 和 nuisance variable。
+记录准确 task provenance、native identity、input、answer、correctness semantics、source
+自带 structural artifact 与主要 observable covariate。在 exploratory model-side discovery
+前，不要求新增 operation vocabulary 或人工 solution decomposition。
 
-成功意味着任务实例可复现、可审计；候选标签明确标为临时标签；任务结构可以独立于
-surface form 和关键结构性混淆因素进行操纵。
+成功意味着 instance、prompt、output 与 source metadata 可复现、可审计。任何后续 task-
+side decomposition 继续是需要单独论证的临时对象。
 
 ### G1——确定是否存在可重复的模型侧模式
 
@@ -160,9 +166,10 @@ seed、适用时的 sampling condition，以及 model instance 上的稳定性�
 
 ### G4——区分任务特有计算与可复用计算
 
-检验独立发现的模型侧模式能否在 task family 间迁移：这些任务族具有假设共享的
-computation，但 token、semantics 和 presentation 不同。同时加入结构同样匹配、但
-不共享假设功能的 negative-control pair。
+冻结独立发现的 model-side pattern，并检验它们能否在不根据 target-task outcome 重新定义
+的情况下迁移到其他 task family。与 layer、position、lexical、answer-format、difficulty
+与 task-identity explanation 比较。Functional interpretation 跟随成功 transfer，而不是
+成为定义它的先决条件。
 
 ### G5——复现核心发现
 
@@ -171,63 +178,55 @@ computation，但 token、semantics 和 presentation 不同。同时加入结构
 
 ## 6. 计划中的证据结构
 
-### 阶段 A——模式发现与测量验证
+### 阶段 A0——不新增 annotation 的 native-source inventory
 
-已接受的 Pilot A 协议见 [PILOT_A.zh-CN.md](PILOT_A.zh-CN.md)。它使用新的临时 typed
-task language，不把现有 `function_composition` 和 `relational_path` generator 当作科学
-gold standard。
+修订协议见 [PILOT_A0.zh-CN.md](PILOT_A0.zh-CN.md)。为 GSM8K、DROP、MuSiQue-Ans v1.0
+与选定 BIG-Bench task 冻结准确 provenance、native correctness semantics、source 自带
+metadata/structure、grouping risk、perturbation affordance 与 reserved split role。不得创建
+operation label 或人工 reconstruction solution graph。
 
-- 交叉 serial/fork-join dependency topology 与 externally supplied/intermediate-state-
-  computed control。
-- Transform、merge、predicate 和 select 只是临时 task-language category；加入
-  direct-read negative control。
-- 平衡 operation placement、answer value、active length、vocabulary、rendering 和其他
-  已声明 nuisance factor。
-- 分离 canonical program 与 paired rendering，并在 rendering 前按 semantic identity
-  切分。
-- 使用相互独立的 discovery 与 untouched confirmation instance。
-- Activation analysis 前先建立 behavioral feasibility。
-- 首先在显式 aligned-trace regime 中开发 alignment 与 measurement；final-answer-only
-  measurement 是单独条件。
-- 每个 pilot 启发的 pattern 或 decomposition 都必须在 confirmation 前冻结。
+`Symbol8`、拟议 matched function pair、C1–C4 与新 manual annotation 都是非活动 fallback
+instrument，不是先决条件。
 
-`task-modeling-v1` 继续作为工程校准 artifact。它的两个 task family 可以提供可复用
-基础设施或后续 comparison condition，但其存在不约束 Pilot A 的任务设计或论文最终
-task ontology。
+### 阶段 A1——Native behavioral feasibility
 
-### 阶段 B——行为与 instrumentation baseline
+- 选择一个冻结、可进行机制访问的模型和 benchmark-faithful free-form response regime。
+- 在 activation analysis 前，按 source task 与 native covariate 确立 behavior。
+- 所有 attempt 都保留在 behavioral denominator 中，并区分 correct 与 incorrect inference
+  trajectory。
+- 不能用所选模型能够解决哪些任务来定义 target population。
 
-- 选择冻结、可进行机制访问的主模型和复现模型。
-- 按 task、length、template 和 nuisance factor 确立 accuracy。
-- 在查看功能性结果之前，定义哪些正确样例可以进入 mechanistic analysis。
-- 实现可复现的 trace capture，明确 token alignment，并记录 model、tokenizer、prompt
-  和 software version。
+### 阶段 B——Activation-trajectory instrumentation
 
-### 阶段 C——模型侧模式发现
+- 在 native inference 中可复现地捕获 token-by-layer residual state 与声明的 residual update。
+- 把 generated reasoning 当作 behavior 与可能的 alignment evidence，而不是 latent-
+  computation ground truth。
+- 在 confirmatory use 前冻结 measurement unit、storage policy、alignment 与 quality control。
 
-- 在主要 confirmatory run 之前预注册分析单位和候选 measurement。
-- 尽可能不使用 task-operation label，在训练分区上发现模式；否则必须明确区分
-  supervised correspondence test 与 discovery。
-- 评估样本外 cluster/pattern stability，并与 shuffled、layer-only、position-only 和
-  step-only baseline 比较。
+### 阶段 C——Label-free within-task pattern discovery
 
-在 instrumentation pilot 确认哪些量可以被可靠测量之前，representation、
-fingerprint、dimensionality reduction 和 clustering method 保持开放。
+- 在不使用 task-operation label 的情况下发现 activation/transition pattern。
+- 跨 instance 与有效 surface variation 检验 held-out within-task recurrence。
+- 与 shuffled、layer-only、position-only、lexical、answer、difficulty、output-length、
+  correctness 与 task-identity baseline 比较。
+- MI 只作为 estimator-sensitive information diagnostic，并与 held-out prediction、trajectory、
+  similarity 与 permutation analysis 共同使用。
 
-### 阶段 D——功能对应与混淆检验
+### 阶段 D——冻结的 cross-task reuse 与 functional interpretation
 
-- 只有在模型侧结构定义完成后，才检验其与 candidate task operation 的关联。
-- 使用平衡 matched cell 和 held-out-axis cross-classification。
-- 在报告不确定性并控制 multiple comparison 的前提下，比较 candidate function 相对
-  structural covariate 的增量解释力。
-- 在可行时加入 prompt permutation、label permutation 和 non-reasoning control。
+- 在应用于 held-out task 前冻结 pattern definition。
+- 分开报告 A-to-B 与 B-to-A transfer，不根据 target task 重新定义。
+- 使用 native metadata、source-preserving/answer-changing perturbation 与 correct/incorrect
+  comparison 解释成功 transfer。
+- Semantic function 仍不确定时，继续使用中性的 `candidate computation pattern`。
 
-### 阶段 E——稳定性、迁移与复现
+### 阶段 E——复现与因果边界
 
-- 衡量跨 task instance 和受控 surface change 的稳定性。
-- 分开评估 within-task 和 cross-task generalization。
-- 检验 physical component identity 改变后 functional similarity 是否仍然存在。
-- 在第二个模型上只复现核心结构性结果、混淆控制结果和迁移结果。
+- 在第二个冻结模型上复现最小但决定性的 within-task 与 cross-task finding。
+- 只有出现具名 identification failure 并获得单独方案后，才引入 targeted annotation 或
+  synthetic calibration。
+- 将 patching、ablation 与更强 causal claim 视为超出 observational pattern recurrence 的
+  单独设计证据。
 
 ## 7. Baseline 与 null model
 
@@ -238,7 +237,7 @@ fingerprint、dimensionality reduction 和 clustering method 保持开放。
 - 仅使用 reasoning step/chain depth 的预测；
 - task family 和 prompt template 预测；
 - difficulty 和 correctness control；
-- 在合适 matched strata 内随机置换 candidate-operation label；
+- 在合适 matched strata 内随机置换 discovered-pattern assignment 或 evaluation variable；
 - 与所选 metric 相适配的 randomly initialized、resampled 或 dimension-matched
   representation；
 - 在一个 partition 上学习、在严格 held-out partition 上评分的模型侧模式。
@@ -265,16 +264,23 @@ finding 和 task-specific finding 都是一等结果。
 
 ## 9. 模型实验前的主要待定决策
 
-Pilot A 已解决初始任务设计、response-regime 顺序、第一项 residual-stream measurement、
-临时 behavioral gate 和数据量。剩余决定为：
+Pilot A0 必须先冻结 source provenance 与 access。剩余决定为：
 
-1. Mistral model/tokenizer 的 immutable exact revision；Qwen 已排除。
-2. 相近规模的 Llama checkpoint 用作 alternative pilot 还是后续 replication model。
-3. 与 tokenizer 兼容的 single-token `Symbol8` rendering symbol。
-4. 准确 readout regularization、score、uncertainty estimator、clustering method、
-   stability metric 和 multiplicity policy。
-5. R2 final-answer-only 的 measurement unit 与 alignment rule。
-6. 服务器 GPU、software、storage、scheduler 和 artifact path。
-7. 哪一个 post-pilot semantic domain 用作第一次真正 replication。
+1. 已接受 source stratum 的准确 repository、immutable revision/checksum、license、eligible
+   split 与 return-test reservation。
+2. Source inventory 只能检查 schema/aggregate metadata，还是也可检查一小批明确声明的
+   instance。
+3. Behavioral feasibility 的第一个 native task 或 task pair。
+4. Primary model/tokenizer 的 immutable exact revision；Qwen 已排除。
+5. Native prompt regime、decoding、behavioral gate 与 correctness parsing。
+6. Activation measurement unit、capture scope、alignment 与 storage budget。
+7. Pattern-discovery、MI/predictive、trajectory、uncertainty、multiplicity 与 transfer method。
+8. Perturbation family 与后续 intervention evidence 的边界。
 
 这些决定在约束代码或主要实验前，必须在 `DECISIONS.md` 中解决。
+
+## 10. 文献追踪与差异性规则
+
+无论何时遇到直接相关的新工作，都应记录或报告其 primary source、日期、核心结果、与本项目
+的重合、方法差异，以及对 novelty 或设计的具体影响。定期追踪补充这一持续义务，并且只在
+出现实质相关进展时通知，不用常规搜索噪声打扰项目。

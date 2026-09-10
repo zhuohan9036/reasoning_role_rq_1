@@ -166,6 +166,46 @@ event 的 residual stream。Pattern definition 必须在 untouched confirmation 
 Final-answer-only measurement、head/MLP capture、intervention 和 semantic-domain
 replication 需要后续有边界的独立方案。
 
+### D-024——Functional contrast 必须匹配 structural signature
+
+**状态：** 已接受；取代 D-020 中的粗粒度 label 细节
+**决策：** Transform、merge、predicate 和 select 是 structural task-language family，
+不是主要 functional label。Pilot A 只在相同 input/output signature 内比较 functional
+subtype：`shift/reflect`、`add_merge/subtract_merge`、`parity/upper_half` 和
+`select_if/select_unless`。核心 program 固定包含六个 answer-relevant node。R1 测量每个
+state symbol 之前固定 delimiter 位置的 residual stream。Functional-subtype label 必须在
+模型运行前通过针对 graph 与 position metadata 的 identifiability audit。
+
+### D-025——科学 Pilot A 任务前必须进行 target-task grounding
+
+**状态：** 已接受；取代 D-019 至 D-024 所隐含的“可直接实施”状态，但保留其中的 calibration
+与 control 原则
+**决策：** 论文的预期去处是当前主流 textual multi-step reasoning。在选择科学 Pilot A
+任务前，项目必须冻结 target-task population，在独立于模型 activation 的条件下 reconstruction
+具有 provenance 的 source sample，从 audit 中归纳 candidate motif，并要求每个 benchmark-
+derived microtask 具有 abstraction map 与 return-to-source test。除非 Pilot A0 为其建立
+grounding，`Symbol8`、拟议 function pair 与 C1–C4 降级为候选 calibration sandbox。
+`pilot-a-design-v1` 实施方案在代码修改前暂停。
+
+### D-026——Discovery 从 native inference 与 model-side pattern 开始
+
+**状态：** 已接受；取代 D-023 至 D-025 所隐含的 annotation-first 与 controlled-task-first
+方法
+**决策：** 主要路线从已接受 source stratum 上成功、benchmark-faithful 的 native inference
+开始。它捕获 model-side activation/transition trajectory，在不使用 task-operation label 的
+情况下发现 within-task recurring pattern，冻结 pattern，并在赋予 functional interpretation
+前检验 cross-task transfer。Generated reasoning 是 behavior，不是 latent ground truth。Mutual
+information 是辅助 association diagnostic，不是 operation detector 或 causal test。新的 manual
+annotation 与 synthetic task construction 延后为 fallback tool；只有出现具名 identification
+failure、生成新的有边界方案并获得明确授权后才可使用。
+
+### D-027——持续进行文献差异性追踪
+
+**状态：** 已接受
+**决策：** 无论何时遇到直接相关的新研究，都报告 primary source、日期、核心结果、与本项目
+的重合、方法差异，以及对 novelty 或设计的影响。Recurring literature watch 补充这项持续
+规则，并且只在出现实质相关新工作或方法变化时通知。
+
 ## 工作假设
 
 这些假设用于指导实验设计，但尚未被当作事实。
@@ -190,12 +230,15 @@ cross-task correspondence。迁移也可能只存在一部分，或者完全不�
 | ID | 需要决定的事项 | 最晚必须解决的阶段 |
 |---|---|---|
 | O-001 | Mistral model/tokenizer exact revision 与后续 replication model | 任何真实模型 run 前 |
-| O-003 | Pilot A 后的 task population 与 semantic-domain replication | 超出 pilot 的结论前 |
+| O-003 | 已接受 source stratum 的准确 repository、immutable revision/checksum、license、eligible split 与 return-test reservation | 任何 source inventory 实施前 |
 | O-005 | 准确 readout、discovery 与 stability method | 模型侧分析实施前 |
 | O-006 | R2 final-answer-only measurement unit 与 alignment | R2 activation capture 前 |
 | O-007 | uncertainty estimator 与 multiplicity policy | confirmation analysis 前 |
 | O-009 | 服务器 GPU、CUDA、存储、scheduler 和环境 | 任何服务器运行前 |
-| O-013 | tokenizer-compatible single-token `Symbol8` rendering bank | 真实模型 pilot 前 |
+| O-013 | tokenizer-compatible single-token `Symbol8` rendering 与 delimiter bank，仅当相关元素被保留 | 任何使用 v0.2 元素的真实模型 run 前 |
+| O-014 | Source access mode，以及 inventory 只检查 schema 还是也检查一小批明确声明的 instance | Pilot A0 实施前 |
+| O-015 | 第一个 native task/task pair、benchmark-faithful prompt、decoding 与 behavioral gate | Native behavioral pilot 方案前 |
+| O-016 | Activation unit、capture scope、alignment、storage、MI/predictive、trajectory 与 transfer method | Model-side instrumentation 与 analysis 方案前 |
 
 ## 决策变更规则
 

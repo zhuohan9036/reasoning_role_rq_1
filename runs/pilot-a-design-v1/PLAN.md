@@ -2,15 +2,19 @@
 
 > 中文版：[PLAN.zh-CN.md](PLAN.zh-CN.md)
 
-**Status:** awaiting human implementation review
-**Plan version:** 1
-**Scientific protocol:** `docs/PILOT_A.md`, version 0.1
+**Status:** paused before implementation; not eligible for implementation approval
+**Plan version:** 2
+**Scientific protocol:** `docs/PILOT_A.md`, version 0.2
 **Code changes authorized:** no
 **Model or server execution authorized:** no
 
 ## 1. Objective
 
-Implement the accepted Pilot A task instrument independently of the existing
+> This plan is retained as planning history. Pilot A0 must establish target-task
+> grounding before any element can return in a scientific Pilot A plan. Do not
+> implement this plan. See `runs/pilot-a0-target-grounding-v1/PLAN.md`.
+
+Implement the then-proposed Pilot A task instrument independently of the existing
 calibration task choices. The implementation must produce deterministic typed
 programs, four matched structural cells, direct-read controls, paired renderings,
 semantic-disjoint discovery and confirmation splits, shortcut audits, and a
@@ -21,9 +25,9 @@ compact local fixture. It must not load or run a language model.
 Create a versioned Pilot A configuration that fixes:
 
 - `Symbol8` and `Boolean` encodings at the canonical level;
-- exact transform, merge, predicate, and select semantics;
+- structural signatures, matched functional subtypes, and their exact semantics;
 - parameter sets and rejection rules for degenerate programs;
-- C1-C4 graph templates and allowed active-node lengths;
+- exact six-node C1-C4 graph templates;
 - balancing axes and target counts;
 - direct-read control construction;
 - rendering families and operator-name randomization;
@@ -54,8 +58,9 @@ Generate C1-C4 from explicit graph templates:
 - C3: serial dependencies with an intermediate-state predicate;
 - C4: fork-join dependencies with an intermediate-state predicate.
 
-Within each valid contrast, match node count, operation multiset where logically
-possible, answer frequencies, parameter frequencies, operation placement,
+Within each valid contrast, match node count, structural-signature multiset where
+logically possible, functional-subtype frequencies, answer frequencies,
+parameter frequencies, operation placement,
 prompt budget, and rendering count. Record every residual mismatch as a factor
 rather than asserting perfect matching.
 
@@ -76,19 +81,22 @@ task-side category names. Renderers preserve canonical identity and target, and
 record exact template, vocabulary, order, and name-map provenance.
 
 Aligned-trace and final-answer prompts are represented as separate render modes.
-No activation alignment is implemented in this task.
+R1 must render exactly six state values in fixed delimiter slots and expose a
+machine-readable mapping from every event to the delimiter immediately before
+its value. No activation capture is implemented in this task.
 
 ## 6. Step 5: create leakage-resistant datasets
 
 Generate:
 
-- 1,024 discovery canonical instances;
-- 1,024 semantically disjoint confirmation instances;
+- 1,024 discovery canonical instances: 32 per `cell x final answer`;
+- 1,024 semantically disjoint confirmation instances with the same balance;
 - at least 512 direct-read control instances;
 - two paired renderings per core instance.
 
-Balance C1-C4, active lengths 4/6, and all eight final answers according to the
-protocol. Split on semantic identity before rendering. Audit canonical, prompt,
+Every core program has exactly six answer-relevant nodes. Balance C1-C4 and all
+eight final answers according to the protocol. Program-length generalization is
+deferred. Split on semantic identity before rendering. Audit canonical, prompt,
 parameter, and graph-template overlap separately.
 
 ## 7. Step 6: implement shortcut and balance audits
@@ -98,6 +106,14 @@ last displayed rule/value, operator-name cues, prompt length, and task-cell
 metadata. These are dataset audits, not model-side analyses. The dataset report
 must show counts and target distributions for every declared stratum and list
 all residual imbalances.
+
+Add an identifiability audit for each functional contrast. It must reject any
+comparison whose label is deterministically recoverable from structural
+signature, graph degree, event index, prompt region, output token, or task cell.
+The two subtypes in each contrast must have identical position distributions and
+co-occur at every analyzed position. The unary contrast must span at least two
+positions. Single-position binary, predicate, and conditional contrasts are
+allowed but cannot support position-generalization claims.
 
 ## 8. Step 7: preserve old calibration artifacts without privileging them
 
@@ -115,6 +131,7 @@ Run no-network Python 3.11 checks for:
 - type, graph, and degeneracy validation;
 - deterministic replay under fixed seeds;
 - exact count and balance invariants;
+- functional-subtype identifiability invariants;
 - semantic-disjoint splits and overlap audits;
 - paired-rendering equivalence;
 - operator-name independence;
@@ -130,7 +147,7 @@ approval and review. The full pilot dataset remains generated output.
 
 | Path | Action | Purpose |
 |---|---|---|
-| `src/reasoning_role/tasks/pilot_a_program.py` | create | typed programs, interpreter, graph templates |
+| `src/reasoning_role/tasks/pilot_a_program.py` | create | typed programs, matched subtypes, interpreter, six-node graph templates |
 | `src/reasoning_role/tasks/pilot_a_controls.py` | create | direct-read and audit controls |
 | `src/reasoning_role/tasks/schema.py` | modify if required | typed event and graph metadata |
 | `src/reasoning_role/tasks/registry.py` | modify | register the new task instrument |
@@ -139,7 +156,7 @@ approval and review. The full pilot dataset remains generated output.
 | `configs/data/pilot_a_v1.yaml` | create | frozen local generation contract |
 | `scripts/generate_pilot_a.py` | create if the generic CLI is insufficient | checkout-local entry point |
 | `tests/tasks/test_pilot_a_program.py` | create | semantics, typing, graph, degeneracy tests |
-| `tests/data/test_pilot_a_generation.py` | create | determinism, balance, split, rendering, shortcut tests |
+| `tests/data/test_pilot_a_generation.py` | create | determinism, balance, identifiability, split, rendering, shortcut tests |
 | `tests/fixtures/pilot_a_smoke/` | create | compact deterministic engineering fixture |
 | `docs/DATA.md` and counterpart | modify | schema, split, and interpretation boundaries |
 | `docs/EVALUATION.md` and counterpart | modify | behavior gates and response regimes |
@@ -169,12 +186,11 @@ remain separate future actions:
   multiplicity policy for model-side analysis.
 - R2 measurement unit and alignment rule.
 
-None of these blocks local canonical-task implementation.
+These choices are inactive while this plan is paused. Target grounding now
+blocks any local canonical-task implementation under this task ID.
 
 ## 13. Approval gate
 
-Human review should confirm the task semantics, four-cell contrast logic, counts,
-control construction, and file scope. Only an explicit implementation approval
-authorizes source, test, configuration, or fixture changes. Commit, push, model,
-and server actions remain separately unauthorized.
-
+This review gate is superseded by `pilot-a0-target-grounding-v1`. This plan is not
+eligible for implementation approval. A future Pilot A plan may reuse only
+elements that receive source-based grounding and explicit renewed approval.

@@ -8,10 +8,11 @@
 |---|---|---|---|
 | P0：仓库与规划框架 | 已完成并推送 | 研究方案与仓库历史 | 无 |
 | P0b：任务 formalism 与 Codex 交接规格 | 已完成并推送 | `runs/research-specification-v1/REVIEW.md`；revision `901507d` | 无 |
-| P0c：Pilot A 科学协议与实施方案 | 已写入文档；实施等待审核 | `docs/PILOT_A.zh-CN.md`；`runs/pilot-a-design-v1/PLAN.zh-CN.md` | 人类实施审核 |
+| P0c：候选 Pilot A calibration sandbox | 协议 v0.2 已写入；实施暂停 | `docs/PILOT_A.zh-CN.md`；`runs/pilot-a-design-v1/PLAN.zh-CN.md` v2 | Pilot A0 grounding |
+| P0d：Pilot A0 native-source 与 model-first 方案 | 协议 v0.2、方案 v2 已生成；等待审核 | `docs/PILOT_A0.zh-CN.md`；`runs/pilot-a0-target-grounding-v1/PLAN.zh-CN.md` | 解决 source provenance/access 选择 |
 | P1：任务侧校准数据集 | 已完成并推送 | `runs/task-modeling-v1/REVIEW.md`；smoke fixture | 研究审核 |
 | P2a：行为校准框架 | 已完成并推送 | `runs/behavioral-calibration-v1/REVIEW.md`；fake smoke fixture | 研究审核与工作规范更新 |
-| P2b：真实模型行为 pilot | 阻塞 | 尚无模型运行 | 解决 O-001/O-009/O-013，并授权具名服务器 run |
+| P2b：真实模型行为 pilot | 阻塞 | 尚无模型运行 | 完成 grounded Pilot A 设计，再解决模型/服务器要求 |
 | P2c：instrumentation baseline | 未开始 | 无 | 行为门禁以及 O-004/O-008 |
 | P3：模型侧模式发现 | 未开始 | 无 | 冻结 discovery/evaluation protocol |
 | P4：function-versus-structure 检验 | 未开始 | 无 | 通过 leakage 与 confound audit |
@@ -20,11 +21,23 @@
 
 ## 当前任务
 
-`pilot-a-design-v1` 记录已接受的 pattern-discovery and measurement-validation design。
-它定义临时 typed task language、四个 matched topology/control cell、negative control、
-discovery/confirmation 分离、behavior/alignment gate 和分阶段分析。Qwen 已排除；冻结的
-Mistral 7B instruct model 是工作默认，exact revision 尚未解决。现有 generator 被明确
-标记为非权威。实施、模型下载、执行、activation、commit 和 push 均未授权。
+`pilot-a0-target-grounding-v1` 现包含 protocol v0.2 与 plan v2，规定 no-annotation source
+inventory 和 model-first 路线：benchmark-faithful native inference、activation/transition
+trajectory、label-free within-task discovery、冻结的 cross-task transfer，以及后续有边界的
+interpretation。GSM8K、DROP、MuSiQue-Ans v1.0 与两个 BIG-Bench task 是已接受的初始
+source stratum。准确 source revision、license、split reservation 与 access 仍待决定。实施、
+benchmark inspection/download、代码、模型、activation、服务器、commit 与 push 均未授权。
+
+新的 manual annotation 与 synthetic task construction 被冻结为 fallback tool。名为
+`RQ1 文献差异性追踪` 的 recurring app automation 已启用，只报告实质相关的新研究或方法
+变化；日常项目工作中遇到的相关工作也必须主动提示。
+
+`pilot-a-design-v1` 记录 protocol v0.2 和 plan v2。Functional subtype 只在 matched
+structural signature 内比较；每个核心 program 固定包含六个 answer-relevant node；R1
+measurement 固定在每个 predicted state symbol 之前的 delimiter。方案保留四个
+topology/control cell、negative control、discovery/confirmation 分离和分阶段门禁。Qwen
+已排除。现有 generator 是非权威 artifact。由于尚未建立与目标总体的连接，该任务设计现
+为候选 calibration sandbox；其实施方案已在代码修改前暂停。
 
 `research-specification-v1` 于 2026-09-09 完成实施、审核、commit 与 push，revision 为
 `901507d`。它形式化任务侧对象，区分 pilot 启发的 construct 定义与独立确认，并定义规划

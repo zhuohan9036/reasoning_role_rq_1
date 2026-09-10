@@ -2,9 +2,14 @@
 
 > English: [PILOT_A.md](PILOT_A.md)
 
-**状态：** 科学设计已接受；尚未授权代码实施
-**协议版本：** 0.1
-**最后更新：** 2026-09-09
+**状态：** 候选 calibration sandbox；科学任务状态暂停，等待 Pilot A0
+**协议版本：** 0.2
+**最后更新：** 2026-09-10
+
+> **桥接提示：** Pilot A0 现在采用 native-inference、model-first 路线。`Symbol8`、拟议
+> function pair 与 C1–C4 仅保留为非活动 calibration fallback。只有在后续记录了具名的
+> identification failure，并且另行审核、明确批准恢复它们的计划之后，才能实施；在此之前
+> 不得把它们视为科学 Pilot A 任务。见 [PILOT_A0.zh-CN.md](PILOT_A0.zh-CN.md)。
 
 ## 1. 目的与结论上限
 
@@ -15,7 +20,8 @@ Pilot A 是 pattern-discovery and measurement-validation pilot。它考察：在
 Pilot A 最多支持如下类型的陈述：
 
 > 在具名冻结模型、response regime 和受控任务分布中，经过已声明的控制后，某个可重复
-> 的模型侧 pattern 与临时任务侧 computation category 存在或不存在关联。
+> 的模型侧 pattern 与相同 structural signature 内的临时 functional subtype 存在或不存在
+> 关联。
 
 它不能确立通用 computational primitive、一般 reasoning role、跨领域普遍性或因果必要
 性。它的 task language 是诊断仪器，不是 reasoning ontology 提案。
@@ -26,14 +32,14 @@ Pilot A 依次回答四个问题：
 
 1. 模型能否在不选择性排除 cell 的前提下，以足够高的准确率完成全部核心任务 cell？
 2. 任务事件能否与模型测量形成可重复 alignment？
-3. 在控制 layer、token position、event index、数值、topology 和 rendering 后，activation
-   是否仍能区分临时 computation category？
+3. 在相同 input/output signature 内，控制 layer、token position、event index、数值、
+   topology 和 rendering 后，activation 是否仍能区分临时 functional subtype？
 4. 发现的 pattern 能否保持在 untouched instance，以及受控变化的 topology、control
    regime 和 surface realization 上？
 
 较早的前置问题失败时，pilot 不进入后续问题。
 
-## 3. 受控 task language v0.1
+## 3. 受控 task language v0.2
 
 ### 3.1 类型与取值
 
@@ -43,26 +49,37 @@ Pilot A 依次回答四个问题：
 - 每个 program 都是 deterministic，并具有 executable reference solver。
 - Canonical program 与 rendered prompt 始终是不同对象。
 
-### 3.2 临时 computation category
+### 3.2 Structural signature 与临时 functional subtype
 
-- `transform`：把一个 `Symbol8` 状态映射为另一个状态。
-- `merge`：把两个 `Symbol8` 状态合并为一个状态。
-- `predicate`：从 `Symbol8` 状态得到一个 `Boolean`。
-- `select`：依据 `Boolean` 从两个 `Symbol8` 状态中选择一个。
-- `direct_read`：无需组合、可以直接读取答案的 negative control。
+Structural node type 与 functional subtype 是不同字段。Structural type 描述 graph arity
+和 value type，是 control，不是主要 functional label。
 
-这些名称只描述 task-language semantics。不能假定它们具有 atomic、complete、cognitively
-privileged 地位，也不能假定模型使用这些 operation。比较 external 与 computed control
-时，condition-source event 单独分析。
+| Structural signature | 临时 functional contrast |
+|---|---|
+| `Symbol8 -> Symbol8` | `shift` 对 `reflect` |
+| `Symbol8 x Symbol8 -> Symbol8` | `add_merge` 对 `subtract_merge` |
+| `Symbol8 -> Boolean` | `parity` 对 `upper_half` |
+| `Boolean x Symbol8 x Symbol8 -> Symbol8` | `select_if` 对 `select_unless` |
+
+`direct_read` 继续作为无需组合、可直接读取答案的 negative control。Transform、merge、
+predicate 和 select 等粗粒度术语只描述 task-language structural family。由于它们的 arity
+和 type signature 不同，不能把它们当作主要 functional prediction target。
+
+所有 category 仍是任务侧假设。不能假定它们具有 atomic、complete、cognitively privileged
+地位，也不能假定模型使用这些 operation。
 
 ### 3.3 Reference semantics
 
 第一版实施提议使用小型 modular function，使每个状态可审计，并使答案取值可以平衡：
 
-- `transform_k(x) = (x + k) mod 8`，其中 `k` 是非零奇数；
-- `merge_k(x, y) = (x + 2y + k) mod 8`；
-- 当 `(x + k) mod 8 >= 4` 时，`predicate_k(x) = 1`，否则为 `0`；
-- 当 `b = 1` 时，`select(b, x, y) = x`，否则为 `y`。
+- `shift_k(x) = (x + k) mod 8`，其中 `k` 是非零奇数；
+- `reflect_k(x) = (k - x) mod 8`；
+- `add_merge_k(x, y) = (x + y + k) mod 8`；
+- `subtract_merge_k(x, y) = (x - y + k) mod 8`；
+- `parity_k(x) = (x + k) mod 2`；
+- 当 `(x + k) mod 8 >= 4` 时，`upper_half_k(x) = 1`，否则为 `0`；
+- 当 `b = 1` 时，`select_if(b, x, y) = x`，否则为 `y`；
+- 当 `b = 1` 时，`select_unless(b, x, y) = y`，否则为 `x`。
 
 Operation 的显示名称与 semantics 独立随机化。准确参数集合、退化检查和采样权重必须在
 生成数据前冻结于机器可读实施配置。若行为可行性或已识别 confound 在实施审核前证明
@@ -82,10 +99,24 @@ Pilot A 使用一个共同 task language，而不是一组互不相关的 benchm
 
 ### 4.1 Topology template
 
-每个 program 包含具名输入、两个早期 transform、一个 merge、一个 select 和一个最终
-transform。Serial template 让第二个 transform 依赖第一个；fork-join template 让两个
-transform 分别作用于不同输入，然后再 merge。在同一个 control regime 内，topology
-contrast 必须匹配 operation multiset、active-node count、答案分布和 rendering budget。
+每个核心 program 固定包含六个 answer-relevant node。External-control cell 包含四个 unary
+transformation、一个 binary merge 和一个 conditional node。Computed-control cell 包含三个
+unary transformation、一个 binary merge、一个 predicate 和一个 conditional node。
+Serial template 让第二个 unary node 依赖第一个；fork-join template 让前两个 unary node
+分别作用于不同输入，然后再 merge。在同一个 control regime 内，topology contrast 必须
+匹配 structural-signature multiset、functional-subtype frequency、active-node count、答案
+分布和 rendering budget。
+
+用 `U`、`B`、`P` 和 `C` 分别表示 unary、binary、predicate 和 conditional node，anchor
+dependency template 为：
+
+- C1：`u1=U(x); u2=U(u1); m=B(u2,y); u3=U(m); s=C(q,u3,u2); o=U(s)`；
+- C2：`u1=U(x); u2=U(y); m=B(u1,u2); u3=U(m); s=C(q,u3,u1); o=U(s)`；
+- C3：`u1=U(x); u2=U(u1); m=B(u2,y); p=P(m); s=C(p,m,u2); o=U(s)`；
+- C4：`u1=U(x); u2=U(y); m=B(u1,u2); p=P(m); s=C(p,m,u1); o=U(s)`。
+
+其中 `q` 是 externally supplied Boolean，`o` 是 target。每个兼容 structural node 上的
+functional subtype 按平衡规则采样。
 
 ### 4.2 Control template
 
@@ -95,10 +126,16 @@ selector 由一个 intermediate state 上的 predicate 得到。两组尽可能�
 
 ### 4.3 Operation placement
 
-在生成实例中，每个适用的 operation category 必须等频出现在每个兼容 event index 和
-prompt region。每个 `topology x control x active-length` stratum 内要平衡 operation
-显示名称、input value、output value、final answer 和参数。若某项 operation comparison
-能够被未匹配的 graph degree 或 output token 确定，则必须排除该 comparison。
+在每项 functional contrast 内，成对 subtype 必须具有完全匹配的 event-index 与 prompt-
+region distribution。每个被分析的位置都必须同时包含具有相同 structural signature 的
+两个 subtype。Unary contrast 必须覆盖多个 event index，以支持 held-out-position test。
+Binary、predicate 或 conditional contrast 在核心 pilot 中可以只占一个 matched position；
+此类结果明确属于 position-matched，而非 position-generalized。每个 `topology x control`
+stratum 内要平衡 operation 显示名称、input value、output value、final answer 和参数。
+
+数据验收前，identifiability audit 必须证明 functional-subtype label 不能由 structural
+signature、graph degree、event index、prompt region、output token 或 task cell 确定性恢复。
+未通过的 comparison 在模型测量前按设计排除，不能在观察结果后再决定。
 
 ## 5. Control 与 nuisance factor
 
@@ -116,22 +153,22 @@ prompt region。每个 `topology x control x active-length` stratum 内要平衡
   candidate-operation label。
 - 仅使用 layer、token position、event index、input/output value、topology、control
   regime、length 和 rendering 的 metadata-only prediction。
-- 不包含 candidate-operation category 的 structure-only comparison。
+- 不包含 functional subtype 的 structure-only comparison。
 
 ### 5.3 Nuisance variable
 
-协议记录并平衡或控制 active-node count、prompt-token length、event index、statement
+协议记录并平衡或控制 structural signature、graph degree、active-node count、prompt-token
+length、event index、statement
 order、vocabulary、operation 显示名称、answer symbol、template、input/output state、
 model correctness 和 decoding status。Difficulty 由行为数据测量，不能只根据 nominal
 program length 推断。
 
 ## 6. 数据与 split 方案
 
-对 C1–C4 的每一个 cell：
+每个核心 program 固定包含六个 answer-relevant node。对 C1–C4 的每一个 cell：
 
-- active-node level：4 和 6；
 - 八个平衡的 final-answer value；
-- 每个 `cell x length x answer` stratum 有 16 个独立 canonical instance。
+- 每个 `cell x answer` stratum 有 32 个独立 canonical instance。
 
 因此 discovery split 有 1,024 个 canonical instance，untouched confirmation split 有
 另外 1,024 个 semantic disjoint instance。Direct-read control pool 至少包含 512 个
@@ -142,6 +179,7 @@ additional canonical instance。
 prompt text。必须记录 generator seed、schema version、task-language version、configuration
 hash、solver result、reference graph 和完整 rendering provenance。
 
+Program-length generalization 延后到核心测量通过后另行规划的 robustness extension。
 这些数量是 pilot design constant，不是正式 power calculation。Pilot 必须报告置信区间
 与有效正确样本数。任何增加样本量的决定都必须在查看 functional result 前作出。
 
@@ -159,8 +197,9 @@ instruction-tuned Mistral；默认实施目标为 `mistralai/Mistral-7B-Instruct
 
 ### 7.2 Response regime
 
-- `R1 aligned_trace`：输出固定长度 intermediate-state symbol sequence。用于建立清晰的
-  event alignment 和开发测量方法。
+- `R1 aligned_trace`：用固定 delimiter 格式输出六个 intermediate-state symbol，例如
+  `| A | B | C | D | E | F |`。用于 alignment 的每个 display symbol 和 delimiter 都必须
+  经过 tokenizer audit。该条件用于建立清晰 event alignment 和开发测量方法。
 - `R2 final_answer_only`：只输出最终答案。用于检验 R1 finding 是否完全依赖显式 trace
   scaffold。
 
@@ -170,14 +209,16 @@ analysis。
 
 ## 8. 行为可行性阶段
 
-必须先评估行为，之后才能检查 functional activation result。对每一个
-`task cell x active length` stratum：
+必须先评估行为，之后才能检查 functional activation result。对每一个 task cell：
 
-- trimmed exact-match accuracy 至少为 80%；
+- R1 full-trace exact-match accuracy 至少为 80%；
+- 单独报告 final-state accuracy 与 per-event accuracy，但二者不能替代 full-trace gate；
 - invalid-format rate 至多为 2%；
 - 所有 attempt 都保留在 denominator 中；
 - 报告简单 answer-frequency、input-copy、final-rule 和 lexical-name heuristic；
-- 不得静默排除未通过的 cell 后再进行 mechanistic analysis。
+- 不得静默排除未通过的 cell 或 functional subtype 后再进行 mechanistic analysis；
+- Primary activation sample 只包含整条 R1 trace 正确的 instance；错误 trace 保留为单独
+  标记的 secondary diagnostic。
 
 80% 是预先声明的工程推进规则，不是科学效应阈值。Cell 未通过时依次执行：format 与
 tokenization audit；在 canonical semantics 不变的前提下简化 rendering；审核候选模型；
@@ -187,17 +228,20 @@ tokenization audit；在 canonical semantics 不变的前提下简化 rendering�
 
 ### 9.1 第一测量单位
 
-第一项有边界的 measurement 是 R1 中每个 aligned state-output event、每个 layer 的
-residual-stream vector。每条 observation 带有 instance、program、event、task cell、
-layer、token position、event index、operation category、input state、output state、
-correctness 和 rendering metadata。
+第一项有边界的 measurement 是 R1 中每个 state symbol 之前的固定 delimiter token 上、
+每个 layer 的 residual-stream vector。该位置的 hidden state 正在预测对应 state，而不是
+已经接收该 state 的 token embedding。State 之后的位置只能作为已声明的 sensitivity
+measurement 保留。每条 observation 带有 instance、program、event、task cell、layer、
+token position、event index、structural signature、functional subtype、input state、
+output state、correctness 和 rendering metadata。
 
 Head output、MLP output、intervention fingerprint 和宽泛 metric search 暂缓。只有知道
 residual-stream measurement 的可靠性后，才能分别论证这些扩展。
 
 ### 9.2 Reliability check
 
-- 至少 99% 的 eligible correct trace 能与声明的 event slot 对齐。
+- 至少 99% 的 eligible fully correct trace 能与六个声明的 pre-output delimiter position
+  对齐。
 - Deterministic replay 在记录的数值容差内复现 token sequence 与 activation。
 - Paired rendering 保持相同 canonical identity 与 target。
 - 缺失、重复或顺序错误的 event record 使 run 无效。
@@ -206,20 +250,22 @@ residual-stream measurement 的可靠性后，才能分别论证这些扩展。
 
 ### 10.1 Primary diagnostic analysis
 
-使用 grouped、cross-validated linear readout 预测临时 computation category。数据 group
-由 semantic instance 而非 event row 定义。主要量是 activation 加 metadata 相对于只用
-metadata 的 held-out performance 增量。
+在每个 matched structural signature 内，分别使用 grouped、cross-validated linear
+readout 预测 functional subtype。Pooled transform-versus-merge-versus-select classifier
+不是主要 functional test。数据 group 由 semantic instance 而非 event row 定义。主要量
+是 activation 加 metadata 相对于只用 metadata 的 held-out performance 增量。
 
 必须执行 cross-classification：
 
-1. 在部分 event index 上训练，在 held-out event index 上评估；
+1. 当 contrast 覆盖多个位置时，在部分 event index 上训练并在 held-out event index 上评估；
+   unary contrast 必须执行此项；
 2. 在一种 rendering 上训练，在 paired rerendering 上评估；
-3. 在一种 topology 或 control level 上训练，在 operation 对两者都适用时，于 matched
-   alternative 上评估；
+3. 在一种 topology 或 control level 上训练，在相同 structural signature 与 functional
+   contrast 对两者都适用时，于 matched alternative 上评估；
 4. 每个结果与 stratified label permutation 比较。
 
 报告 score、不确定性区间、class balance 和所有失败的 transfer。Predictability 称为
-operation-associated signal，而不是 role。
+functional-subtype-associated signal，而不是 role。
 
 ### 10.2 Label-free discovery
 
@@ -232,7 +278,7 @@ split 前，必须冻结 pattern definition。
 
 ### Green
 
-所有核心行为 cell 通过、alignment 至少 99%、operation-associated signal 经受 held-out
+所有核心行为 cell 通过、alignment 至少 99%、functional-subtype-associated signal 经受 held-out
 position 和 rendering control，并且效应方向在 untouched instance 上相对 metadata-only
 与 permutation baseline 得到复现时，进入下一阶段。
 
@@ -262,17 +308,18 @@ scaffold-specific pattern。
 
 ## 13. 执行顺序与门禁
 
-1. 冻结本协议与实施合同。
-2. 在本地实现 task language、control、generator、split 和 test。
-3. 验证 determinism、balance、solver agreement、rendering pair 和 leakage。
-4. 冻结准确 model/tokenizer SHA 与服务器配置。
-5. 只运行 behavior，并审核 behavioral gate。
-6. 单独授权并运行 R1 residual-stream capture。
-7. 完成 discovery analysis，并冻结 pattern/analysis definition。
-8. 运行 untouched confirmation。
-9. 可选地规划 R2 和一个 semantic-domain replication。
-10. 选择 post-pilot research route，并更新 claim boundary。
+1. 完成并审核 Pilot A0 target-task grounding。
+2. 决定本候选 sandbox 的哪些元素被保留、修订、仅作 calibration 或拒绝。
+3. 冻结新的科学 Pilot A 协议与实施合同。
+4. 只在本地实施新获接受的 task language、control、generator、split 和 test。
+5. 验证 determinism、balance、solver agreement、rendering pair 和 leakage。
+6. 冻结准确 model/tokenizer SHA 与服务器配置。
+7. 只运行 behavior，并审核 behavioral gate。
+8. 单独授权并运行 R1 residual-stream capture。
+9. 完成 discovery analysis，并冻结 pattern/analysis definition。
+10. 运行 untouched confirmation 与预先声明的 return-to-source test。
+11. 可选地规划 R2 与 cross-family replication。
+12. 选择 post-pilot research route，并更新 claim boundary。
 
 代码实施、下载、模型执行、activation capture、服务器执行和 Git 发布仍分别服从已有
 门禁。
-
